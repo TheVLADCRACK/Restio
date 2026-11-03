@@ -43,6 +43,10 @@ describe('resolveRoute', () => {
     expect(resolveRoute('restio-app.com', '/application', hosts)).toEqual({ kind: 'next' });
   });
 
+  it('sert les pages légales telles quelles sur l’hôte de l’application', () => {
+    expect(resolveRoute('app.restio-app.com', '/legal/conditions', hosts)).toEqual({ kind: 'next' });
+  });
+
   it('laisse passer les API et le site', () => {
     expect(resolveRoute('restio-app.com', '/api/auth/session', hosts)).toEqual({ kind: 'next' });
     expect(resolveRoute('restio-app.com', '/', hosts)).toEqual({ kind: 'next' });

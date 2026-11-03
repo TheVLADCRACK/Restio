@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { getSessionUser } from '@/lib/auth/session';
 import { Alert } from '@restio/ui/components/alert';
-import { AuthShell } from '@restio/ui/components/auth-shell';
+import { WebAuthShell } from '../_components/web-auth-shell';
 import { AuthLink } from '../_components/auth-link';
 import { SignInForm } from './sign-in-form';
 
@@ -14,7 +14,7 @@ export default async function SignInPage({ searchParams }: { searchParams: Promi
   const user = await getSessionUser();
   if (user?.emailVerified) redirect('/');
   return (
-    <AuthShell
+    <WebAuthShell
       title="Connexion"
       description="Retrouvez vos commandes et votre menu."
       footer={
@@ -34,6 +34,6 @@ export default async function SignInPage({ searchParams }: { searchParams: Promi
         </Alert>
       )}
       <SignInForm />
-    </AuthShell>
+    </WebAuthShell>
   );
 }

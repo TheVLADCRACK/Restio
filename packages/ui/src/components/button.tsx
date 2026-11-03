@@ -24,6 +24,13 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   loadingText?: string;
 };
 
+const base = 'inline-flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-full border font-bold transition-[background-color,border-color,transform] duration-150';
+
+/** Classes du bouton, pour habiller un lien (<a>, <Link>) comme un bouton. */
+export function buttonClass({ variant = 'secondary', size = 'md', block, className }: { variant?: keyof typeof variants; size?: keyof typeof sizes; block?: boolean; className?: string } = {}) {
+  return cn(base, sizes[size], variants[variant], block && 'w-full', className);
+}
+
 export function Button({ variant = 'secondary', size = 'md', block, loading = false, loadingText, disabled, type = 'button', className, children, ...props }: ButtonProps) {
   // En chargement, le bouton garde sa couleur (planche) mais ne reçoit plus de clic.
   const inert = disabled && !loading;
@@ -33,7 +40,7 @@ export function Button({ variant = 'secondary', size = 'md', block, loading = fa
       disabled={disabled || loading}
       aria-busy={loading || undefined}
       className={cn(
-        'inline-flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-full border font-bold transition-[background-color,border-color,transform] duration-150',
+        base,
         sizes[size],
         variants[variant],
         block && 'w-full',

@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 import { eq } from 'drizzle-orm';
 import { appSchema } from '@restio/db';
 import { auth } from './server';
-import { db } from '@/lib/db';
+import { readDb } from '@/lib/db';
 
 export type SessionUser = { id: string; email: string; name: string; emailVerified: boolean };
 export type Membership = { userId: string; restaurantId: string; role: 'owner' };
@@ -25,7 +25,7 @@ export async function requireUser(): Promise<SessionUser> {
 }
 
 const getMembership = cache(async (userId: string): Promise<Membership | null> => {
-  const [row] = await db()
+  const [row] = await readDb()
     .select({ restaurantId: appSchema.restaurantMembers.restaurantId, role: appSchema.restaurantMembers.role })
     .from(appSchema.restaurantMembers)
     .where(eq(appSchema.restaurantMembers.userId, userId))

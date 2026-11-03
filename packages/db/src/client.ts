@@ -1,4 +1,5 @@
-import { Pool, neonConfig } from '@neondatabase/serverless';
+import { Pool, neon, neonConfig } from '@neondatabase/serverless';
+import { drizzle as drizzleHttp, type NeonHttpDatabase } from 'drizzle-orm/neon-http';
 import { drizzle, type NeonDatabase } from 'drizzle-orm/neon-serverless';
 import ws from 'ws';
 import * as appSchema from './schema/app';
@@ -22,6 +23,8 @@ function requireEnv(name: string): string {
 export type AppDb = NeonDatabase<typeof appSchema> & { $client: Pool };
 export type AdminDbs = { prod: AppDb; admin: NeonDatabase<typeof adminSchema> & { $client: Pool } };
 export type AdminDb = AdminDbs['admin'];
+/** Lectures par HTTP : plusieurs requêtes en un seul aller-retour avec `.batch()`, sans connexion à ouvrir. */
+export type AppReadDb = NeonHttpDatabase<typeof appSchema>;
 
 function pool(envName: string): Pool {
   const p = new Pool({ connectionString: requireEnv(envName) });
@@ -32,12 +35,19 @@ function pool(envName: string): Pool {
 
 // Un seul pool par processus et par base : réutilisé entre les requêtes.
 let appDb: AppDb | undefined;
+let appReadDb: AppReadDb | undefined;
 let adminDbs: AdminDbs | undefined;
 
 /** apps/web : rôle restio_app sur la base métier. */
 export function createAppDb(): AppDb {
   appDb ??= drizzle({ client: pool('DATABASE_URL'), schema: appSchema });
   return appDb;
+}
+
+/** apps/web, lectures de page : même rôle restio_app, transport HTTP (pas de transaction interactive). */
+export function createAppReadDb(): AppReadDb {
+  appReadDb ??= drizzleHttp({ client: neon(requireEnv('DATABASE_URL')), schema: appSchema });
+  return appReadDb;
 }
 
 /** apps/admin : rôle restio_admin_ops sur la base métier et rôle restio_admin_app sur la base d'administration. */

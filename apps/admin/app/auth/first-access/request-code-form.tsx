@@ -1,6 +1,7 @@
 'use client';
 
 import { useActionState } from 'react';
+import { Mail } from 'lucide-react';
 import { Alert } from '@restio/ui/components/alert';
 import { Button } from '@restio/ui/components/button';
 import { Field } from '@restio/ui/components/field';
@@ -13,7 +14,7 @@ export function RequestCodeForm() {
     <form action={action} className="grid gap-4" noValidate>
       {state?.error && <Alert tone="error">{state.error}</Alert>}
       <Field id="email" label="Adresse email">
-        <TextInput name="email" type="email" autoComplete="username" autoCapitalize="none" spellCheck={false} required />
+        <TextInput icon={Mail} name="email" type="email" autoComplete="username" autoCapitalize="none" spellCheck={false} required />
       </Field>
       <Button type="submit" variant="dark" block loading={pending} loadingText="Envoi…">
         Recevoir un code

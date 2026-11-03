@@ -5,6 +5,17 @@ import { Alert } from '@restio/ui/components/alert';
 import { Button } from '@restio/ui/components/button';
 import { authClient } from '@/lib/auth/client';
 
+// Séparateur « ou » entre le formulaire et Google (planche).
+export function OrDivider() {
+  return (
+    <div className="flex items-center gap-3 text-sm text-text-2">
+      <span aria-hidden="true" className="h-px flex-1 bg-line" />
+      ou
+      <span aria-hidden="true" className="h-px flex-1 bg-line" />
+    </div>
+  );
+}
+
 export function GoogleSignIn() {
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -33,17 +44,12 @@ export function GoogleSignIn() {
   }
 
   return (
-    <div className="grid gap-4">
+    <div className="grid gap-3">
       <Button variant="secondary" block loading={loading} loadingText="Ouverture de Google…" onClick={signIn}>
         <GoogleLogo />
         Continuer avec Google
       </Button>
       {failed && <Alert tone="error">La connexion avec Google n’a pas abouti. Réessayez dans un instant.</Alert>}
-      <div className="flex items-center gap-3 text-sm text-text-2">
-        <span aria-hidden="true" className="h-px flex-1 bg-line" />
-        ou avec votre adresse email
-        <span aria-hidden="true" className="h-px flex-1 bg-line" />
-      </div>
     </div>
   );
 }

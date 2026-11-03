@@ -51,6 +51,8 @@ async function limited(action: string, limit: number, windowSeconds: number, sub
 export async function signUpAction(_prev: AuthFormState, form: FormData): Promise<AuthFormState> {
   const parsed = z.object({ email, password }).safeParse({ email: form.get('email'), password: form.get('password') });
   if (!parsed.success) return { fieldErrors: fieldErrors(parsed.error.issues) };
+  // Consentement explicite exigé côté serveur (la case du formulaire ne suffit pas).
+  if (form.get('terms') !== 'on') return { fieldErrors: { terms: 'Acceptez les conditions pour créer votre compte.' } };
   if (await limited('sign-up', 5, 600, parsed.data.email)) return { error: MESSAGES.rateLimited };
 
   const { error } = await auth.signUp.email({

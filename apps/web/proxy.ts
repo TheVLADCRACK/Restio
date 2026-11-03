@@ -24,5 +24,6 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/|favicon.ico|robots.txt|sitemap.xml|manifest.webmanifest|sw.js).*)'],
+  // Les fichiers statiques (logo, photos, icônes…) ne passent jamais par le routage par hôte.
+  matcher: ['/((?!_next/|.*\\.[A-Za-z0-9]{2,5}$).*)'],
 };

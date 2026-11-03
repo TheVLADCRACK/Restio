@@ -1,5 +1,6 @@
 'use client';
 
+import { Lock } from 'lucide-react';
 import { Alert } from '@restio/ui/components/alert';
 import { Button } from '@restio/ui/components/button';
 import { Field } from '@restio/ui/components/field';
@@ -16,7 +17,7 @@ export function ResetPasswordForm() {
         <TextInput name="code" inputMode="numeric" autoComplete="one-time-code" className="tabular text-lg tracking-[0.3em]" required />
       </Field>
       <Field id="password" label="Nouveau mot de passe" hint="10 caractères minimum" error={state?.fieldErrors?.password}>
-        <TextInput name="password" type="password" autoComplete="new-password" minLength={10} required />
+        <TextInput icon={Lock} name="password" type="password" autoComplete="new-password" minLength={10} required />
       </Field>
       <Button type="submit" variant="primary" block loading={pending} loadingText="Enregistrement…" className="mt-2">
         Enregistrer le mot de passe

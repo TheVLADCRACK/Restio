@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-import { AuthShell } from '@restio/ui/components/auth-shell';
+import { WebAuthShell } from '../_components/web-auth-shell';
 import { getPendingEmail } from '@/lib/auth/pending-email';
 import { AuthLink } from '../_components/auth-link';
 import { VerifyEmailForm } from './verify-email-form';
@@ -12,7 +12,7 @@ export default async function VerifyEmailPage() {
   const email = await getPendingEmail();
   if (!email) redirect('/auth/sign-in');
   return (
-    <AuthShell
+    <WebAuthShell dish="grill"
       title="Vérifiez votre adresse"
       description={
         <p>
@@ -26,6 +26,6 @@ export default async function VerifyEmailPage() {
       }
     >
       <VerifyEmailForm />
-    </AuthShell>
+    </WebAuthShell>
   );
 }

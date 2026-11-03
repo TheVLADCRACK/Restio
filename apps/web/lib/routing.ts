@@ -24,6 +24,8 @@ export function resolveRoute(host: string | null, rawPathname: string, { rootHos
 
   const h = (host ?? '').toLowerCase();
   if (h === appHost) {
+    // Pages légales communes aux deux hôtes (liens depuis l'inscription).
+    if (pathname.startsWith('/legal/')) return { kind: 'next' };
     return { kind: 'rewrite', pathname: pathname === '/' ? '/app' : `/app${pathname}` };
   }
 
