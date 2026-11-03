@@ -169,6 +169,8 @@ Restio parle la langue du passe de cuisine : chaque commande est un ticket qui a
 
 La densité est celle d'un outil de travail : on voit beaucoup sans chercher, mais chaque écran a un seul centre de gravité (ce qui attend une action). La personnalité vient du contraste noir/citron, des rayons généreux et d'une typographie Satoshi nette ; elle ne vient jamais d'effets. Le menu public, vu par les clients à table, partage le même langage en plus aéré, avec la photo des plats comme matière principale.
 
+**Logo.** Le symbole « R » organique de Restio est utilisé partout (barre latérale, en-têtes, écrans de connexion, menu public « propulsé par Restio »), en trois variantes transparentes : noir (`packages/ui/brand/restio-mark-ink.png`), blanc sur fond noir, citron sur fond noir. Logotype : symbole + « Restio » en Satoshi 700. Ne jamais redessiner, déformer ni ajouter d'effet au symbole.
+
 Rejets confirmés : thème sombre au lancement, tableau de bord de cartes KPI identiques, citron utilisé comme couleur de statut, émojis à la place des icônes.
 
 **Key Characteristics:**
@@ -247,9 +249,13 @@ Mobile d'abord, conçu à 360 px (Android d'entrée de gamme) puis élargi. Gout
 
 Application restaurateur sur mobile : en-tête court (monogramme, nom du restaurant, état du service, cloche avec pastille), contenu défilant, barre de navigation noire fixe en bas avec cinq destinations (Accueil, Commandes, Menu, Stats, Réglages). Les filtres sont des onglets-pilules qui défilent horizontalement. Les actions principales sont dans la moitié basse de l'écran, à portée de pouce.
 
-Sur tablette et ordinateur (à valider à la construction en Phase 6) : la barre basse devient un rail latéral noir ; la liste de commandes peut passer en colonnes par statut au-delà de 1024 px. Aucune modale ne dépasse la hauteur de l'écran : sur mobile, les formulaires et détails s'ouvrent en feuille depuis le bas (rayon 28 px en haut).
+**Ordinateur (≥ 1024 px), référence validée par le propriétaire : tableau de bord « Salesa ».** Barre latérale claire de 248 px (logo en haut, groupes « Menu principal » et « Autres », élément actif marqué d'un trait à gauche et d'un fond, compteur sur Commandes, encart en pied) ; zone de contenu sur fond `ground` ; en-tête de page avec titre, sous-titre et actions alignées à droite ; grille de cartes à gouttières de 16 px. Les cartes de chiffres clés ont libellé, grand chiffre (décimales atténuées), bouton flèche rond et période en pied séparée par un filet. Les commandes passent en colonnes par statut (« passe de cuisine »). Tablette (768–1023 px) : barre latérale repliée en icônes.
 
-Menu public : bannière pleine largeur (168 px de haut sur mobile), carte d'identité du restaurant qui chevauche la bannière, catégories collantes en haut, liste de plats, barre de panier collante en bas qui n'apparaît qu'au premier article.
+**Réglages.** Organisés en groupes titrés dans des cartes (Restaurant, Compte, Assistance), chaque ligne : icône, libellé, valeur actuelle à droite, chevron. « Se déconnecter » isolé en bas. Aucune modale ne dépasse la hauteur de l'écran : sur mobile, les formulaires et détails s'ouvrent en feuille depuis le bas (rayon 28 px en haut).
+
+Menu public (référence : maquette du propriétaire) : grande image du restaurant en haut, puis nom, « cuisine · ville » et description courte ; barre de recherche des plats ; puces de catégories avec « Tous » en premier, collantes au défilement ; plats en lignes (photo arrondie à gauche, nom, description sur 2 lignes, prix, quantité − N +) ; barre basse collante « Total provisoire » + bouton « Commander », visible dès le premier article. Sur ordinateur, colonne centrée de 720 px au plus.
+
+Écrans de connexion : sur mobile, grande photo de plat en haut et carte blanche arrondie en bas (titre, texte, bouton principal, Google) ; sur ordinateur, carte scindée — formulaire à gauche (logo, langue, champs avec icônes, mot de passe oublié, bouton, « ou », Google), panneau visuel à droite (photo ou aperçu du produit et promesse produit vraie, jamais de faux témoignage).
 
 Tableaux sur mobile : jamais de défilement horizontal pour une donnée essentielle ; chaque ligne devient une carte compacte (titre, valeur principale à droite, métadonnées dessous).
 
@@ -276,6 +282,7 @@ Formes généreusement arrondies et régulières : 10 px pour les petits éléme
 - **Dark:** aplat Ink, texte blanc, pour l'action forte secondaire (imprimer, télécharger le QR Code). Survol Ink 2.
 - **Secondary / Ghost:** surface blanche avec trait fort, ou transparent ; survol sur Creux.
 - **Danger:** aplat rouge, texte blanc, libellé explicite (« Supprimer ») et confirmation si irréversible.
+- **Animation du bouton citron (validée par le propriétaire) :** au survol, il se soulève de 1 px avec l'ombre de repos ; à l'appui et pendant l'envoi, l'encre noire le remplit de gauche à droite en 420 ms (`cubic-bezier(.16,1,.3,1)`) et le texte passe en blanc. Classe `.btn-fill` de `packages/ui/src/tokens.css`.
 - **States:** focus en contour Ink 2 px décalé de 2 px (citron sur fond noir) ; appui à 98 % d'échelle ; désactivé sur Creux avec texte Texte 3 et `cursor: not-allowed` ; chargement avec spinner et libellé d'action en cours (« Envoi… »), bouton bloqué contre le double envoi.
 - **Icône seule:** carré de 48 px (40 px compact), nom accessible obligatoire.
 

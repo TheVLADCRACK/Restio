@@ -2,11 +2,11 @@ import type { ButtonHTMLAttributes } from 'react';
 import { cn } from '@restio/ui/cn';
 
 const variants = {
-  primary: 'border-lime bg-lime text-ink hover:border-lime-pressed hover:bg-lime-pressed',
-  dark: 'border-ink bg-ink text-surface hover:border-ink-2 hover:bg-ink-2',
-  secondary: 'border-line-strong bg-surface text-ink hover:bg-sunken',
-  ghost: 'border-transparent bg-transparent px-3 text-ink hover:bg-sunken',
-  danger: 'border-status-danger bg-status-danger text-surface',
+  primary: 'btn-fill border-lime bg-lime text-ink hover:border-lime-pressed hover:bg-lime-pressed',
+  dark: 'active:scale-[.98] border-ink bg-ink text-surface hover:border-ink-2 hover:bg-ink-2',
+  secondary: 'active:scale-[.98] border-line-strong bg-surface text-ink hover:bg-sunken',
+  ghost: 'active:scale-[.98] border-transparent bg-transparent px-3 text-ink hover:bg-sunken',
+  danger: 'active:scale-[.98] border-status-danger bg-status-danger text-surface',
 } as const;
 
 const sizes = {
@@ -33,7 +33,7 @@ export function Button({ variant = 'secondary', size = 'md', block, loading = fa
       disabled={disabled || loading}
       aria-busy={loading || undefined}
       className={cn(
-        'inline-flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-full border font-bold transition-[background-color,border-color,transform] duration-150 active:scale-[.98]',
+        'inline-flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-full border font-bold transition-[background-color,border-color,transform] duration-150',
         sizes[size],
         variants[variant],
         block && 'w-full',

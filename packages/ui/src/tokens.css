@@ -55,6 +55,16 @@
   .tabular { font-variant-numeric: tabular-nums; }
 }
 
+/* Bouton citron : à l'appui et pendant l'envoi, l'encre remplit le bouton de gauche à droite. */
+@layer components {
+  .btn-fill { position: relative; isolation: isolate; overflow: hidden; transition: color 200ms var(--ease-out-expo), transform 150ms var(--ease-out-expo), box-shadow 200ms var(--ease-out-expo), background-color 150ms; }
+  .btn-fill::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--color-ink); border-radius: inherit; transform: scaleX(0); transform-origin: left; transition: transform 420ms var(--ease-out-expo); }
+  .btn-fill:hover { transform: translateY(-1px); box-shadow: var(--shadow-rest); }
+  .btn-fill:active::before, .btn-fill[aria-busy='true']::before { transform: scaleX(1); }
+  .btn-fill:disabled:not([aria-busy='true']) { transform: none; box-shadow: none; }
+  .btn-fill:active, .btn-fill[aria-busy='true'] { color: var(--color-surface); transform: translateY(0); box-shadow: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
 }
