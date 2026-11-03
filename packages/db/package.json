@@ -1,0 +1,25 @@
+{
+  "name": "@restio/db",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./schema/app": "./src/schema/app.ts",
+    "./schema/admin": "./src/schema/admin.ts"
+  },
+  "scripts": {
+    "generate": "drizzle-kit generate --config drizzle.app.config.ts && drizzle-kit generate --config drizzle.admin.config.ts",
+    "migrate": "drizzle-kit migrate --config drizzle.app.config.ts",
+    "typecheck": "tsc --noEmit",
+    "migrate:admin": "drizzle-kit migrate --config drizzle.admin.config.ts"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.2.0",
+    "drizzle-orm": "^0.45.4",
+    "ws": "^8"
+  },
+  "devDependencies": {
+    "@types/ws": "^8",
+    "drizzle-kit": "^0.31.11"
+  }
+}

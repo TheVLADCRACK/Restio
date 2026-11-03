@@ -1,0 +1,16 @@
+{
+  "name": "@restio/ui",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./tokens.css": "./src/tokens.css",
+    "./cn": "./src/lib/cn.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "clsx": "^2",
+    "tailwind-merge": "^3"
+  }
+}

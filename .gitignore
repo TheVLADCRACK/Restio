@@ -1,0 +1,27 @@
+# Dépendances et builds
+node_modules/
+.next/
+out/
+dist/
+coverage/
+*.tsbuildinfo
+.turbo/
+
+# Secrets : jamais commités (voir .env.example)
+.env
+.env.*
+!.env.example
+
+# Outils locaux
+.DS_Store
+.vercel/
+.neon/
+.clerk/
+playwright-report/
+test-results/
+.impeccable/review/
+.impeccable/live/
+.impeccable/config.local.json
+
+# Prototype Figma Make (référence visuelle, non construit)
+figma/**/node_modules/

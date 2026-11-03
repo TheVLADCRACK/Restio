@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restio Design System</title>
+<meta name="description" content="Planche de validation du design system Restio : couleurs, typographie, composants et écrans mobiles.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap">
+<style>
+:root {
+  /* Marque */
+  --ink: #0F0F0F;
+  --ink-2: #2E2E2E;
+  --lime: #C7FF2E;
+  --lime-pressed: #B6F00F;
+  --lime-soft: #F1FFC9;
+  --brand-gray: #808080;
+  /* Neutres */
+  --ground: #F4F4F1;
+  --surface: #FFFFFF;
+  --sunken: #EEEEEB;
+  --line: #E4E4E0;
+  --line-strong: #CFCFCA;
+  --text: #0F0F0F;
+  --text-2: #5E5E5B;
+  --text-3: #6B6B68;
+  --on-dark-2: #A3A3A0;
+  /* Statuts */
+  --new: #A14A00;        --new-bg: #FFF3E0;
+  --info: #1D5FD1;       --info-bg: #EAF1FD;
+  --prep: #6B3FC4;       --prep-bg: #F1ECFC;
+  --ok: #16794A;         --ok-bg: #E6F4EC;
+  --muted: #5E5E5B;      --muted-bg: #EEEEEB;
+  --danger: #C0261C;     --danger-bg: #FDECEA;
+  /* Forme */
+  --r-sm: 10px; --r-md: 14px; --r-lg: 20px; --r-xl: 28px; --r-pill: 999px;
+  --shadow-1: 0 1px 2px rgba(15,15,15,.06), 0 2px 8px rgba(15,15,15,.04);
+  --shadow-2: 0 8px 24px rgba(15,15,15,.10), 0 2px 6px rgba(15,15,15,.06);
+  --control-h: 48px; --control-h-sm: 40px;
+  --ease: cubic-bezier(.16,1,.3,1);
+  --dur: 180ms;
+  --font: 'Satoshi', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--ground); color: var(--text); font: 400 16px/1.5 var(--font); -webkit-font-smoothing: antialiased; }
+::selection { background: var(--lime); color: var(--ink); }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 6px; }
+.dark :focus-visible, .on-dark:focus-visible { outline-color: var(--lime); }
+* { scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
+img { display: block; max-width: 100%; }
+h1, h2, h3, h4, p { margin: 0; }
+button { font: inherit; color: inherit; }
+.num { font-variant-numeric: tabular-nums; }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+[data-lucide], .ico { width: 20px; height: 20px; stroke-width: 1.75; flex: 0 0 auto; }
+
+/* ---------- Planche ---------- */
+.board-head { background: var(--ink); color: #fff; }
+.board-head .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding-block: 20px; }
+.board-head .mark { flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #fff; display: grid; place-items: center; overflow: hidden; }
+.board-head .mark img { width: 30px; height: 30px; object-fit: contain; }
+.board-head h1 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; }
+.board-head p { color: var(--on-dark-2); font-size: 14px; }
+.board-head nav { margin-left: auto; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+@media (max-width: 760px) { .board-head nav { margin-left: -12px; flex-basis: calc(100% + 12px); } }
+.board-head nav a { flex: 0 0 auto; color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: var(--r-pill); }
+.board-head nav a:hover { background: var(--ink-2); }
+.wrap { max-width: 1240px; margin: 0 auto; padding-inline: 16px; }
+@media (min-width: 768px) { .wrap { padding-inline: 32px; } }
+section.block { padding-block: 56px 8px; }
+section.block > .wrap > h2 { font-size: 30px; font-weight: 700; letter-spacing: -.02em; line-height: 1.15; }
+section.block > .wrap > p.lead { color: var(--text-2); max-width: 64ch; margin-top: 8px; }
+.grid { display: grid; gap: 16px; margin-top: 28px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; }
+.panel h3 { font-size: 16px; font-weight: 700; }
+.panel > p.note { color: var(--text-2); font-size: 14px; margin-top: 4px; }
+
+/* Couleurs */
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 16px; }
+.sw { border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; background: var(--surface); }
+.sw .chip { height: 72px; display: flex; align-items: flex-end; padding: 10px; font-size: 14px; font-weight: 700; }
+.sw .meta { padding: 10px; font-size: 13px; line-height: 1.4; }
+.sw .meta b { display: block; font-size: 14px; }
+.sw .meta span { color: var(--text-2); }
+.rule { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--text-2); margin-top: 16px; }
+.rule [data-lucide] { color: var(--danger); width: 18px; height: 18px; margin-top: 2px; }
+
+/* Typographie */
+.type-row { display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: baseline; padding-block: 14px; border-top: 1px solid var(--line); }
+.type-row:first-of-type { border-top: 0; }
+.type-row code { white-space: nowrap; font-size: 12px; color: var(--text-3); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+@media (max-width: 560px) { .type-row { grid-template-columns: 1fr; gap: 4px; } }
+.t-display { font-size: 36px; line-height: 1.05; font-weight: 700; letter-spacing: -.03em; }
+.t-h1 { font-size: 30px; line-height: 1.15; font-weight: 700; letter-spacing: -.02em; }
+.t-h2 { font-size: 24px; line-height: 1.2; font-weight: 700; letter-spacing: -.015em; }
+.t-h3 { font-size: 20px; line-height: 1.3; font-weight: 700; }
+.t-lg { font-size: 18px; line-height: 1.45; font-weight: 500; }
+.t-body { font-size: 16px; line-height: 1.5; }
+.t-sm { font-size: 14px; line-height: 1.45; }
+.t-xs { font-size: 12px; line-height: 1.4; color: var(--text-3); }
+.t-stat { font-size: 30px; line-height: 1; font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+
+/* ---------- Composants ---------- */
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 14px; }
+.lbl { font-size: 12px; color: var(--text-3); margin-top: 18px; }
+.btn { --bg: var(--surface); --fg: var(--ink); --bd: var(--line-strong);
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: var(--control-h); padding: 0 20px;
+  border-radius: var(--r-pill); border: 1px solid var(--bd); background: var(--bg); color: var(--fg);
+  font-weight: 700; font-size: 16px; cursor: pointer; text-decoration: none; white-space: nowrap;
+  transition: background var(--dur) var(--ease), transform var(--dur) var(--ease), border-color var(--dur) var(--ease); }
+.btn:active { transform: scale(.98); }
+.btn-primary { --bg: var(--lime); --fg: var(--ink); --bd: var(--lime); }
+.btn-primary:hover, .btn-primary.is-hover { --bg: var(--lime-pressed); --bd: var(--lime-pressed); }
+.btn-dark { --bg: var(--ink); --fg: #fff; --bd: var(--ink); }
+.btn-dark:hover, .btn-dark.is-hover { --bg: var(--ink-2); --bd: var(--ink-2); }
+.btn-secondary:hover, .btn-secondary.is-hover { --bg: var(--sunken); }
+.btn-ghost { --bg: transparent; --bd: transparent; padding-inline: 12px; }
+.btn-ghost:hover, .btn-ghost.is-hover { --bg: var(--sunken); }
+.btn-danger { --bg: var(--danger); --fg: #fff; --bd: var(--danger); }
+.btn-sm { height: var(--control-h-sm); padding: 0 16px; font-size: 14px; }
+.btn-block { width: 100%; }
+.btn-icon { width: var(--control-h); padding: 0; }
+.btn-icon.btn-sm { width: var(--control-h-sm); }
+.btn.is-focus { outline: 2px solid var(--ink); outline-offset: 2px; }
+.btn:disabled, .btn[aria-disabled="true"] { --bg: var(--sunken); --fg: var(--text-3); --bd: var(--sunken); cursor: not-allowed; transform: none; }
+.spinner { width: 18px; height: 18px; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; animation: spin .7s linear infinite; }
+@keyframes spin { to { transform: rotate(1turn); } }
+
+.field { display: grid; gap: 6px; min-width: 0; }
+.field label { font-size: 14px; font-weight: 500; }
+.field .hint { font-size: 13px; color: var(--text-2); }
+.input { height: var(--control-h); border: 1px solid var(--line-strong); border-radius: var(--r-md); background: var(--surface); padding: 0 14px; font: inherit; color: var(--text); width: 100%; transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease); }
+.input::placeholder { color: var(--text-3); }
+.input:hover { border-color: #B5B5B0; }
+.input:focus, .input.is-focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px rgba(15,15,15,.12); }
+.input.is-error { border-color: var(--danger); box-shadow: 0 0 0 3px rgba(192,38,28,.12); }
+.input:disabled { background: var(--sunken); color: var(--text-3); cursor: not-allowed; }
+.field .err { display: flex; gap: 6px; align-items: center; font-size: 13px; color: var(--danger); font-weight: 500; }
+.field .err [data-lucide] { width: 16px; height: 16px; }
+.phone { display: flex; gap: 8px; }
+.phone .cc { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px; height: var(--control-h); padding: 0 12px; border: 1px solid var(--line-strong); border-radius: var(--r-md); background: var(--surface); font-weight: 500; }
+.forms { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 16px; }
+
+.badge { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px 0 8px; border-radius: var(--r-pill); font-size: 13px; font-weight: 700; color: var(--c); background: var(--b); white-space: nowrap; }
+.badge [data-lucide] { width: 15px; height: 15px; stroke-width: 2; }
+.s-new { --c: var(--new); --b: var(--new-bg); }
+.s-info { --c: var(--info); --b: var(--info-bg); }
+.s-prep { --c: var(--prep); --b: var(--prep-bg); }
+.s-ok { --c: var(--ok); --b: var(--ok-bg); }
+.s-muted { --c: var(--muted); --b: var(--muted-bg); }
+.s-danger { --c: var(--danger); --b: var(--danger-bg); }
+
+.toggle { position: relative; width: 48px; height: 28px; border-radius: var(--r-pill); background: var(--line-strong); border: 0; cursor: pointer; flex: 0 0 auto; transition: background var(--dur) var(--ease); }
+.toggle::after { content: ""; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: var(--shadow-1); transition: transform var(--dur) var(--ease); }
+.toggle[aria-checked="true"] { background: var(--ink); }
+.toggle[aria-checked="true"]::after { transform: translateX(20px); background: var(--lime); }
+
+/* Ticket de commande — signature */
+.ticket { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 16px; display: grid; gap: 12px; }
+.ticket-top { display: flex; align-items: flex-start; gap: 12px; }
+.ticket-id { display: grid; gap: 2px; }
+.ticket-id b { font-size: 20px; font-weight: 700; letter-spacing: -.01em; }
+.ticket-id span { font-size: 14px; color: var(--text-2); }
+.ticket-id .late { display: inline-flex; align-items: center; gap: 4px; color: var(--new); font-weight: 700; }
+.ticket-id .late.very { color: var(--danger); }
+.ticket-id .late [data-lucide] { width: 15px; height: 15px; stroke-width: 2.25; }
+.ticket.just-moved .rail i.now { animation: fill 360ms var(--ease) both; transform-origin: left; }
+.ticket.just-moved .badge { animation: settle 360ms var(--ease) both; }
+@keyframes fill { from { transform: scaleX(0); } }
+@keyframes settle { from { transform: translateY(-4px); opacity: .4; } }
+.ticket-top .badge { margin-left: auto; }
+.ticket ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: 15px; }
+.ticket li { display: flex; gap: 10px; }
+.ticket li .q { font-weight: 700; min-width: 24px; }
+.ticket li .p { margin-left: auto; color: var(--text-2); }
+.ticket .note { display: flex; gap: 8px; font-size: 14px; color: var(--text-2); background: var(--ground); border-radius: var(--r-sm); padding: 8px 10px; }
+.ticket .note [data-lucide] { width: 16px; height: 16px; margin-top: 2px; }
+.ticket .note.allergen { background: var(--danger-bg); color: var(--danger); font-weight: 700; }
+.ticket-total { display: flex; justify-content: space-between; font-weight: 700; padding-top: 10px; border-top: 1px dashed var(--line-strong); }
+.rail { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.rail i { height: 6px; border-radius: var(--r-pill); background: var(--sunken); transition: background 260ms var(--ease); }
+.rail i.on { background: var(--ink); }
+.rail i.now { background: var(--lime); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.ticket-actions { display: flex; gap: 8px; }
+.ticket-actions .btn-primary { flex: 1; }
+.ticket.is-done { background: var(--ground); }
+
+.stage { background: var(--ground); border-radius: var(--r-md); padding: 12px; margin-top: 14px; display: grid; gap: 10px; min-width: 0; }
+.panel { min-width: 0; }
+/* Plat (gestion du menu) */
+.dish-row { min-width: 0; display: flex; gap: 12px; align-items: center; padding: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); }
+.dish-row img, .dish-row .ph { width: 64px; height: 64px; border-radius: var(--r-md); object-fit: cover; flex: 0 0 auto; }
+.dish-row .ph { background: var(--sunken); display: grid; place-items: center; color: var(--text-3); }
+.dish-row .info { min-width: 0; flex: 1; }
+.dish-row .info b { font-size: 16px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.dish-row .info span { font-size: 14px; color: var(--text-2); }
+.dish-row.is-off .info b { color: var(--text-2); }
+.dish-row.is-off img { filter: grayscale(1); opacity: .7; }
+
+/* État vide */
+.empty { display: grid; justify-items: center; text-align: center; gap: 10px; padding: 32px 20px; }
+.empty svg.ill { width: 120px; height: 96px; }
+.empty h4 { font-size: 18px; font-weight: 700; }
+.empty p { color: var(--text-2); font-size: 15px; max-width: 34ch; }
+.empty .row { justify-content: center; }
+
+/* Squelettes */
+.sk { background: var(--sunken); border-radius: 8px; animation: pulse 1.6s ease-in-out infinite alternate; }
+@keyframes pulse { from { opacity: 1; } to { opacity: .55; } }
+
+/* Toast */
+.toast { display: flex; gap: 12px; align-items: center; background: var(--ink); color: #fff; padding: 12px 14px 12px 16px; border-radius: var(--r-md); box-shadow: var(--shadow-2); max-width: 420px; }
+.toast .dot { width: 28px; height: 28px; border-radius: 50%; background: var(--lime); color: var(--ink); display: grid; place-items: center; flex: 0 0 auto; }
+.toast .dot [data-lucide] { width: 16px; height: 16px; stroke-width: 2.25; }
+.toast p { font-size: 15px; }
+.toast p span { color: var(--on-dark-2); display: block; font-size: 13px; }
+.toast .btn { margin-left: auto; --fg: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.toast .btn:hover { --bg: var(--ink-2); }
+.toast.err .dot { background: var(--danger); color: #fff; }
+
+/* ---------- Écrans (cadres téléphone) ---------- */
+.screens { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); justify-items: center; margin-top: 28px; }
+@media (max-width: 420px) { .screens { grid-template-columns: 1fr; } }
+.phone-frame { width: 360px; max-width: 100%; height: 760px; background: var(--ground); border: 8px solid var(--ink); border-radius: 44px; overflow: hidden; position: relative; display: flex; flex-direction: column; box-shadow: var(--shadow-2); }
+.phone-cap { text-align: center; font-size: 14px; color: var(--text-2); margin-top: 10px; }
+.status-bar { height: 28px; flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; font-size: 12px; font-weight: 700; }
+.scr { flex: 1; overflow-y: auto; overscroll-behavior: contain; }
+.app-head { display: flex; align-items: center; gap: 10px; padding: 8px 16px 12px; }
+.app-head .r-avatar { width: 40px; height: 40px; border-radius: 12px; background: var(--ink); color: var(--lime); display: grid; place-items: center; font-weight: 900; font-size: 18px; flex: 0 0 auto; }
+.app-head .who { min-width: 0; }
+.app-head .who b { display: block; font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.app-head .who span { font-size: 13px; color: var(--ok); font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+.app-head .who span::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ok); }
+.app-head .bell { margin-left: auto; position: relative; }
+.pastille { position: absolute; top: 4px; right: 4px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: var(--r-pill); background: var(--danger); color: #fff; font-size: 12px; font-weight: 700; display: grid; place-items: center; border: 2px solid var(--ground); }
+.tabs { display: flex; gap: 6px; padding: 0 16px 12px; overflow-x: auto; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 14px; border-radius: var(--r-pill); border: 1px solid var(--line-strong); background: var(--surface); font-weight: 700; font-size: 14px; cursor: pointer; }
+.tab em { font-style: normal; font-size: 12px; min-width: 22px; height: 22px; padding: 0 6px; border-radius: var(--r-pill); background: var(--sunken); display: grid; place-items: center; }
+.tab[aria-selected="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+.tab[aria-selected="true"] em { background: var(--lime); color: var(--ink); }
+.list { display: grid; gap: 10px; padding: 0 12px 16px; }
+.tabbar { flex: 0 0 auto; background: var(--ink); display: grid; grid-template-columns: repeat(5, 1fr); padding: 8px 6px 14px; }
+.tabbar a { display: grid; justify-items: center; gap: 4px; color: var(--on-dark-2); text-decoration: none; font-size: 11px; font-weight: 700; padding: 6px 0; border-radius: 14px; position: relative; }
+.tabbar a [data-lucide] { width: 22px; height: 22px; }
+.tabbar a[aria-current="page"] { color: #fff; }
+.tabbar a[aria-current="page"] .ic { background: var(--lime); color: var(--ink); }
+.tabbar .ic { width: 48px; height: 30px; border-radius: var(--r-pill); display: grid; place-items: center; position: relative; }
+.tabbar .ic .pastille { top: -6px; right: 0; border-color: var(--ink); }
+
+/* Accueil */
+.hello { padding: 8px 16px 16px; }
+.hello h2 { font-size: 34px; line-height: 1.05; font-weight: 700; letter-spacing: -.03em; }
+.hello p { color: var(--text-2); font-size: 15px; margin-top: 8px; }
+.focus-card { margin: 0 12px; background: var(--ink); color: #fff; border-radius: var(--r-xl); padding: 18px; display: grid; gap: 14px; }
+.fc-title { font-size: 22px; font-weight: 700; letter-spacing: -.015em; }
+.waiting { list-style: none; margin: 0; padding: 0; display: grid; }
+.waiting li { display: grid; grid-template-columns: 52px 1fr auto; gap: 8px; padding: 10px 0; border-top: 1px solid var(--ink-2); font-size: 15px; }
+.waiting li span:last-child { color: var(--on-dark-2); }
+.today { margin: 12px 12px 0; display: grid; grid-template-columns: 1fr 1fr 1.4fr; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 12px 14px; gap: 8px; }
+.today div { display: grid; gap: 2px; min-width: 0; }
+.today dt { font-size: 13px; color: var(--text-2); }
+.today dd { margin: 0; font-size: 17px; font-weight: 700; white-space: nowrap; }
+.sec-title { display: flex; align-items: baseline; justify-content: space-between; padding: 22px 16px 10px; }
+.sec-title h3 { font-size: 18px; font-weight: 700; }
+.sec-title a { font-size: 14px; font-weight: 700; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line-strong); }
+.kv { margin: 0 12px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); }
+.kv-row { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-top: 1px solid var(--line); }
+.kv-row:first-child { border-top: 0; }
+.kv-row .rank { width: 28px; height: 28px; border-radius: 9px; background: var(--sunken); display: grid; place-items: center; font-size: 13px; font-weight: 700; }
+.kv-row b { font-size: 15px; font-weight: 500; flex: 1; }
+.kv-row span { font-size: 15px; font-weight: 700; }
+.bar { height: 6px; border-radius: var(--r-pill); background: var(--sunken); margin-top: 6px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--ink); border-radius: inherit; }
+.quick { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 12px; }
+.quick a { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 14px; display: grid; gap: 10px; text-decoration: none; color: var(--ink); font-weight: 700; font-size: 15px; }
+.quick a .ic { width: 40px; height: 40px; border-radius: 12px; background: var(--sunken); display: grid; place-items: center; }
+.alert { margin: 12px 12px 0; display: flex; gap: 10px; padding: 12px 14px; border-radius: var(--r-md); background: var(--new-bg); color: var(--new); font-size: 14px; font-weight: 500; }
+.alert [data-lucide] { width: 18px; height: 18px; margin-top: 1px; }
+.alert a { color: inherit; font-weight: 700; }
+
+/* Menu public */
+.pub .banner { height: 168px; position: relative; flex: 0 0 auto; }
+.pub .banner img { width: 100%; height: 100%; object-fit: cover; }
+.pub .banner::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,15,15,0) 40%, rgba(15,15,15,.35)); }
+.pub .resto { margin: -36px 12px 0; position: relative; z-index: 1; background: var(--surface); border-radius: var(--r-lg); padding: 14px; display: flex; gap: 12px; align-items: center; box-shadow: var(--shadow-1); }
+.pub .resto .logo { width: 56px; height: 56px; border-radius: 16px; background: var(--ink); color: var(--lime); display: grid; place-items: center; font-weight: 900; font-size: 22px; flex: 0 0 auto; }
+.pub .resto b { display: block; font-size: 19px; letter-spacing: -.01em; }
+.pub .resto span { font-size: 14px; color: var(--text-2); }
+.cats { position: sticky; top: 0; z-index: 2; background: var(--ground); display: flex; gap: 6px; padding: 14px 12px 10px; overflow-x: auto; scrollbar-width: none; }
+.cats::-webkit-scrollbar { display: none; }
+.cats .tab { height: 36px; }
+.pub h3.cat { font-size: 20px; font-weight: 700; letter-spacing: -.01em; padding: 10px 16px 8px; }
+.dish { display: flex; gap: 12px; padding: 12px; margin: 0 12px 10px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); }
+.dish .txt { flex: 1; min-width: 0; display: grid; gap: 4px; align-content: start; }
+.dish .txt b { font-size: 16px; }
+.dish .txt p { font-size: 14px; color: var(--text-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.dish .txt .price { font-weight: 700; margin-top: 4px; }
+.dish .pic { position: relative; width: 104px; height: 104px; flex: 0 0 auto; }
+.dish .pic img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--r-md); }
+.dish .add { position: absolute; right: -4px; bottom: -4px; width: 40px; height: 40px; border-radius: 50%; border: 3px solid var(--surface); background: var(--ink); color: #fff; display: grid; place-items: center; cursor: pointer; }
+.dish .add [data-lucide] { width: 18px; height: 18px; stroke-width: 2.25; }
+.dish .qty { position: absolute; right: -4px; bottom: -4px; display: flex; align-items: center; height: 40px; border-radius: var(--r-pill); background: var(--ink); color: #fff; border: 3px solid var(--surface); }
+.dish .qty button { width: 34px; height: 34px; border: 0; background: none; color: inherit; display: grid; place-items: center; cursor: pointer; }
+.dish .qty button [data-lucide] { width: 16px; height: 16px; }
+.dish .qty span { min-width: 16px; text-align: center; font-weight: 700; font-size: 14px; }
+.dish.is-off { opacity: .6; }
+.dish.is-off .tagoff { font-size: 13px; font-weight: 700; color: var(--text-2); }
+.cartbar { flex: 0 0 auto; padding: 10px 12px 14px; background: linear-gradient(180deg, rgba(244,244,241,0), var(--ground) 30%); }
+.cartbar .btn { justify-content: space-between; padding: 0 8px 0 20px; height: 56px; }
+.cartbar .btn .count { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--lime); display: grid; place-items: center; font-size: 15px; }
+.demo-tag { position: absolute; top: 36px; left: 12px; z-index: 3; font-size: 11px; font-weight: 700; background: rgba(15,15,15,.72); color: #fff; padding: 4px 8px; border-radius: var(--r-pill); }
+
+.foot { padding: 48px 0 64px; color: var(--text-2); font-size: 14px; }
+.foot .wrap { display: grid; gap: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  .sk { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="board-head">
+  <div class="wrap">
+    <div class="mark"><img src="../figma/logo/logo.png" alt="Symbole Restio"></div>
+    <div>
+      <h1>Restio — design system v1</h1>
+      <p>Planche de validation · thème clair · 3 novembre 2026</p>
+    </div>
+    <nav aria-label="Sections de la planche">
+      <a href="#ecrans">Écrans</a><a href="#couleurs">Couleurs</a><a href="#typo">Typographie</a><a href="#composants">Composants</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ================= ÉCRANS ================= -->
+<section class="block" id="ecrans">
+  <div class="wrap">
+    <h2>Écrans mobiles</h2>
+    <p class="lead">Largeur 360 px, le cas le plus contraint (Android d'entrée de gamme). Photos libres de droits (Unsplash), données de démonstration.</p>
+    <div class="screens">
+
+      <!-- Commandes -->
+      <figure style="margin:0">
+        <div class="phone-frame">
+          <div class="status-bar"><span>12:41</span><span>4G</span></div>
+          <div class="app-head">
+            <div class="r-avatar" aria-hidden="true">A</div>
+            <div class="who"><b>Le Comptoir d'Awa</b><span>Service ouvert</span></div>
+            <button class="btn btn-ghost btn-icon bell" aria-label="Notifications, 3 non lues"><i data-lucide="bell"></i><span class="pastille num" aria-hidden="true">3</span></button>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Filtrer les commandes" id="orderTabs">
+            <button class="tab" role="tab" aria-selected="true" data-f="todo">À traiter <em class="num" id="cTodo">2</em></button>
+            <button class="tab" role="tab" aria-selected="false" data-f="cook">En cours <em class="num" id="cCook">1</em></button>
+            <button class="tab" role="tab" aria-selected="false" data-f="ready">Prêtes <em class="num" id="cReady">1</em></button>
+            <button class="tab" role="tab" aria-selected="false" data-f="done">Terminées <em class="num" id="cDone">14</em></button>
+          </div>
+          <div class="scr"><div class="list" id="orderList"></div></div>
+          <nav class="tabbar" aria-label="Navigation principale">
+            <a href="#ecrans"><span class="ic"><i data-lucide="house"></i></span>Accueil</a>
+            <a href="#ecrans" aria-current="page"><span class="ic"><i data-lucide="receipt-text"></i><span class="pastille num">2</span></span>Commandes</a>
+            <a href="#ecrans"><span class="ic"><i data-lucide="book-open"></i></span>Menu</a>
+            <a href="#ecrans"><span class="ic"><i data-lucide="chart-column"></i></span>Stats</a>
+            <a href="#ecrans"><span class="ic"><i data-lucide="settings"></i></span>Réglages</a>
+          </nav>
+        </div>
+        <figcaption class="phone-cap">Commandes : le geste suivant au pouce</figcaption>
+      </figure>
+
+      <!-- Accueil -->
+      <figure style="margin:0">
+        <div class="phone-frame">
+          <div class="status-bar"><span>12:41</span><span>4G</span></div>
+          <div class="scr">
+            <div class="app-head">
+              <div class="r-avatar" aria-hidden="true">A</div>
+              <div class="who"><b>Le Comptoir d'Awa</b><span>Service ouvert</span></div>
+              <button class="btn btn-ghost btn-icon bell" aria-label="Notifications, 3 non lues"><i data-lucide="bell"></i><span class="pastille num" aria-hidden="true">3</span></button>
+            </div>
+            <div class="hello"><h2>Bonjour,<br>Awa</h2><p>Mardi 3 novembre · service ouvert depuis 11:30</p></div>
+            <div class="focus-card">
+              <h3 class="fc-title">2 commandes attendent</h3>
+              <ul class="waiting">
+                <li><b class="num">#42</b><span>Table 7</span><span class="num">2 min</span></li>
+                <li><b class="num">#41</b><span>Terrasse 3</span><span class="num">6 min</span></li>
+              </ul>
+              <a class="btn btn-primary btn-block" href="#ecrans">Traiter maintenant<i data-lucide="arrow-right"></i></a>
+            </div>
+            <dl class="today">
+              <div><dt>Commandes</dt><dd class="num">18</dd></div>
+              <div><dt>En cours</dt><dd class="num">1</dd></div>
+              <div><dt>Ventes du jour</dt><dd class="num">96 500 FCFA</dd></div>
+            </dl>
+            <div class="alert" role="note"><i data-lucide="triangle-alert"></i><span>2 plats sont marqués épuisés. <a href="#ecrans">Vérifier le menu</a></span></div>
+            <div class="sec-title"><h3>Plats les plus commandés</h3><a href="#ecrans">Statistiques</a></div>
+            <div class="kv">
+              <div class="kv-row"><span class="rank num">1</span><div style="flex:1"><b>Poulet DG</b><div class="bar"><i style="width:100%"></i></div></div><span class="num">9</span></div>
+              <div class="kv-row"><span class="rank num">2</span><div style="flex:1"><b>Brochettes de bœuf</b><div class="bar"><i style="width:67%"></i></div></div><span class="num">6</span></div>
+              <div class="kv-row"><span class="rank num">3</span><div style="flex:1"><b>Jus de bissap</b><div class="bar"><i style="width:45%"></i></div></div><span class="num">4</span></div>
+            </div>
+            <div class="sec-title"><h3>Raccourcis</h3></div>
+            <div class="quick" style="padding-bottom:16px">
+              <a href="#ecrans"><span class="ic"><i data-lucide="plus"></i></span>Ajouter un plat</a>
+              <a href="#ecrans"><span class="ic"><i data-lucide="qr-code"></i></span>QR Code</a>
+            </div>
+          </div>
+          <nav class="tabbar" aria-label="Navigation principale">
+            <a href="#ecrans" aria-current="page"><span class="ic"><i data-lucide="house"></i></span>Accueil</a>
+            <a href="#ecrans"><span class="ic"><i data-lucide="receipt-text"></i><span class="pastille num">2</span></span>Commandes</a>
+            <a href="#ecrans"><span class="ic"><i data-lucide="book-open"></i></span>Menu</a>
+            <a href="#ecrans"><span class="ic"><i data-lucide="chart-column"></i></span>Stats</a>
+            <a href="#ecrans"><span class="ic"><i data-lucide="settings"></i></span>Réglages</a>
+          </nav>
+        </div>
+        <figcaption class="phone-cap">Accueil : ce qui attend une action d'abord</figcaption>
+      </figure>
+
+      <!-- Menu public -->
+      <figure style="margin:0">
+        <div class="phone-frame pub">
+          <div class="status-bar"><span>20:12</span><span>4G</span></div>
+          <div class="scr" id="pubScroll" style="position:relative">
+            <span class="demo-tag">Photos de démonstration</span>
+            <div class="banner"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=720&q=60&fm=webp" alt="Salle du restaurant"></div>
+            <div class="resto"><div class="logo" aria-hidden="true">A</div><div><b>Le Comptoir d'Awa</b><span>Cuisine camerounaise · Douala</span></div></div>
+            <div class="cats" role="tablist" aria-label="Catégories">
+              <button class="tab" role="tab" aria-selected="true">Grillades</button>
+              <button class="tab" role="tab" aria-selected="false">Plats</button>
+              <button class="tab" role="tab" aria-selected="false">Salades</button>
+              <button class="tab" role="tab" aria-selected="false">Boissons</button>
+            </div>
+            <h3 class="cat">Grillades</h3>
+            <div id="pubDishes"></div>
+            <div style="height:12px"></div>
+          </div>
+          <div class="cartbar" id="cartBar" hidden><button class="btn btn-primary btn-block" id="cartBtn"><span id="cartLbl"></span><span class="count num" id="cartCount">0</span></button></div>
+        </div>
+        <figcaption class="phone-cap">Menu public : client à table, sans compte</figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+<!-- ================= COULEURS ================= -->
+<section class="block" id="couleurs">
+  <div class="wrap">
+    <h2>Couleurs</h2>
+    <p class="lead">Fond clair pour la lisibilité en salle et en terrasse. Le noir structure la navigation, le citron signale toujours le prochain geste. Les statuts ont leurs propres couleurs, jamais le citron.</p>
+
+    <div class="grid">
+      <div class="panel">
+        <h3>Marque</h3>
+        <div class="swatches">
+          <div class="sw"><div class="chip" style="background:#0F0F0F;color:#fff">Ink</div><div class="meta"><b>#0F0F0F</b><span>Texte, navigation, boutons forts · 19,2:1 sur blanc</span></div></div>
+          <div class="sw"><div class="chip" style="background:#C7FF2E">Citron</div><div class="meta"><b>#C7FF2E</b><span>Action principale, sélection · texte noir uniquement (16,2:1)</span></div></div>
+          <div class="sw"><div class="chip" style="background:#2E2E2E;color:#fff">Ink 2</div><div class="meta"><b>#2E2E2E</b><span>Survol et séparateurs sur fond noir</span></div></div>
+          <div class="sw"><div class="chip" style="background:#808080;color:#0F0F0F">Gris marque</div><div class="meta"><b>#808080</b><span>Sur fond noir ou décoratif · jamais de texte sur blanc (3,9:1)</span></div></div>
+          <div class="sw"><div class="chip" style="background:#F1FFC9">Citron doux</div><div class="meta"><b>#F1FFC9</b><span>Ligne sélectionnée, surlignage</span></div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Neutres</h3>
+        <div class="swatches">
+          <div class="sw"><div class="chip" style="background:#F4F4F1">Fond</div><div class="meta"><b>#F4F4F1</b><span>Arrière-plan des écrans</span></div></div>
+          <div class="sw"><div class="chip" style="background:#FFFFFF">Surface</div><div class="meta"><b>#FFFFFF</b><span>Cartes, champs, feuilles</span></div></div>
+          <div class="sw"><div class="chip" style="background:#EEEEEB">Creux</div><div class="meta"><b>#EEEEEB</b><span>Désactivé, squelettes, puces</span></div></div>
+          <div class="sw"><div class="chip" style="background:#E4E4E0">Trait</div><div class="meta"><b>#E4E4E0 · #CFCFCA</b><span>Bordure discrète · bordure de champ</span></div></div>
+          <div class="sw"><div class="chip" style="background:#5E5E5B;color:#fff">Texte 2</div><div class="meta"><b>#5E5E5B</b><span>Texte secondaire · 6,5:1 sur blanc</span></div></div>
+          <div class="sw"><div class="chip" style="background:#6B6B68;color:#fff">Texte 3</div><div class="meta"><b>#6B6B68</b><span>Métadonnées, placeholder · 5,4:1</span></div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Statuts des commandes</h3>
+        <p class="note">Toujours libellé + icône + couleur. Une teinte par étape active. Contrastes texte/fond ≥ 4,7:1.</p>
+        <div class="row">
+          <span class="badge s-new"><i data-lucide="bell-ring"></i>Nouvelle</span>
+          <span class="badge s-info"><i data-lucide="check"></i>Acceptée</span>
+          <span class="badge s-prep"><i data-lucide="chef-hat"></i>En préparation</span>
+          <span class="badge s-ok"><i data-lucide="concierge-bell"></i>Prête</span>
+          <span class="badge s-muted"><i data-lucide="circle-check-big"></i>Terminée</span>
+          <span class="badge s-danger"><i data-lucide="ban"></i>Refusée</span>
+          <span class="badge s-danger"><i data-lucide="circle-x"></i>Annulée</span>
+        </div>
+        <div class="rule"><i data-lucide="octagon-alert"></i><span>Interdit : texte citron sur fond blanc (1,2:1), texte gris #808080 sur blanc, statut signalé par la couleur seule.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TYPOGRAPHIE ================= -->
+<section class="block" id="typo">
+  <div class="wrap">
+    <h2>Typographie</h2>
+    <p class="lead">Satoshi seule, de 400 à 700 (900 réservé au monogramme). Échelle fixe en rem, rapport ≈ 1,2. Chiffres tabulaires pour les prix, quantités et compteurs. Jamais de texte de travail sous 14 px sur mobile.</p>
+    <div class="grid">
+      <div class="panel">
+        <div class="type-row"><code>display 36/1.05 · 700</code><div class="t-display">Bonjour, Awa</div></div>
+        <div class="type-row"><code>h1 30/1.15 · 700</code><div class="t-h1">Commandes du jour</div></div>
+        <div class="type-row"><code>h2 24/1.2 · 700</code><div class="t-h2">Plats les plus commandés</div></div>
+        <div class="type-row"><code>h3 20/1.3 · 700</code><div class="t-h3">Grillades</div></div>
+        <div class="type-row"><code>lg 18/1.45 · 500</code><div class="t-lg">Votre menu est en ligne. Imprimez votre QR Code.</div></div>
+        <div class="type-row"><code>body 16/1.5 · 400</code><div class="t-body">Les commandes de vos clients apparaîtront ici dès qu'ils utiliseront votre menu.</div></div>
+        <div class="type-row"><code>sm 14/1.45 · 400</code><div class="t-sm">Table 7 · il y a 3 min · 3 articles</div></div>
+        <div class="type-row"><code>xs 12/1.4 · 400</code><div class="t-xs">Légendes et graphiques uniquement, jamais d'information essentielle.</div></div>
+        <div class="type-row"><code>stat 30 · 700 · tnum</code><div class="t-stat">128 500 FCFA</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMPOSANTS ================= -->
+<section class="block" id="composants">
+  <div class="wrap">
+    <h2>Composants</h2>
+    <p class="lead">Base shadcn/ui restylée par tokens. Chaque composant a ses états : normal, survol, focus, appuyé, désactivé, chargement, erreur.</p>
+
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))">
+      <div class="panel">
+        <h3>Boutons</h3>
+        <p class="note">Hauteur 48 px (40 px compact). Un seul bouton citron par zone.</p>
+        <div class="lbl">Variantes</div>
+        <div class="row">
+          <button class="btn btn-primary">Enregistrer</button>
+          <button class="btn btn-dark">Imprimer</button>
+          <button class="btn btn-secondary">Aperçu</button>
+          <button class="btn btn-ghost">Annuler</button>
+          <button class="btn btn-danger"><i data-lucide="trash-2"></i>Supprimer</button>
+        </div>
+        <div class="lbl">États du bouton principal</div>
+        <div class="row">
+          <button class="btn btn-primary btn-sm">Normal</button>
+          <button class="btn btn-primary btn-sm is-hover">Survol</button>
+          <button class="btn btn-primary btn-sm is-focus">Focus</button>
+          <button class="btn btn-primary btn-sm" disabled>Désactivé</button>
+          <button class="btn btn-primary btn-sm" aria-busy="true"><span class="spinner" aria-hidden="true"></span>Envoi…</button>
+        </div>
+        <div class="lbl">Icône seule (nom accessible obligatoire)</div>
+        <div class="row">
+          <button class="btn btn-secondary btn-icon" aria-label="Notifications"><i data-lucide="bell"></i></button>
+          <button class="btn btn-dark btn-icon" aria-label="Ajouter un plat"><i data-lucide="plus"></i></button>
+          <button class="btn btn-ghost btn-icon btn-sm" aria-label="Plus d'actions"><i data-lucide="ellipsis"></i></button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Champs</h3>
+        <p class="note">Libellé toujours visible, erreur sous le champ, clavier adapté (tel, decimal, email).</p>
+        <div class="forms">
+          <div class="field"><label for="f1">Nom du plat</label><input id="f1" class="input" placeholder="Ex. Poulet DG"></div>
+          <div class="field"><label for="f2">Prix</label><input id="f2" class="input is-focus num" inputmode="decimal" value="4 500"><span class="hint">En FCFA, sans décimales.</span></div>
+          <div class="field"><label for="f3">Numéro WhatsApp</label>
+            <div class="phone"><span class="cc" aria-hidden="true">CM +237</span><input id="f3" class="input is-error" inputmode="tel" value="6 99 12" aria-invalid="true" aria-describedby="f3e"></div>
+            <span class="err" id="f3e"><i data-lucide="circle-alert"></i>Ce numéro est incomplet : 9 chiffres attendus.</span></div>
+          <div class="field"><label for="f4">Adresse publique</label><input id="f4" class="input" value="restio-app.com/@le-comptoir-d-awa" disabled><span class="hint">Modifiable dans Paramètres.</span></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Ticket de commande</h3>
+        <p class="note">Le geste suivant est toujours le bouton citron. Essayez-le.</p>
+        <div class="stage" id="demoTicket"></div>
+      </div>
+
+      <div class="panel">
+        <h3>Plat (gestion du menu)</h3>
+        <p class="note">Disponibilité en un geste, sans ouvrir la fiche.</p>
+        <div class="stage">
+          <div class="dish-row"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=160&q=60&fm=webp" alt="" width="64" height="64"><div class="info"><b>Brochettes de bœuf</b><span class="num">3 500 FCFA · Grillades</span></div><button class="toggle" role="switch" aria-checked="true" aria-label="Disponible"></button></div>
+          <div class="dish-row is-off"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=160&q=60&fm=webp" alt="" width="64" height="64"><div class="info"><b>Côtes de porc braisées</b><span>Épuisé aujourd'hui</span></div><button class="toggle" role="switch" aria-checked="false" aria-label="Disponible"></button></div>
+          <div class="dish-row"><div class="ph"><i data-lucide="image-plus"></i></div><div class="info"><b>Jus de bissap</b><span class="num">1 000 FCFA · Boissons · sans photo</span></div><button class="toggle" role="switch" aria-checked="true" aria-label="Disponible"></button></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>État vide</h3>
+        <p class="note">Illustration propre au contexte, phrase utile, action.</p>
+        <div class="empty">
+          <svg class="ill" viewBox="0 0 120 96" aria-hidden="true"><rect x="22" y="10" width="76" height="76" rx="14" fill="#fff" stroke="#0F0F0F" stroke-width="2"/><path d="M22 70h76" stroke="#0F0F0F" stroke-width="2" stroke-dasharray="4 4"/><rect x="36" y="26" width="34" height="6" rx="3" fill="#EEEEEB"/><rect x="36" y="40" width="48" height="6" rx="3" fill="#EEEEEB"/><rect x="36" y="54" width="24" height="6" rx="3" fill="#EEEEEB"/><circle cx="92" cy="18" r="14" fill="#C7FF2E" stroke="#0F0F0F" stroke-width="2"/><path d="M86 18h12M92 12v12" stroke="#0F0F0F" stroke-width="2" stroke-linecap="round"/></svg>
+          <h4>Aucune commande pour le moment</h4>
+          <p>Les commandes de vos clients apparaîtront ici dès qu'ils utiliseront votre menu.</p>
+          <div class="row"><a class="btn btn-dark btn-sm" href="#ecrans"><i data-lucide="qr-code"></i>Télécharger le QR Code</a><a class="btn btn-ghost btn-sm" href="#ecrans">Voir mon menu</a></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Chargement et retours</h3>
+        <p class="note">Squelette fidèle à la structure, jamais de spinner au milieu du contenu.</p>
+        <div class="stage"><div class="ticket" aria-hidden="true">
+          <div class="ticket-top"><div style="display:grid;gap:8px"><div class="sk" style="width:90px;height:20px"></div><div class="sk" style="width:140px;height:14px"></div></div><div class="sk" style="width:96px;height:28px;margin-left:auto;border-radius:99px"></div></div>
+          <div class="sk" style="height:14px"></div><div class="sk" style="height:14px;width:70%"></div>
+          <div class="sk" style="height:48px;border-radius:99px"></div>
+        </div></div>
+        <div style="display:grid;gap:10px;margin-top:16px">
+          <div class="toast" role="status"><span class="dot"><i data-lucide="check"></i></span><p>Plat enregistré<span>Visible sur votre menu public</span></p><button class="btn btn-ghost btn-sm on-dark">Annuler</button></div>
+          <div class="toast err" role="alert"><span class="dot"><i data-lucide="wifi-off"></i></span><p>Connexion perdue<span>Nouvelle tentative dans 5 s</span></p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot"><div class="wrap">
+  <p>Icônes : Lucide (contour 1,75 px). Police : Satoshi (Fontshare). Photos : Unsplash, licence libre, démonstration uniquement.</p>
+  <p>Référence écrite : DESIGN.md.</p>
+</div></footer>
+
+<script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+<script>
+const fmt = n => n.toLocaleString('fr-FR').replace(/ | /g, ' ') + ' FCFA';
+const STEPS = ['Nouvelle', 'Acceptée', 'En préparation', 'Prête'];
+const NEXT = ['Accepter', 'Lancer la préparation', 'Marquer prête', 'Remettre au client'];
+const BADGE = [['s-new','bell-ring'],['s-info','check'],['s-prep','chef-hat'],['s-ok','concierge-bell']];
+
+const orders = [
+  { n: 42, table: '7', min: 2, step: 0, items: [[2,'Poulet DG',4500],[1,'Jus de bissap',1000]], note: 'Sans piment pour un des deux plats' },
+  { n: 41, table: 'Terrasse 3', min: 6, step: 0, items: [[3,'Brochettes de bœuf',3500]] },
+  { n: 40, table: '2', min: 14, step: 2, items: [[1,'Ndolé crevettes',5000],[2,'Plantain frit',1000]] },
+  { n: 39, table: '5', min: 19, step: 3, items: [[1,'Salade avocat',2500]] },
+];
+const group = s => s === 0 ? 'todo' : s < 3 ? 'cook' : s === 3 ? 'ready' : 'done';
+
+// Urgence par seuil : texte + icône, jamais la couleur seule
+const ageHTML = (o) => o.min >= 10 ? `<span>Table ${o.table}</span><span class="late very"><i data-lucide="clock-alert"></i>attend depuis ${o.min} min</span>`
+  : o.min >= 5 ? `<span>Table ${o.table}</span><span class="late"><i data-lucide="clock"></i>attend depuis ${o.min} min</span>` : `<span>Table ${o.table} · il y a ${o.min} min</span>`;
+let moved = null;
+function ticketHTML(o, idx) {
+  const total = o.items.reduce((t, [q,, p]) => t + q * p, 0);
+  if (o.step > 3) {
+    return `<article class="ticket is-done" aria-label="Commande ${o.n}"><div class="ticket-top"><div class="ticket-id"><b>#${o.n}</b><span>Table ${o.table} · remise à l'instant</span></div><span class="badge s-muted"><i data-lucide="circle-check-big"></i>Terminée</span></div></article>`;
+  }
+  const [cls, ic] = BADGE[o.step];
+  const rail = STEPS.map((_, i) => `<i class="${i < o.step ? 'on' : i === o.step ? 'now' : ''}"></i>`).join('');
+  return `<article class="ticket${moved === idx ? ' just-moved' : ''}" aria-label="Commande ${o.n}">
+    <div class="ticket-top"><div class="ticket-id"><b>#${o.n}</b>${ageHTML(o)}</div><span class="badge ${cls}"><i data-lucide="${ic}"></i>${STEPS[o.step]}</span></div>
+    <ul>${o.items.map(([q, n, p]) => `<li><span class="q num">${q}×</span><span>${n}</span><span class="p num">${fmt(q * p)}</span></li>`).join('')}</ul>
+    ${o.allergen ? `<p class="note allergen"><i data-lucide="triangle-alert"></i>Allergie : ${o.allergen}</p>` : ''}
+    ${o.note ? `<p class="note"><i data-lucide="message-square-text"></i>${o.note}</p>` : ''}
+    <div class="ticket-total"><span>Total</span><span class="num">${fmt(total)}</span></div>
+    <div class="rail" role="img" aria-label="Étape ${o.step + 1} sur 4 : ${STEPS[o.step]}">${rail}</div>
+    <div class="ticket-actions">
+      <button class="btn btn-primary" data-adv="${idx}">${NEXT[o.step]}<i data-lucide="arrow-right"></i></button>
+      ${o.step === 0 ? `<button class="btn btn-secondary btn-icon" aria-label="Refuser la commande ${o.n}"><i data-lucide="x"></i></button>` : `<button class="btn btn-secondary btn-icon" aria-label="Plus d'actions"><i data-lucide="ellipsis"></i></button>`}
+    </div></article>`;
+}
+
+let filter = 'todo';
+function renderOrders() {
+  const list = document.getElementById('orderList');
+  const shown = orders.map((o, i) => [o, i]).filter(([o]) => group(o.step) === filter || (filter === 'done' && o.step > 3));
+  list.innerHTML = shown.length ? shown.map(([o, i]) => ticketHTML(o, i)).join('') :
+    `<div class="empty"><svg class="ill" viewBox="0 0 120 96" aria-hidden="true"><rect x="22" y="10" width="76" height="76" rx="14" fill="#fff" stroke="#0F0F0F" stroke-width="2"/><path d="M44 50l10 10 22-22" stroke="#0F0F0F" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="92" cy="18" r="10" fill="#C7FF2E" stroke="#0F0F0F" stroke-width="2"/></svg><h4>Tout est traité</h4><p>Les nouvelles commandes s'afficheront ici automatiquement.</p></div>`;
+  const c = { todo: 0, cook: 0, ready: 0 };
+  orders.forEach(o => { if (o.step <= 3) c[group(o.step)]++; });
+  document.getElementById('cTodo').textContent = c.todo;
+  document.getElementById('cCook').textContent = c.cook;
+  document.getElementById('cReady').textContent = c.ready;
+  document.getElementById('cDone').textContent = 14 + orders.filter(o => o.step > 3).length;
+  document.getElementById('demoTicket').innerHTML = ticketHTML(demo, 'demo');
+  lucide.createIcons();
+}
+const demo = { n: 43, table: '12', min: 1, step: 0, items: [[1,'Poisson braisé',6000],[2,'Plantain frit',1000]], allergen: 'arachide' };
+
+document.addEventListener('click', e => {
+  const adv = e.target.closest('[data-adv]');
+  if (adv) {
+    const k = adv.dataset.adv;
+    const o = k === 'demo' ? demo : orders[+k];
+    o.step = k === 'demo' ? (o.step + 1) % 4 : o.step + 1;
+    moved = k === 'demo' ? 'demo' : +k;
+    renderOrders();
+    moved = null;
+    return;
+  }
+  const tab = e.target.closest('#orderTabs .tab');
+  if (tab) {
+    filter = tab.dataset.f;
+    document.querySelectorAll('#orderTabs .tab').forEach(t => t.setAttribute('aria-selected', t === tab));
+    renderOrders();
+    return;
+  }
+  const tg = e.target.closest('.dish-row .toggle');
+  if (tg) {
+    const on = tg.getAttribute('aria-checked') !== 'true';
+    tg.setAttribute('aria-checked', on);
+    tg.closest('.dish-row').classList.toggle('is-off', !on);
+  }
+});
+
+/* Menu public */
+const pub = [
+  { id: 'a', name: 'Brochettes de bœuf', desc: 'Trois brochettes marinées au soya, oignons et piment doux.', price: 3500, img: '1555939594-58d7cb561ad1' },
+  { id: 'b', name: 'Poulet DG', desc: 'Poulet sauté, plantains mûrs, carottes et haricots verts.', price: 4500, img: '1604908176997-125f25cc6f3d' },
+  { id: 'c', name: 'Poisson braisé', desc: 'Bar entier braisé, sauce tomate pimentée et bâtons de manioc.', price: 6000, img: '1600891964599-f61ba0e24092' },
+  { id: 'd', name: 'Côtes de porc braisées', desc: 'Servies avec miondo et sauce maison.', price: 4000, img: '1544025162-d76694265947', off: true },
+];
+const cart = { b: 1 };
+function renderPub() {
+  document.getElementById('pubDishes').innerHTML = pub.map((d, i) => {
+    const q = cart[d.id] || 0;
+    const ctl = d.off ? '' : q ? `<div class="qty"><button data-dec="${d.id}" aria-label="Retirer un ${d.name}"><i data-lucide="minus"></i></button><span class="num" aria-live="polite">${q}</span><button data-inc="${d.id}" aria-label="Ajouter un ${d.name}"><i data-lucide="plus"></i></button></div>`
+      : `<button class="add" data-inc="${d.id}" aria-label="Ajouter ${d.name} au panier"><i data-lucide="plus"></i></button>`;
+    return `<article class="dish${d.off ? ' is-off' : ''}"><div class="txt"><b>${d.name}</b><p>${d.desc}</p><span class="price num">${fmt(d.price)}</span>${d.off ? '<span class="tagoff">Épuisé</span>' : ''}</div>
+      <div class="pic"><img loading="${i > 1 ? 'lazy' : 'eager'}" src="https://images.unsplash.com/photo-${d.img}?w=240&q=60&fm=webp" alt="${d.name}" width="104" height="104">${ctl}</div></article>`;
+  }).join('');
+  const n = Object.values(cart).reduce((a, b) => a + b, 0);
+  const tot = pub.reduce((t, d) => t + (cart[d.id] || 0) * d.price, 0);
+  document.getElementById('cartBar').hidden = !n;
+  document.getElementById('cartLbl').textContent = `Voir le panier · ${fmt(tot)}`;
+  document.getElementById('cartCount').textContent = n;
+  lucide.createIcons();
+}
+document.getElementById('pubDishes').addEventListener('click', e => {
+  const i = e.target.closest('[data-inc]'), d = e.target.closest('[data-dec]');
+  if (i) cart[i.dataset.inc] = (cart[i.dataset.inc] || 0) + 1;
+  if (d) cart[d.dataset.dec] = Math.max(0, (cart[d.dataset.dec] || 0) - 1);
+  if (i || d) renderPub();
+});
+
+renderOrders();
+renderPub();
+</script>
+</body>
+</html>

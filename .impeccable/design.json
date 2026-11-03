@@ -1,0 +1,603 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-03T03:54:02.341550+00:00",
+  "title": "Design System: Restio",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "primary",
+        "displayName": "Ink",
+        "canonical": "#0F0F0F",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#5E5E5E",
+          "#808080",
+          "#9E9E9E",
+          "#BDBDBD",
+          "#DBDBDB",
+          "#F2F2F2"
+        ]
+      },
+      "ink-2": {
+        "role": "secondary",
+        "displayName": "Ink 2",
+        "canonical": "#2E2E2E",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#5E5E5E",
+          "#808080",
+          "#9E9E9E",
+          "#BDBDBD",
+          "#DBDBDB",
+          "#F2F2F2"
+        ]
+      },
+      "lime": {
+        "role": "primary",
+        "displayName": "Citron",
+        "canonical": "#C7FF2E",
+        "tonalRamp": [
+          "#313C10",
+          "#546C13",
+          "#83AE0F",
+          "#BBFF00",
+          "#C5F14B",
+          "#D3EC8D",
+          "#E5F0C7",
+          "#F5F8EC"
+        ]
+      },
+      "lime-pressed": {
+        "role": "primary",
+        "displayName": "Citron appuyé",
+        "canonical": "#B6F00F",
+        "tonalRamp": [
+          "#303A13",
+          "#536718",
+          "#80A518",
+          "#B6F00F",
+          "#C2E755",
+          "#D1E693",
+          "#E4EDC9",
+          "#F5F7ED"
+        ]
+      },
+      "lime-soft": {
+        "role": "secondary",
+        "displayName": "Citron doux",
+        "canonical": "#F1FFC9",
+        "tonalRamp": [
+          "#313C10",
+          "#556C13",
+          "#85AE0F",
+          "#BDFF00",
+          "#C6F14B",
+          "#D3EC8D",
+          "#E5F0C7",
+          "#F5F8EC"
+        ]
+      },
+      "brand-gray": {
+        "role": "neutral",
+        "displayName": "Brand gray",
+        "canonical": "#808080",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#5E5E5E",
+          "#808080",
+          "#9E9E9E",
+          "#BDBDBD",
+          "#DBDBDB",
+          "#F2F2F2"
+        ]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Ground",
+        "canonical": "#F4F4F1",
+        "tonalRamp": [
+          "#292924",
+          "#45453A",
+          "#686855",
+          "#8F8F70",
+          "#A8A894",
+          "#C2C2B7",
+          "#DEDED9",
+          "#F3F3F2"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#5E5E5E",
+          "#808080",
+          "#9E9E9E",
+          "#BDBDBD",
+          "#DBDBDB",
+          "#F2F2F2"
+        ]
+      },
+      "sunken": {
+        "role": "neutral",
+        "displayName": "Sunken",
+        "canonical": "#EEEEEB",
+        "tonalRamp": [
+          "#282824",
+          "#43433C",
+          "#656558",
+          "#8A8A75",
+          "#A5A597",
+          "#C1C1B9",
+          "#DDDDDA",
+          "#F3F3F2"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "canonical": "#E4E4E0",
+        "tonalRamp": [
+          "#282825",
+          "#43433D",
+          "#646459",
+          "#888877",
+          "#A4A498",
+          "#C0C0B9",
+          "#DDDDDA",
+          "#F3F3F2"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Line strong",
+        "canonical": "#CFCFCA",
+        "tonalRamp": [
+          "#272725",
+          "#42423E",
+          "#62625A",
+          "#868679",
+          "#A2A29A",
+          "#BFBFBA",
+          "#DCDCDA",
+          "#F3F3F2"
+        ]
+      },
+      "text-2": {
+        "role": "neutral",
+        "displayName": "Text 2",
+        "canonical": "#5E5E5B",
+        "tonalRamp": [
+          "#272726",
+          "#40403F",
+          "#60605D",
+          "#82827D",
+          "#9F9F9D",
+          "#BDBDBC",
+          "#DCDCDB",
+          "#F2F2F2"
+        ]
+      },
+      "text-3": {
+        "role": "neutral",
+        "displayName": "Text 3",
+        "canonical": "#6B6B68",
+        "tonalRamp": [
+          "#272726",
+          "#40403F",
+          "#5F5F5D",
+          "#81817E",
+          "#9F9F9D",
+          "#BDBDBC",
+          "#DCDCDB",
+          "#F2F2F2"
+        ]
+      },
+      "on-dark-2": {
+        "role": "neutral",
+        "displayName": "On dark 2",
+        "canonical": "#A3A3A0",
+        "tonalRamp": [
+          "#272726",
+          "#40403F",
+          "#60605D",
+          "#82827D",
+          "#9F9F9D",
+          "#BDBDBC",
+          "#DCDCDB",
+          "#F2F2F2"
+        ]
+      },
+      "status-new": {
+        "role": "tertiary",
+        "displayName": "Status new",
+        "canonical": "#A14A00",
+        "tonalRamp": [
+          "#3C2410",
+          "#6C3C13",
+          "#AE580F",
+          "#FF7500",
+          "#F1974B",
+          "#ECB98D",
+          "#F0DAC7",
+          "#F8F2EC"
+        ]
+      },
+      "status-new-bg": {
+        "role": "tertiary",
+        "displayName": "Status new bg",
+        "canonical": "#FFF3E0",
+        "tonalRamp": [
+          "#3C2B10",
+          "#6C4A13",
+          "#AE700F",
+          "#FF9C00",
+          "#F1B14B",
+          "#ECC78D",
+          "#F0E0C7",
+          "#F8F4EC"
+        ]
+      },
+      "status-info": {
+        "role": "tertiary",
+        "displayName": "Status info",
+        "canonical": "#1D5FD1",
+        "tonalRamp": [
+          "#152237",
+          "#1E3762",
+          "#224E9B",
+          "#1F66E0",
+          "#5F8DDD",
+          "#99B3E0",
+          "#CCD7EB",
+          "#EEF1F7"
+        ]
+      },
+      "status-info-bg": {
+        "role": "tertiary",
+        "displayName": "Status info bg",
+        "canonical": "#EAF1FD",
+        "tonalRamp": [
+          "#142139",
+          "#1B3665",
+          "#1D4DA0",
+          "#1664E9",
+          "#5A8CE3",
+          "#96B2E4",
+          "#CBD7EC",
+          "#EDF1F7"
+        ]
+      },
+      "status-prep": {
+        "role": "tertiary",
+        "displayName": "Status prep",
+        "canonical": "#6B3FC4",
+        "tonalRamp": [
+          "#221A32",
+          "#382857",
+          "#503489",
+          "#693CC3",
+          "#8F72CA",
+          "#B4A4D6",
+          "#D8D1E6",
+          "#F1EFF5"
+        ]
+      },
+      "status-prep-bg": {
+        "role": "tertiary",
+        "displayName": "Status prep bg",
+        "canonical": "#F1ECFC",
+        "tonalRamp": [
+          "#201636",
+          "#341F60",
+          "#492498",
+          "#5D23DC",
+          "#8762DA",
+          "#B09ADF",
+          "#D6CDEA",
+          "#F1EEF7"
+        ]
+      },
+      "status-ok": {
+        "role": "tertiary",
+        "displayName": "Status ok",
+        "canonical": "#16794A",
+        "tonalRamp": [
+          "#173627",
+          "#215F41",
+          "#279561",
+          "#27D884",
+          "#65D8A1",
+          "#9CDDBE",
+          "#CDE9DC",
+          "#EEF6F2"
+        ]
+      },
+      "status-ok-bg": {
+        "role": "tertiary",
+        "displayName": "Status ok bg",
+        "canonical": "#E6F4EC",
+        "tonalRamp": [
+          "#1E2F25",
+          "#2E513D",
+          "#3F7D5A",
+          "#4EB178",
+          "#7EBE99",
+          "#AACFBA",
+          "#D3E3DA",
+          "#F0F5F2"
+        ]
+      },
+      "status-muted": {
+        "role": "tertiary",
+        "displayName": "Status muted",
+        "canonical": "#5E5E5B",
+        "tonalRamp": [
+          "#272726",
+          "#40403F",
+          "#60605D",
+          "#82827D",
+          "#9F9F9D",
+          "#BDBDBC",
+          "#DCDCDB",
+          "#F2F2F2"
+        ]
+      },
+      "status-muted-bg": {
+        "role": "tertiary",
+        "displayName": "Status muted bg",
+        "canonical": "#EEEEEB",
+        "tonalRamp": [
+          "#282824",
+          "#43433C",
+          "#656558",
+          "#8A8A75",
+          "#A5A597",
+          "#C1C1B9",
+          "#DDDDDA",
+          "#F3F3F2"
+        ]
+      },
+      "status-danger": {
+        "role": "tertiary",
+        "displayName": "Status danger",
+        "canonical": "#C0261C",
+        "tonalRamp": [
+          "#371816",
+          "#61231E",
+          "#9A2A23",
+          "#DF2C20",
+          "#DC6860",
+          "#E09E9A",
+          "#EACECC",
+          "#F7EEEE"
+        ]
+      },
+      "status-danger-bg": {
+        "role": "tertiary",
+        "displayName": "Status danger bg",
+        "canonical": "#FDECEA",
+        "tonalRamp": [
+          "#391814",
+          "#65231B",
+          "#A02A1D",
+          "#E92C16",
+          "#E3685A",
+          "#E49E96",
+          "#ECCECB",
+          "#F7EEED"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Salutation de l'accueil, titres d'onboarding."
+      },
+      "h1": {
+        "displayName": "Headline",
+        "purpose": "Titre de page sur ordinateur."
+      },
+      "h2": {
+        "displayName": "Title",
+        "purpose": "Titres de section."
+      },
+      "h3": {
+        "displayName": "Title small",
+        "purpose": "Catégories, numéro de ticket."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Introduction d'écran ou d'état vide."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texte courant, champs, boutons."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Métadonnées, aides, onglets."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Légendes de graphiques uniquement."
+      },
+      "stat": {
+        "displayName": "Stat",
+        "purpose": "Chiffres clés, chiffres tabulaires."
+      }
+    },
+    "shadows": [
+      {
+        "name": "rest",
+        "value": "0 1px 2px rgba(15,15,15,.06), 0 2px 8px rgba(15,15,15,.04)",
+        "purpose": "Élément qui chevauche un autre."
+      },
+      {
+        "name": "floating",
+        "value": "0 8px 24px rgba(15,15,15,.10), 0 2px 6px rgba(15,15,15,.06)",
+        "purpose": "Toasts, feuilles, menus déroulants."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "Toutes les transitions d'état."
+      },
+      {
+        "name": "duration-state",
+        "value": "180ms",
+        "purpose": "Survol, focus, bascules."
+      },
+      {
+        "name": "duration-ticket",
+        "value": "360ms",
+        "purpose": "Seul geste animé : passage d'étape du ticket."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile",
+        "value": "360px"
+      },
+      {
+        "name": "tablet",
+        "value": "768px"
+      },
+      {
+        "name": "desktop",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Le prochain geste ; un seul par zone.",
+      "html": "<button class=\"ds-btn-primary\">Lancer la préparation</button>",
+      "css": ".ds-btn-primary{background:#C7FF2E;color:#0F0F0F;height:48px;padding:0 20px;border:1px solid #C7FF2E;border-radius:999px;font:700 16px/1 Satoshi,system-ui,sans-serif;cursor:pointer;transition:background .18s cubic-bezier(.16,1,.3,1),transform .18s}.ds-btn-primary:hover{background:#B6F00F}.ds-btn-primary:active{transform:scale(.98)}.ds-btn-primary:focus-visible{outline:2px solid #0F0F0F;outline-offset:2px}"
+    },
+    {
+      "name": "Dark Button",
+      "kind": "button",
+      "refersTo": "button-dark",
+      "description": "Action forte secondaire.",
+      "html": "<button class=\"ds-btn-dark\">Imprimer</button>",
+      "css": ".ds-btn-dark{background:#0F0F0F;color:#fff;height:48px;padding:0 20px;border:0;border-radius:999px;font:700 16px/1 Satoshi,system-ui,sans-serif;cursor:pointer}.ds-btn-dark:hover{background:#2E2E2E}.ds-btn-dark:focus-visible{outline:2px solid #0F0F0F;outline-offset:2px}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Champ avec libellé visible.",
+      "html": "<label class=\"ds-field\"><span>Nom du plat</span><input class=\"ds-input\" placeholder=\"Ex. Poulet DG\"></label>",
+      "css": ".ds-field{display:grid;gap:6px;font:500 14px Satoshi,system-ui,sans-serif;color:#0F0F0F}.ds-input{height:48px;border:1px solid #CFCFCA;border-radius:14px;padding:0 14px;font:400 16px Satoshi,system-ui,sans-serif;background:#fff}.ds-input::placeholder{color:#6B6B68}.ds-input:focus{outline:none;border-color:#0F0F0F;box-shadow:0 0 0 3px rgba(15,15,15,.12)}"
+    },
+    {
+      "name": "Filter Tab",
+      "kind": "chip",
+      "refersTo": "tab-selected",
+      "description": "Filtre de statut avec compteur.",
+      "html": "<button class=\"ds-tab\" aria-selected=\"true\">À traiter <em>2</em></button>",
+      "css": ".ds-tab{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:999px;border:1px solid #0F0F0F;background:#0F0F0F;color:#fff;font:700 14px Satoshi,system-ui,sans-serif}.ds-tab em{font-style:normal;font-size:12px;min-width:22px;height:22px;border-radius:999px;background:#C7FF2E;color:#0F0F0F;display:grid;place-items:center}"
+    },
+    {
+      "name": "Status Badge",
+      "kind": "chip",
+      "refersTo": "status-prep",
+      "description": "Statut de commande : libellé + icône + teinte.",
+      "html": "<span class=\"ds-badge\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z\"/><path d=\"M6 17h12\"/></svg>En préparation</span>",
+      "css": ".ds-badge{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px 0 8px;border-radius:999px;background:#F1ECFC;color:#6B3FC4;font:700 13px Satoshi,system-ui,sans-serif}"
+    },
+    {
+      "name": "Order Ticket",
+      "kind": "custom",
+      "refersTo": "order-ticket",
+      "description": "Signature : le ticket qui avance, rail en 4 segments.",
+      "html": "<article class=\"ds-ticket\"><b>#42</b><span>Table 7 · il y a 2 min</span><div class=\"ds-rail\"><i class=\"on\"></i><i class=\"now\"></i><i></i><i></i></div><button>Lancer la préparation</button></article>",
+      "css": ".ds-ticket{display:grid;gap:10px;background:#fff;border:1px solid #E4E4E0;border-radius:20px;padding:16px;font-family:Satoshi,system-ui,sans-serif;max-width:320px}.ds-ticket b{font-size:20px}.ds-ticket span{font-size:14px;color:#5E5E5B}.ds-rail{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}.ds-rail i{height:6px;border-radius:999px;background:#EEEEEB}.ds-rail i.on{background:#0F0F0F}.ds-rail i.now{background:#C7FF2E;box-shadow:inset 0 0 0 1.5px #0F0F0F}.ds-ticket button{height:48px;border:0;border-radius:999px;background:#C7FF2E;color:#0F0F0F;font:700 16px Satoshi,system-ui,sans-serif}.ds-ticket button:hover{background:#B6F00F}.ds-ticket button:focus-visible{outline:2px solid #0F0F0F;outline-offset:2px}"
+    },
+    {
+      "name": "Bottom Tab Bar",
+      "kind": "nav",
+      "refersTo": "tab-bar",
+      "description": "Navigation mobile noire, entrée active en pilule citron.",
+      "html": "<nav class=\"ds-tabbar\"><a aria-current=\"page\"><span>●</span>Accueil</a><a><span>●</span>Commandes</a><a><span>●</span>Menu</a></nav>",
+      "css": ".ds-tabbar{display:grid;grid-template-columns:repeat(3,1fr);background:#0F0F0F;padding:8px 6px 14px;font:700 11px Satoshi,system-ui,sans-serif}.ds-tabbar a{display:grid;justify-items:center;gap:4px;color:#A3A3A0}.ds-tabbar a span{width:48px;height:30px;border-radius:999px;display:grid;place-items:center;font-size:0}.ds-tabbar a[aria-current]{color:#fff}.ds-tabbar a[aria-current] span{background:#C7FF2E}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Le passe du service",
+    "overview": "Restio parle la langue du passe de cuisine : chaque commande est un ticket qui avance d'une étape à la fois, et le vert citron désigne toujours le prochain geste. Le fond reste clair et chaud pour la lisibilité, le noir structure la navigation, et rien ne décore sans informer.",
+    "keyCharacteristics": [
+      "Fond clair chaud, coquille de navigation noire, un seul accent citron.",
+      "Le ticket de commande à rail en 4 segments comme composant signature.",
+      "Une seule police (Satoshi), chiffres tabulaires pour tout montant ou quantité.",
+      "Rayons généreux, bordures fines, presque aucune ombre.",
+      "Statuts lisibles sans la couleur : libellé + icône + teinte."
+    ],
+    "rules": [
+      {
+        "name": "The Next Gesture Rule",
+        "body": "Le citron désigne le prochain geste. Une zone n'a qu'un seul élément citron.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ink On Lime Rule",
+        "body": "Le citron est toujours un aplat portant du texte Ink ; jamais de texte citron sur fond clair.",
+        "section": "colors"
+      },
+      {
+        "name": "The No Color Alone Rule",
+        "body": "Un statut s'exprime toujours par un libellé et une icône en plus de sa teinte.",
+        "section": "colors"
+      },
+      {
+        "name": "The Fourteen Floor Rule",
+        "body": "Aucune information de travail sous 14 px sur mobile.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Money Rule",
+        "body": "Prix, totaux, quantités et compteurs en chiffres tabulaires, formatés par Intl.NumberFormat.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Until Floating Rule",
+        "body": "Une carte posée dans une liste n'a pas d'ombre ; seul ce qui flotte en porte une.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** garder un seul bouton citron par zone, et lui faire nommer l'action (« Lancer la préparation », pas « Suivant »).",
+      "**Do** exprimer chaque statut par libellé + icône Lucide (contour 1,75 px) + teinte.",
+      "**Do** vérifier le contraste de chaque texte : ≥ 4,5:1, ≥ 3:1 pour les grands textes et les éléments graphiques porteurs de sens.",
+      "**Do** prévoir pour chaque composant interactif : normal, survol, focus visible, appui, désactivé, chargement, erreur.",
+      "**Do** donner une cible tactile d'au moins 44 × 44 px (48 px par défaut).",
+      "**Do** prévoir des libellés 30 % plus longs (anglais, allemand) sans casse de mise en page.",
+      "**Do** thémer les surfaces du navigateur : sélection en citron avec texte Ink, barres de défilement fines en Trait fort, focus Ink.",
+      "**Do** respecter `prefers-reduced-motion` : transitions ramenées à zéro, squelettes figés.",
+      "**Do** signaler toute photo de démonstration comme telle."
+    ],
+    "donts": [
+      "**Don't** écrire du texte citron sur fond clair, ni utiliser le citron comme couleur de statut.",
+      "**Don't** utiliser le gris marque #808080 pour du texte sur fond blanc (3,9:1).",
+      "**Don't** construire un écran en grille de cartes KPI identiques (grand chiffre, petit libellé).",
+      "**Don't** placer de surtitre au-dessus d'un titre.",
+      "**Don't** imbriquer une carte dans une autre.",
+      "**Don't** ouvrir une modale quand une feuille, un panneau ou un changement en place suffit.",
+      "**Don't** animer au chargement de page, ni plus de 250 ms pour une transition d'état (360 ms pour le seul geste du ticket).",
+      "**Don't** remplacer une icône par un émoji ou un caractère Unicode.",
+      "**Don't** introduire une seconde police ou une police système en titre."
+    ]
+  }
+}
