@@ -25,3 +25,6 @@ test-results/
 
 # Prototype Figma Make (référence visuelle, non construit)
 figma/**/node_modules/
+
+# Références visuelles locales, retirées du dépôt le 3 novembre 2026 (images de tiers)
+figma/
