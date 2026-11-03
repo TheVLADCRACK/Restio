@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { isSupportedCountry } from 'libphonenumber-js';
+import { isValidTimeZone } from './locale-defaults';
 
 // UTC+14 (Kiribati) : la date locale peut avoir un jour d'avance sur la date UTC du serveur.
 const MAX_TZ_AHEAD_MS = 14 * 3_600_000;
@@ -25,6 +26,7 @@ export const restaurantInputSchema = z.object({
     .optional()
     .refine((d) => d === undefined || d <= latestAllowedDay(), 'future_date'),
   currency: currencySchema,
+  timezone: z.string().trim().max(64).refine(isValidTimeZone, 'invalid_timezone'),
 });
 
 export type RestaurantInput = z.input<typeof restaurantInputSchema>;

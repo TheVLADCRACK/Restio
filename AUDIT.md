@@ -252,3 +252,9 @@ Non vérifié : navigation au clavier et lecteur d'écran sur la planche ; rendu
   - domaines de confiance Neon Auth sans `localhost` ni joker en production ;
   - Data API Neon désactivée (jeton `token`).
 - Accepté pour l'instant : énumération possible par le temps de réponse (faible) ; IP lue depuis les en-têtes Vercel (à revoir si un CDN est placé devant).
+
+**Correctifs après vos premiers tests (3 novembre 2026)**
+- Inscription refusée par Neon (403) : l'origine `app.localhost` n'est pas couverte par `allow_localhost`. Ajouté aux domaines de confiance de la branche de test. **En production, ajouter `https://app.restio-app.com` (restaurateurs) et `https://admin.restio-app.com` (branche admin) aux domaines de confiance.**
+- Codes d'erreur du SDK normalisés en minuscules (`user_already_exists`, `email_not_confirmed`) : les contrôles d'anti-énumération et de reprise de vérification sont corrigés.
+- Connexion admin : la liste blanche est désormais vérifiée sur l'utilisateur renvoyé par la connexion (la session n'est lisible qu'à la requête suivante).
+- Un compte de test non vérifié (`restio-test-signup@example.invalid`) existe sur la branche de test.

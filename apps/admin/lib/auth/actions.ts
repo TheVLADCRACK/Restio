@@ -6,7 +6,6 @@ import { hitRateLimit } from '@restio/db';
 import { auth } from './server';
 import { emailOtp } from './email-otp';
 import { clearPendingEmail, getPendingEmail, setPendingEmail } from './pending-email';
-import { getAdmin } from './session';
 import { dbs } from '@/lib/db';
 import { env } from '@/lib/env';
 import { fingerprint, ipFingerprint } from '@/lib/request';
@@ -32,11 +31,14 @@ export async function adminSignInAction(_prev: AdminFormState, form: FormData): 
   if (!parsed.success) return { error: GENERIC };
   if (await limited('sign-in', 5, 900, parsed.data.email)) return { error: RATE_LIMITED };
 
-  const { error } = await auth.signIn.email({ email: parsed.data.email, password: parsed.data.password });
+  const { data, error } = await auth.signIn.email({ email: parsed.data.email, password: parsed.data.password });
   if (error) return { error: GENERIC };
 
+  // La session n'est lisible qu'à la requête suivante : on contrôle l'utilisateur renvoyé par la connexion.
   // Compte valide sur l'instance admin mais absent de la liste autorisée : session fermée aussitôt.
-  if (!(await getAdmin())) {
+  const signedIn = data?.user;
+  const allowed = Boolean(signedIn?.emailVerified && signedIn.email && env().ADMIN_ALLOWED_EMAILS.includes(signedIn.email.toLowerCase()));
+  if (!allowed) {
     await auth.signOut();
     console.warn('[admin-auth] signed-in account not in allowlist');
     return { error: GENERIC };

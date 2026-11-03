@@ -5,3 +5,4 @@ export * from './slug';
 export * from './phone';
 export * from './profile-input';
 export * from './restaurant-input';
+export * from './locale-defaults';

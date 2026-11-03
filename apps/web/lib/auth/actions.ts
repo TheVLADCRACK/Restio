@@ -22,8 +22,16 @@ const MESSAGES = {
   invalidCode: 'Ce code est incorrect ou a expiré.',
 } as const;
 
+// Le SDK normalise les codes Better Auth en minuscules (ex. USER_ALREADY_EXISTS → user_already_exists).
 function errorCode(error: unknown): string | undefined {
-  return typeof error === 'object' && error !== null && 'code' in error && typeof error.code === 'string' ? error.code : undefined;
+  return typeof error === 'object' && error !== null && 'code' in error && typeof error.code === 'string' ? error.code.toLowerCase() : undefined;
+}
+
+// Journal sans donnée personnelle : code, statut HTTP et message technique de Neon Auth.
+function logAuthError(step: string, error: unknown): void {
+  const status = typeof error === 'object' && error !== null && 'status' in error ? String(error.status) : '?';
+  const message = error instanceof Error ? error.message.slice(0, 200) : '';
+  console.error(`[auth] ${step} failed: ${errorCode(error) ?? 'unknown'} (${status}) ${message}`);
 }
 
 function fieldErrors(issues: z.core.$ZodIssue[]): Record<string, string> {
@@ -51,8 +59,8 @@ export async function signUpAction(_prev: AuthFormState, form: FormData): Promis
     name: parsed.data.email.split('@')[0] ?? 'Restaurateur',
   });
   // Adresse déjà utilisée : même suite que pour une nouvelle adresse, pour ne pas révéler l'existence d'un compte.
-  if (error && errorCode(error) !== 'USER_ALREADY_EXISTS') {
-    console.error(`[auth] sign-up failed: ${errorCode(error) ?? 'unknown'}`);
+  if (error && errorCode(error) !== 'user_already_exists') {
+    logAuthError('sign-up', error);
     return { error: MESSAGES.unavailable };
   }
   await setPendingEmail(parsed.data.email);
@@ -69,7 +77,8 @@ export async function verifyEmailAction(_prev: AuthFormState, form: FormData): P
   const { error } = await emailOtp().verifyEmail({ email: pending, otp: parsed.data });
   if (error) return { fieldErrors: { code: MESSAGES.invalidCode } };
   await clearPendingEmail();
-  redirect('/');
+  // La vérification n'ouvre pas toujours de session côté serveur : la page de connexion renvoie vers l'app si elle existe.
+  redirect('/auth/sign-in?verified=1');
 }
 
 export async function resendCodeAction(_prev: AuthFormState): Promise<AuthFormState> {
@@ -88,7 +97,7 @@ export async function signInAction(_prev: AuthFormState, form: FormData): Promis
   const { error } = await auth.signIn.email({ email: parsed.data.email, password: parsed.data.password });
   if (error) {
     // Le mot de passe est correct mais l'adresse n'est pas vérifiée : on reprend la vérification.
-    if (errorCode(error) === 'EMAIL_NOT_VERIFIED') {
+    if (errorCode(error) === 'email_not_confirmed') {
       await setPendingEmail(parsed.data.email);
       redirect('/auth/verify-email');
     }
