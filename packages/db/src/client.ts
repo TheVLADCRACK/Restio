@@ -1,5 +1,5 @@
 import { Pool, neonConfig } from '@neondatabase/serverless';
-import { drizzle } from 'drizzle-orm/neon-serverless';
+import { drizzle, type NeonDatabase } from 'drizzle-orm/neon-serverless';
 import ws from 'ws';
 import * as appSchema from './schema/app';
 import * as adminSchema from './schema/admin';
@@ -18,31 +18,33 @@ function requireEnv(name: string): string {
   return value;
 }
 
-function connect<TSchema extends Record<string, unknown>>(envName: string, schema: TSchema) {
-  const pool = new Pool({ connectionString: requireEnv(envName) });
+// Types explicites : l'inférence des types Drizzle imbriqués fait déborder le compilateur TypeScript.
+export type AppDb = NeonDatabase<typeof appSchema> & { $client: Pool };
+export type AdminDbs = { prod: AppDb; admin: NeonDatabase<typeof adminSchema> & { $client: Pool } };
+export type AdminDb = AdminDbs['admin'];
+
+function pool(envName: string): Pool {
+  const p = new Pool({ connectionString: requireEnv(envName) });
   // Une connexion inactive qui tombe ne doit pas arrêter le processus ; le message ne contient pas la chaîne de connexion.
-  pool.on('error', (err: Error) => console.error(`[db] ${envName} pool error: ${err.message}`));
-  return drizzle({ client: pool, schema });
+  p.on('error', (err: Error) => console.error(`[db] ${envName} pool error: ${err.message}`));
+  return p;
 }
 
 // Un seul pool par processus et par base : réutilisé entre les requêtes.
-let appDb: ReturnType<typeof connect<typeof appSchema>> | undefined;
-let adminDbs: { prod: ReturnType<typeof connect<typeof appSchema>>; admin: ReturnType<typeof connect<typeof adminSchema>> } | undefined;
+let appDb: AppDb | undefined;
+let adminDbs: AdminDbs | undefined;
 
 /** apps/web : rôle restio_app sur la base métier. */
-export function createAppDb() {
-  appDb ??= connect('DATABASE_URL', appSchema);
+export function createAppDb(): AppDb {
+  appDb ??= drizzle({ client: pool('DATABASE_URL'), schema: appSchema });
   return appDb;
 }
 
 /** apps/admin : rôle restio_admin_ops sur la base métier et rôle restio_admin_app sur la base d'administration. */
-export function createAdminDbs() {
+export function createAdminDbs(): AdminDbs {
   adminDbs ??= {
-    prod: connect('PROD_DATABASE_URL', appSchema),
-    admin: connect('ADMIN_DATABASE_URL', adminSchema),
+    prod: drizzle({ client: pool('PROD_DATABASE_URL'), schema: appSchema }),
+    admin: drizzle({ client: pool('ADMIN_DATABASE_URL'), schema: adminSchema }),
   };
   return adminDbs;
 }
-
-export type AppDb = ReturnType<typeof createAppDb>;
-export type AdminDb = ReturnType<typeof createAdminDbs>['admin'];

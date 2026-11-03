@@ -213,3 +213,42 @@ Non vérifié : navigation au clavier et lecteur d'écran sur la planche ; rendu
 - Sur la branche de test seulement : `neondb_owner` a reçu le droit `SET ROLE` vers les rôles d'exécution pour les tests.
 - Police Satoshi non téléchargée : licence vérifiée (ITF FFL 2.0, auto-hébergement autorisé pour nos interfaces, interdit comme police proposée aux restaurants) ; le téléchargement demande votre accord.
 - Aucun dépôt GitHub ni projet Vercel créé.
+
+## 15. Phase 5 — authentification et séparation (3 novembre 2026)
+
+**Neon**
+- Branche `test-migrations` = environnement de développement : Neon Auth configuré (vérification email par code obligatoire, organisations désactivées), rôle `restio_app` activé, `restio_admin_ops` activé.
+- Branche `admin` (`br-solitary-heart-bahaxbwh`) : enfant de `production` (la branche « schéma seulement » a été essayée puis supprimée : Neon refuse d'y activer Neon Auth). Instance Neon Auth dédiée : inscription désactivée, Google supprimé, organisations désactivées ; un compte administrateur créé (vladimirdjiedeu@gmail.com, sans mot de passe : premier accès par code email). Schéma admin migré, rôle `restio_admin_app` activé, assertions OK.
+- Aucun secret n'a transité par la conversation : mots de passe générés localement dans `.env.local` (ignorés par git), rôles activés par `packages/db/scripts/activate-role.mjs` avec la chaîne propriétaire passée directement par la CLI Neon.
+- Production : **non modifiée** (Neon Auth y garde vérification email désactivée et organisations activées tant que vous n'avez pas validé).
+
+**Application restaurateur (`apps/web`)**
+- Gardes serveur `requireUser` (session + email vérifié) et `requireMembership` (restaurant issu de la session uniquement).
+- Actions serveur : inscription (réponse identique si l'adresse existe), vérification par code, renvoi de code, connexion (message générique), déconnexion, mot de passe oublié par code. Limitation en base par IP et par email pseudonymisés. Email en attente dans un cookie httpOnly, jamais dans l'URL.
+- Route `/api/auth/*` : fonctions Better Auth inutiles bloquées (admin, organisations, OAuth serveur, liens magiques, téléphone, suppression de compte, jeton anonyme).
+- Écrans (agent Frontend) : connexion, inscription, vérification, mot de passe oublié, réinitialisation ; composants partagés `packages/ui`.
+
+**Administration (`apps/admin`)**
+- Garde `requireAdmin` : session de l'instance admin + email vérifié + liste blanche `ADMIN_ALLOWED_EMAILS` ; un compte non autorisé est déconnecté aussitôt.
+- Route `/api/auth/*` en liste blanche stricte (session, connexion, déconnexion). Premier accès / mot de passe oublié par code envoyé uniquement aux adresses autorisées, mot de passe ≥ 14 caractères, limitation en base admin.
+
+**Vérifié** : 80 tests ; lint et typage ; tests en conditions réelles (chemins bloqués en 404, redirections, message générique, écriture des compteurs de limitation sans donnée personnelle).
+
+**Non vérifié** : parcours complet avec réception d'un vrai code email (inscription restaurateur et premier accès admin : à faire par vous) ; connexion Google réelle ; Safari iOS.
+
+**Corrigé en route** : débordement du compilateur TypeScript sur les types Drizzle (types explicites des clients).
+
+**Revue de sécurité indépendante (Phase 5)** : 2 élevées, 4 moyennes, 3 faibles, 3 informations.
+- Corrigé et vérifié en local :
+  - route `/api/auth/*` des restaurateurs en **liste blanche** (`get-session`, `sign-in/social`, `callback/google`, `sign-out`) : la connexion par email, l'inscription et les codes passent uniquement par les server actions limitées ;
+  - route admin réduite à `get-session` et `sign-out` ;
+  - session admin vérifiée auprès de Neon Auth à chaque requête (sans cache de 5 minutes) ;
+  - limites par compte 4× plus larges que par IP (anti-blocage à distance) ;
+  - script d'activation : la chaîne de connexion n'est jamais affichée en cas d'erreur ;
+  - DATABASE.md : préfixe `__Secure-` imposé par le SDK, secrets de cookie distincts entre web et admin.
+- **À vérifier sur une branche de test avant la production** :
+  - liaison implicite d'un compte Google à un compte email non vérifié (risque de prise de compte) ;
+  - révocation des sessions après réinitialisation du mot de passe ;
+  - domaines de confiance Neon Auth sans `localhost` ni joker en production ;
+  - Data API Neon désactivée (jeton `token`).
+- Accepté pour l'instant : énumération possible par le temps de réponse (faible) ; IP lue depuis les en-têtes Vercel (à revoir si un CDN est placé devant).

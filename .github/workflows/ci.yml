@@ -39,3 +39,4 @@ jobs:
           ADMIN_ALLOWED_EMAILS: ci@example.invalid
           ROOT_HOST: localhost:3000
           APP_HOST: app.localhost:3000
+          IP_HASH_SALT: ci-only-salt-not-used-anywhere-000000000000

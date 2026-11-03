@@ -71,7 +71,7 @@ Monorepo **npm workspaces** (pas d'outil d'orchestration supplémentaire) :
 | Branche | Base | Services | Consommateur |
 |---|---|---|---|
 | `production` | `neondb` | Postgres, Neon Auth (restaurateurs), Object Storage, Realtime | `apps/web` (rôle `restio_app`), `apps/admin` (rôle `restio_admin_ops`) |
-| `admin` (branche racine « schéma seulement », sans données copiées) | `restio_admin` | Postgres, Neon Auth (administration, inscriptions désactivées) | `apps/admin` uniquement |
+| `admin` (branche enfant de `production`, créée vide ; ne jamais la réinitialiser) | `neondb` | Postgres, Neon Auth (administration, inscriptions désactivées) | `apps/admin` uniquement |
 
 Détail des tables, rôles et droits : `DATABASE.md`.
 

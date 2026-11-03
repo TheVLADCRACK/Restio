@@ -37,6 +37,7 @@ GRANT SELECT, INSERT ON public.audit_log TO restio_admin_app;
 -- UPDATE restreint aux colonnes qui évoluent au fil des trois étapes.
 GRANT SELECT, INSERT ON public.deletion_requests TO restio_admin_app;
 GRANT UPDATE (step, reauthenticated_at, executed_at) ON public.deletion_requests TO restio_admin_app;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.rate_limit_buckets TO restio_admin_app;
 
 ALTER DEFAULT PRIVILEGES IN SCHEMA public REVOKE ALL ON TABLES FROM PUBLIC, restio_admin_app;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public REVOKE ALL ON SEQUENCES FROM PUBLIC, restio_admin_app;

@@ -4,7 +4,12 @@
   "type": "module",
   "exports": {
     "./tokens.css": "./src/tokens.css",
-    "./cn": "./src/lib/cn.ts"
+    "./cn": "./src/lib/cn.ts",
+    "./components/button": "./src/components/button.tsx",
+    "./components/field": "./src/components/field.tsx",
+    "./components/text-input": "./src/components/text-input.tsx",
+    "./components/alert": "./src/components/alert.tsx",
+    "./components/auth-shell": "./src/components/auth-shell.tsx"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"
@@ -12,5 +17,13 @@
   "dependencies": {
     "clsx": "^2",
     "tailwind-merge": "^3"
+  },
+  "peerDependencies": {
+    "react": "^19",
+    "react-dom": "^19",
+    "lucide-react": "^1"
+  },
+  "devDependencies": {
+    "@types/react": "^19"
   }
 }

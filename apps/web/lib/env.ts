@@ -7,6 +7,7 @@ const schema = z.object({
   NEON_AUTH_COOKIE_SECRET: z.string().min(32),
   ROOT_HOST: z.string().min(1),
   APP_HOST: z.string().min(1),
+  IP_HASH_SALT: z.string().min(32),
 });
 
 // Valide une seule fois, au premier accès, sans jamais afficher les valeurs.

@@ -10,12 +10,13 @@ Un seul projet Neon : `Restio` (`purple-sunset-30734372`), AWS `eu-central-1`, P
 | Branche | Base | Contenu | Neon Auth | Utilisée par |
 |---|---|---|---|---|
 | `production` | `neondb` | Données métier des restaurants + schéma `neon_auth` géré par Neon | Instance **restaurateurs** | `apps/web` (lecture/écriture), `apps/admin` (accès restreint, §5) |
-| `admin` (à créer en **branche « schéma seulement »**, racine, protégée) | `restio_admin` | Données internes de l'administration + schéma `neon_auth` | Instance **administration**, inscriptions désactivées | `apps/admin` uniquement |
+| `admin` (`br-solitary-heart-bahaxbwh`, branche enfant de `production`) | `neondb` | Données internes de l'administration + schéma `neon_auth` | Instance **administration**, inscriptions désactivées | `apps/admin` uniquement |
 
 Règles :
 
 - `apps/web` ne possède **aucun** identifiant vers la branche `admin`.
-- La branche `admin` est créée en mode **« schéma seulement »** (`init_source: schema-only`) : c'est une branche **racine**, sans parent, sans aucune donnée copiée de `production` (ni utilisateurs, ni sessions, ni clés `neon_auth.jwks`) et sans possibilité de « reset from parent ». La base `neondb` qu'elle contient est supprimée ; seule `restio_admin` est utilisée.
+- **Écart constaté le 3 novembre 2026** : Neon refuse d'activer Neon Auth sur une branche « schéma seulement » (« permission denied for database », non documenté). La branche `admin` est donc une **branche enfant** de `production`, créée alors que `production` ne contenait aucune donnée (0 utilisateur, 0 table) : rien de sensible n'a été copié. Elle a sa propre instance Neon Auth (inscription désactivée, Google supprimé) et sa propre base `neondb`.
+- **Ne jamais exécuter « Reset from parent » sur la branche `admin`** : cela effacerait les données d'administration. La protection de branche n'est pas disponible sur le plan gratuit de Neon.
 - Les branches de développement et de prévisualisation sont aussi créées en **« schéma seulement »** (ou avec des données de démonstration) : jamais de données réelles de restaurateurs hors de `production`.
 - Aucune branche de développement n'a accès à la branche `admin`.
 
@@ -268,7 +269,7 @@ L'IP provient de l'en-tête fourni par Vercel (jamais d'un `X-Forwarded-For` bru
 
 **Règles du point d'entrée public de commande** (en plus des contraintes ci-dessus) : restaurant `is_published = true` et `status = 'active'` ; plats disponibles dans une catégorie visible du même restaurant ; au plus 50 lignes, doublons fusionnés ; taille du corps de requête limitée.
 
-## 4. Base d'administration — branche `admin`, base `restio_admin`
+## 4. Base d'administration — branche `admin`, base `neondb`
 
 Volontairement réduite : ce n'est pas une copie de la base métier.
 
@@ -323,8 +324,8 @@ Donc :
 | `neondb_owner` | `production` / `neondb` | Propriétaire. **Migrations uniquement**, jamais à l'exécution. | CI / commande manuelle |
 | `restio_app` | `production` / `neondb` | Voir le détail ci-dessous. **Aucun accès** au schéma `neon_auth`. | `apps/web` |
 | `restio_admin_ops` | `production` / `neondb` | `SELECT` sur les tables métier ; `UPDATE (status, updated_at)` sur `restaurants` ; `DELETE` sur `restaurants` et `profiles` (suppression d'un compte) ; `DELETE` sur `announcement_dismissals` ; `INSERT, UPDATE, DELETE` sur `platform_settings`, `announcements`. **Aucun accès** au schéma `neon_auth`. | `apps/admin` |
-| `restio_admin_owner` | `admin` / `restio_admin` | Migrations uniquement. | CI / commande manuelle |
-| `restio_admin_app` | `admin` / `restio_admin` | `INSERT, SELECT` sur `audit_log` ; `SELECT, INSERT, UPDATE` sur `deletion_requests`. | `apps/admin` |
+| `neondb_owner` | `admin` / `neondb` | Migrations uniquement. | CI / commande manuelle |
+| `restio_admin_app` | `admin` / `neondb` | `INSERT, SELECT` sur `audit_log` ; `SELECT, INSERT, UPDATE (step, reauthenticated_at, executed_at)` sur `deletion_requests` ; `SELECT, INSERT, UPDATE, DELETE` sur `rate_limit_buckets`. | `apps/admin` |
 
 Détail de `restio_app` :
 
@@ -359,7 +360,7 @@ Toutes ces fonctions sont `SECURITY DEFINER` avec `search_path` figé et sans dr
 - **Aucune clé d'API Neon n'est déployée dans une application.** Une clé d'API Neon donne la main sur tout le projet (rôles, chaînes de connexion) : la compromission d'`apps/admin` deviendrait une compromission totale.
 - La suppression de l'identité Neon Auth d'un restaurateur supprimé est faite par le propriétaire (console ou CLI Neon), à partir d'une liste « suppressions d'identité en attente » affichée dans l'administration. C'est une opération rare en V1.
 - Sur l'instance des restaurateurs : seuls l'email et Google sont activés. Les plugins configurés aujourd'hui et non utilisés (`magicLink`, `phoneNumber`, `organization`, `oauthProvider`) sont désactivés en Phase 5. Contrôle régulier : aucun compte avec `role = 'admin'` sur `production`.
-- Cookies de session sans attribut `Domain` (limités à leur sous-domaine), préfixe `__Host-` si le SDK le permet, à vérifier en Phase 5.
+- Cookies de session sans attribut `Domain` (limités à leur sous-domaine). Préfixe `__Secure-` imposé par le SDK Neon Auth (`__Host-` impossible). `NEON_AUTH_COOKIE_SECRET` doit être différent entre `apps/web` et `apps/admin`, et l'admin vérifie la session auprès de Neon Auth à chaque requête (pas de cache de 5 minutes).
 
 ## 6. Stockage des fichiers (Neon Object Storage)
 

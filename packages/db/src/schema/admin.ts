@@ -12,7 +12,10 @@ import {
   uuid,
 } from 'drizzle-orm/pg-core';
 
-// Base d'administration (branche `admin`, base `restio_admin`). Référence : DATABASE.md §4.
+// Base d'administration (branche `admin`, base `neondb`). Référence : DATABASE.md §4.
+
+// Même table de limitation que la base métier, pour freiner la force brute sur la connexion admin.
+export { rateLimitBuckets } from './app';
 
 export const deletionStep = pgEnum('deletion_step', ['confirmed', 'typed', 'executed', 'cancelled']);
 

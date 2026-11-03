@@ -6,6 +6,7 @@ const schema = z.object({
   ADMIN_DATABASE_URL: z.string().url(),
   NEON_AUTH_BASE_URL: z.string().url(),
   NEON_AUTH_COOKIE_SECRET: z.string().min(32),
+  IP_HASH_SALT: z.string().min(32),
   ADMIN_ALLOWED_EMAILS: z
     .string()
     .min(3)
