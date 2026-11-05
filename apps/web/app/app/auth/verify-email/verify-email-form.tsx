@@ -1,33 +1,52 @@
 'use client';
 
-import { useActionState } from 'react';
-import { Alert } from '@restio/ui/components/alert';
+import { useActionState, useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Button } from '@restio/ui/components/button';
 import { Field } from '@restio/ui/components/field';
-import { TextInput } from '@restio/ui/components/text-input';
+import { OtpInput } from '@/components/otp-input';
+import { Toast } from '@/components/toast';
 import { resendCodeAction, verifyEmailAction } from '@/lib/auth/actions';
 import { useAuthForm } from '../_components/use-auth-form';
 
+const RESEND_DELAY = 60;
+
 export function VerifyEmailForm() {
+  const t = useTranslations('auth');
   const { state, pending, formProps } = useAuthForm(verifyEmailAction);
   const [resend, resendAction, resending] = useActionState(resendCodeAction, null);
+  const [wait, setWait] = useState(RESEND_DELAY);
+  useEffect(() => {
+    if (wait <= 0) return;
+    const timer = setTimeout(() => setWait((value) => value - 1), 1000);
+    return () => clearTimeout(timer);
+  }, [wait]);
   return (
     <div className="grid gap-4">
-      <form {...formProps} className="grid gap-4">
-        {state?.error && <Alert tone="error">{state.error}</Alert>}
-        <Field id="code" label="Code à 6 chiffres" error={state?.fieldErrors?.code}>
-          <TextInput name="code" inputMode="numeric" autoComplete="one-time-code" className="tabular text-lg tracking-[0.3em]" required />
+      <form {...formProps} className="grid gap-[18px]">
+        {state?.error && !pending && <Toast tone="error">{state.error}</Toast>}
+        <Field id="code" label={t('fields.codeFromEmail')} error={state?.fieldErrors?.code}>
+          <OtpInput name="code" label={t('fields.code')} digitLabel={(index) => t('fields.digit', { index })} />
         </Field>
-        <Button type="submit" variant="primary" block loading={pending} loadingText="Vérification…" className="mt-2">
-          Valider le code
+        <Button type="submit" variant="primary" block loading={pending} loadingText={t('verify.loading')}>
+          {t('verify.submit')}
         </Button>
       </form>
-      <form action={resendAction} className="grid gap-4">
-        <Button type="submit" variant="secondary" block loading={resending} loadingText="Envoi…">
-          Renvoyer le code
-        </Button>
-        {resend?.info && <Alert tone="info">{resend.info}</Alert>}
-        {resend?.error && <Alert tone="error">{resend.error}</Alert>}
+      <form action={resendAction} onSubmit={() => setWait(RESEND_DELAY)}>
+        {resend?.info && !resending && <Toast tone="info">{resend.info}</Toast>}
+        {resend?.error && !resending && <Toast tone="error">{resend.error}</Toast>}
+        <p className="text-center text-sm text-text-2">
+          {t('verify.nothing')}{' '}
+          {wait > 0 ? (
+            <>
+              <b className="text-ink">{t('verify.resendLower')}</b> {t('verify.in')} <span className="tabular">0:{String(wait).padStart(2, '0')}</span>.
+            </>
+          ) : (
+            <button type="submit" disabled={resending} className="cursor-pointer font-bold text-ink underline decoration-line-strong underline-offset-4 hover:decoration-ink">
+              {t('verify.resendLower')}
+            </button>
+          )}
+        </p>
       </form>
     </div>
   );

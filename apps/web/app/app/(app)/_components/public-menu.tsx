@@ -1,4 +1,5 @@
 import 'server-only';
+import { getTranslations } from 'next-intl/server';
 import { ExternalLink } from 'lucide-react';
 import { buttonClass } from '@restio/ui/components/button';
 import { cn } from '@restio/ui/cn';
@@ -11,29 +12,35 @@ export function publicMenuUrl(slug: string): { href: string; label: string } {
   return { href: `${protocol}://${host}/@${slug}`, label: `${host}/@${slug}` };
 }
 
-/** « Voir mon menu » : lien actif seulement une fois le menu publié, sinon désactivé avec « Bientôt ». */
-export function PublicMenuLink({ slug, isPublished, compact = false, className }: { slug: string; isPublished: boolean; compact?: boolean; className?: string }) {
+/** « Voir mon menu » (planche : bouton secondaire) : actif une fois le menu publié, sinon atténué avec une info-bulle. */
+export async function PublicMenuLink({ slug, isPublished, className }: { slug: string; isPublished: boolean; className?: string }) {
+  const t = await getTranslations('publicMenu');
+  const tc = await getTranslations('common');
+  const base = cn(buttonClass({ size: 'sm' }), className);
   if (!isPublished) {
     return (
-      <a aria-disabled="true" title={compact ? 'Disponible après publication du menu' : undefined} className={cn(buttonClass({ size: 'sm' }), 'cursor-not-allowed border-sunken bg-sunken text-text-3 hover:bg-sunken', className)}>
+      <a aria-disabled="true" title={t('availableAfter')} className={cn(base, 'cursor-not-allowed text-text-3 hover:bg-surface')}>
         <ExternalLink aria-hidden="true" className="size-4" strokeWidth={1.75} />
-        Voir mon menu
-        {/* Dans la barre latérale (étroite), la mention passe en info-bulle pour ne pas déborder. */}
-        {compact ? <span className="sr-only">(disponible après publication)</span> : <span className="rounded-full bg-surface px-2 py-0.5 text-xs font-bold text-text-2">Bientôt</span>}
+        {t('view')}
+        <span className="sr-only"> {t('availableAfterSr')}</span>
       </a>
     );
   }
   return (
-    <a href={publicMenuUrl(slug).href} target="_blank" rel="noopener noreferrer" className={cn(buttonClass({ size: 'sm' }), className)}>
+    <a href={publicMenuUrl(slug).href} target="_blank" rel="noopener noreferrer" className={base}>
       <ExternalLink aria-hidden="true" className="size-4" strokeWidth={1.75} />
-      Voir mon menu
-      <span className="sr-only"> (nouvel onglet)</span>
+      {t('view')}
+      <span className="sr-only"> {tc('newTab')}</span>
     </a>
   );
 }
 
-/** Monogramme du restaurant : initiale citron sur Ink (DESIGN.md). */
-export function RestaurantMonogram({ name, className }: { name: string; className?: string }) {
+/** Logo du restaurant, sinon son initiale citron sur Ink (DESIGN.md). */
+export function RestaurantMonogram({ name, logoUrl, className }: { name: string; logoUrl?: string | null; className?: string }) {
+  if (logoUrl) {
+    // eslint-disable-next-line @next/next/no-img-element -- vignette déjà optimisée servie depuis le stockage
+    return <img src={logoUrl} alt="" className={cn('size-10 shrink-0 rounded-[12px] object-cover', className)} />;
+  }
   return (
     <span aria-hidden="true" className={cn('grid size-10 shrink-0 place-items-center rounded-[12px] bg-ink text-lg font-black text-lime', className)}>
       {name.trim().charAt(0).toUpperCase() || 'R'}

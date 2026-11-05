@@ -8,6 +8,10 @@ const schema = z.object({
   ROOT_HOST: z.string().min(1),
   APP_HOST: z.string().min(1),
   IP_HASH_SALT: z.string().min(32),
+  // Centre d'aide (site public) ; sans valeur, l'entrée « Centre d'aide » n'est pas affichée.
+  HELP_CENTER_URL: z.preprocess((v) => (v === '' ? undefined : v), z.url({ protocol: /^https?$/ }).optional()),
+  // Lien d'invitation de la communauté WhatsApp ; sans valeur, le lien d'aide n'est pas affiché.
+  WHATSAPP_COMMUNITY_URL: z.preprocess((v) => (v === '' ? undefined : v), z.url({ protocol: /^https$/, hostname: /^(chat\.whatsapp\.com|wa\.me)$/ }).optional()),
 });
 
 // Valide une seule fois, au premier accès, sans jamais afficher les valeurs.

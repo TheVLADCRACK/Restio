@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes } from 'react';
 import { cn } from '@restio/ui/cn';
 
 const variants = {
-  primary: 'btn-fill border-lime bg-lime text-ink hover:border-lime-pressed hover:bg-lime-pressed',
+  primary: 'btn-fill border-lime bg-lime hover:border-lime-pressed hover:bg-lime-pressed',
   dark: 'active:scale-[.98] border-ink bg-ink text-surface hover:border-ink-2 hover:bg-ink-2',
   secondary: 'active:scale-[.98] border-line-strong bg-surface text-ink hover:bg-sunken',
   ghost: 'active:scale-[.98] border-transparent bg-transparent px-3 text-ink hover:bg-sunken',

@@ -10,6 +10,16 @@ export type AuthShellProps = {
   media?: ReactNode;
   /** Promesse produit affichée sur la photo, à partir de 1024 px. */
   promise?: ReactNode;
+  /** Cartes flottantes en haut à droite de la photo (notification, ticket), à partir de 1024 px. */
+  float?: ReactNode;
+  /** En haut à droite du formulaire, à partir de 1024 px (sélecteur de langue). */
+  topRight?: ReactNode;
+  /** À droite du copyright, à partir de 1024 px (lien d'aide). */
+  help?: ReactNode;
+  /** Mobile : en-tête à la place de la photo (ex. retour + progression de l'inscription). */
+  mobileTop?: ReactNode;
+  /** Au-dessus du titre, à partir de 1024 px (progression, lien de retour). */
+  eyebrow?: ReactNode;
   /** Rendu du symbole Restio (ex. next/image) ; par défaut <img src="/brand/…">. */
   renderMark?: RenderMark;
 };
@@ -33,22 +43,19 @@ function Brand({ tone, mark }: { tone: 'ink' | 'white'; mark: RenderMark }) {
 
 /**
  * Écrans d'authentification (planche « Connexion et inscription ») :
- * - mobile : grande photo en haut, feuille blanche arrondie qui la chevauche ;
+ * - mobile : grande photo en haut, feuille blanche arrondie qui la chevauche (ou en-tête simple avec `mobileTop`) ;
  * - ordinateur (≥ 1024 px) : carte scindée, formulaire à gauche, panneau visuel à droite.
  */
-export function AuthShell({ title, description, children, footer, media, promise, renderMark = defaultMark }: AuthShellProps) {
+export function AuthShell({ title, description, children, footer, media, promise, float, topRight, help, mobileTop, eyebrow, renderMark = defaultMark }: AuthShellProps) {
   return (
     <div className="min-h-dvh lg:flex lg:p-8">
       <div className="flex min-h-dvh flex-col lg:mx-auto lg:grid lg:min-h-[calc(100dvh-4rem)] lg:w-full lg:max-w-[1440px] lg:grid-cols-2 lg:rounded-xl lg:border lg:border-line lg:bg-surface lg:p-3">
-        <div className={`relative shrink-0 overflow-hidden bg-ink lg:order-2 lg:h-auto lg:rounded-lg ${media ? 'h-[clamp(220px,40dvh,360px)]' : 'h-44'}`}>
+        <div className={`relative shrink-0 overflow-hidden bg-ink lg:order-2 lg:block lg:h-auto lg:rounded-lg ${mobileTop ? 'hidden' : ''} ${media ? 'h-[clamp(220px,40dvh,360px)]' : 'h-44'}`}>
           {media ? (
             <>
               <div className="absolute inset-0 [&_img]:size-full [&_img]:object-cover">{media}</div>
               {/* Mobile : voile en haut pour lire le logo ; ordinateur : voile en bas pour lire la promesse. */}
               <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,15,15,.55)_0%,rgba(15,15,15,0)_35%)] lg:bg-[linear-gradient(180deg,rgba(15,15,15,.15)_0%,rgba(15,15,15,.25)_40%,rgba(15,15,15,.92)_78%)]" />
-              <span className="absolute right-4 top-[max(16px,env(safe-area-inset-top))] z-10 rounded-full bg-ink/70 px-2.5 py-1 text-xs font-bold text-surface lg:left-5 lg:right-auto lg:top-5">
-                Photo de démonstration
-              </span>
             </>
           ) : (
             <div aria-hidden="true" className="absolute inset-0 hidden place-items-center lg:grid">
@@ -58,20 +65,29 @@ export function AuthShell({ title, description, children, footer, media, promise
           <div className="absolute left-3 top-[max(12px,env(safe-area-inset-top))] z-10 lg:hidden">
             <Brand tone="white" mark={renderMark} />
           </div>
+          {float && <div className="absolute right-10 top-[76px] z-10 hidden w-80 gap-2.5 lg:grid">{float}</div>}
           {promise && <div className="absolute inset-x-11 bottom-10 z-10 hidden text-surface lg:grid">{promise}</div>}
         </div>
 
-        <main className="relative z-10 -mt-7 flex flex-1 flex-col rounded-t-xl bg-surface px-5 pb-6 pt-7 sm:px-8 lg:order-1 lg:mt-0 lg:rounded-none lg:px-9 lg:pb-4 lg:pt-5">
-          <div className="hidden lg:block">
+        <main
+          className={`relative z-10 flex flex-1 flex-col bg-surface pb-6 lg:order-1 lg:mt-0 lg:rounded-none lg:px-9 lg:pb-4 lg:pt-5 ${mobileTop ? 'px-4 pt-[max(8px,env(safe-area-inset-top))] sm:px-8' : '-mt-7 rounded-t-xl px-5 pt-7 sm:px-8'}`}
+        >
+          {mobileTop && <div className="-ml-2.5 mb-2 lg:hidden">{mobileTop}</div>}
+          <div className="hidden items-center justify-between lg:flex">
             <Brand tone="ink" mark={renderMark} />
+            {topRight}
           </div>
           <div className="mx-auto w-full max-w-[400px] lg:my-auto lg:py-10">
-            <h1 className="text-[1.75rem] font-bold leading-[1.15] tracking-[-0.02em] text-ink lg:text-[1.875rem]">{title}</h1>
+            {eyebrow && <div className="hidden lg:block">{eyebrow}</div>}
+            <h1 className={`font-bold leading-[1.15] tracking-[-0.02em] text-ink lg:text-[1.875rem] ${mobileTop ? 'text-[1.625rem]' : 'text-[1.75rem]'}`}>{title}</h1>
             {description && <div className="mt-2 text-base text-text-2">{description}</div>}
             <div className="mt-7">{children}</div>
             {footer && <div className="mt-6 text-center text-[0.9375rem] text-text-2">{footer}</div>}
           </div>
-          <p className="mx-auto mt-auto w-full max-w-[400px] pt-8 text-center text-sm text-text-2 lg:mx-0 lg:pt-0 lg:max-w-none lg:text-left">© {new Date().getFullYear()} Restio</p>
+          <div className="mx-auto mt-auto flex w-full max-w-[400px] justify-center pt-8 text-sm text-text-2 lg:mx-0 lg:max-w-none lg:justify-between lg:pt-0">
+            <p>© {new Date().getFullYear()} Restio</p>
+            {help && <div className="hidden lg:block">{help}</div>}
+          </div>
         </main>
       </div>
     </div>

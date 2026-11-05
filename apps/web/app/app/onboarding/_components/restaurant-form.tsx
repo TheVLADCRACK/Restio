@@ -4,13 +4,16 @@ import { useState, useSyncExternalStore } from 'react';
 // Sous-chemins légers : le paquet complet (zod, libphonenumber) ne doit pas partir dans le JS du navigateur.
 import { defaultTimeZoneFor, isValidTimeZone } from '@restio/core/locale-defaults';
 import { slugify } from '@restio/core/slug';
-import { Alert } from '@restio/ui/components/alert';
-import { Button } from '@restio/ui/components/button';
+import { useTranslations } from 'next-intl';
+import { Toast } from '@/components/toast';
+import Link from 'next/link';
+import { Button, buttonClass } from '@restio/ui/components/button';
 import { Field } from '@restio/ui/components/field';
 import { TextInput } from '@restio/ui/components/text-input';
 import { createRestaurantAction } from '@/lib/onboarding/actions';
 import { useAuthForm } from '../../auth/_components/use-auth-form';
 import type { CountryOption, CurrencyOption } from './options';
+import { PhoneInput } from './phone-input';
 import { SelectInput } from './select-input';
 
 type Props = { countries: CountryOption[]; currencies: CurrencyOption[]; initialCountry: string; initialCurrency: string };
@@ -38,6 +41,7 @@ function localToday(): string {
 const neverChanges = () => () => {};
 
 export function RestaurantForm({ countries, currencies, initialCountry, initialCurrency }: Props) {
+  const t = useTranslations('onboarding.restaurant');
   const { state, pending, formProps } = useAuthForm(createRestaurantAction);
   const [name, setName] = useState('');
   const [country, setCountry] = useState(initialCountry);
@@ -49,7 +53,7 @@ export function RestaurantForm({ countries, currencies, initialCountry, initialC
   const timezone = defaultTimeZoneFor(country) ?? browserTz;
   const today = useSyncExternalStore(neverChanges, localToday, () => undefined);
   const errors = state?.fieldErrors;
-  const slug = slugify(name) || 'nom-du-restaurant';
+  const slug = slugify(name) || t('slugPlaceholder');
 
   function onCountryChange(code: string) {
     setCountry(code);
@@ -58,60 +62,64 @@ export function RestaurantForm({ countries, currencies, initialCountry, initialC
   }
 
   return (
-    <form {...formProps} className="grid gap-4">
-      {state?.error && <Alert tone="error">{state.error}</Alert>}
-      {errors?.timezone && <Alert tone="error">Votre fuseau horaire n’a pas été reconnu. Rechargez la page puis réessayez.</Alert>}
-      <Field
-        id="name"
-        label="Nom du restaurant"
-        hint={`Adresse de votre menu : restio-app.com/@${slug}. Elle sera légèrement ajustée si elle est déjà prise.`}
-        error={errors?.name}
-        className="[overflow-wrap:anywhere]"
-      >
-        <TextInput name="name" autoComplete="organization" maxLength={80} value={name} onChange={(e) => setName(e.target.value)} required />
-      </Field>
-      <Field id="countryCode" label="Pays" error={errors?.countryCode}>
-        <SelectInput name="countryCode" autoComplete="country" value={country} onChange={(e) => onCountryChange(e.target.value)} required>
-          <option value="" disabled>
-            Choisissez un pays
-          </option>
-          {countries.map((c) => (
-            <option key={c.code} value={c.code}>
-              {c.name}
+    <form {...formProps} className="grid gap-[18px]">
+      {state?.error && !pending && <Toast tone="error">{state.error}</Toast>}
+      {errors?.timezone && !pending && <Toast tone="error">{t('timezoneError')}</Toast>}
+      <div className="grid items-start gap-3.5 md:grid-cols-2">
+        <Field id="name" label={t('name')} hint={t('nameHint', { slug })} error={errors?.name} className="[overflow-wrap:anywhere] md:col-span-2">
+          <TextInput name="name" autoComplete="organization" maxLength={80} value={name} onChange={(e) => setName(e.target.value)} required />
+        </Field>
+        <Field id="countryCode" label={t('country')} error={errors?.countryCode}>
+          <SelectInput name="countryCode" autoComplete="country" value={country} onChange={(e) => onCountryChange(e.target.value)} required>
+            <option value="" disabled>
+              {t('chooseCountry')}
             </option>
-          ))}
-        </SelectInput>
-      </Field>
-      <Field id="city" label="Ville" error={errors?.city}>
-        <TextInput name="city" autoComplete="address-level2" autoCapitalize="words" maxLength={80} required />
-      </Field>
-      <Field id="currency" label="Devise des prix" error={errors?.currency}>
-        <SelectInput
-          name="currency"
-          value={currency}
-          onChange={(e) => {
-            setCurrency(e.target.value);
-            setCurrencyChosen(true);
-          }}
-          required
-        >
-          <option value="" disabled>
-            Choisissez une devise
-          </option>
-          {currencies.map((c) => (
-            <option key={c.code} value={c.code}>
-              {c.name} ({c.code})
+            {countries.map((c) => (
+              <option key={c.code} value={c.code}>
+                {c.name}
+              </option>
+            ))}
+          </SelectInput>
+        </Field>
+        <Field id="city" label={t('city')} error={errors?.city}>
+          <TextInput name="city" autoComplete="address-level2" autoCapitalize="words" maxLength={80} required />
+        </Field>
+        <Field id="whatsapp" label={t('whatsapp')} error={errors?.whatsapp} className="md:col-span-2">
+          <PhoneInput name="whatsapp" dialCode={countries.find((c) => c.code === country)?.dial} autoComplete="tel-national" maxLength={40} />
+        </Field>
+        <Field id="currency" label={t('currency')} hint={t('currencyHint')} error={errors?.currency}>
+          <SelectInput
+            name="currency"
+            value={currency}
+            onChange={(e) => {
+              setCurrency(e.target.value);
+              setCurrencyChosen(true);
+            }}
+            required
+          >
+            <option value="" disabled>
+              {t('chooseCurrency')}
             </option>
-          ))}
-        </SelectInput>
-      </Field>
-      <Field id="openedOn" label="Date d’ouverture (facultatif)" hint="Laissez vide si vous ne savez plus." error={errors?.openedOn}>
-        <TextInput name="openedOn" type="date" max={today} />
-      </Field>
+            {currencies.map((c) => (
+              <option key={c.code} value={c.code}>
+                {c.name} ({c.code})
+              </option>
+            ))}
+          </SelectInput>
+        </Field>
+        <Field id="openedOn" label={t('openedOn')} hint={t('openedOnHint')} error={errors?.openedOn}>
+          <TextInput name="openedOn" type="date" max={today} />
+        </Field>
+      </div>
       <input type="hidden" name="timezone" value={timezone} />
-      <Button type="submit" variant="primary" block loading={pending} loadingText="Création…" className="mt-2">
-        Créer mon restaurant
-      </Button>
+      <div className="grid grid-cols-[auto_1fr] gap-2">
+        <Link href="/onboarding?etape=profil" className={buttonClass()}>
+          {t('back')}
+        </Link>
+        <Button type="submit" variant="primary" loading={pending} loadingText={t('loading')}>
+          {t('submit')}
+        </Button>
+      </div>
     </form>
   );
 }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ageLabel, averageAmount, dayLabel, minutesSince, moneyParts, niceMax, tableLabel, todayLabel } from './format';
+import { ageLabel, averageAmount, dayLabel, minutesSince, moneyParts, niceMax, todayLabel, type AgeMessages } from './format';
 
 describe('tableau de bord : formats', () => {
   it('calcule le panier moyen au centime, sans flottant', () => {
@@ -8,10 +8,10 @@ describe('tableau de bord : formats', () => {
     expect(averageAmount('0', 0)).toBeNull();
   });
   it('sépare la valeur et la devise', () => {
-    const p = moneyParts('96500', 'XAF');
+    const p = moneyParts('96500', 'XAF', 'fr-FR');
     expect(p.unit).toBe('FCFA');
     expect(p.value.replace(/\s/g, ' ')).toBe('96 500');
-    expect(moneyParts('12.5', 'EUR').value.replace(/\s/g, ' ')).toBe('12,50');
+    expect(moneyParts('12.5', 'EUR', 'fr-FR').value.replace(/\s/g, ' ')).toBe('12,50');
   });
   it('arrondit le haut de l’axe', () => {
     expect(niceMax(0)).toBe(1);
@@ -20,12 +20,13 @@ describe('tableau de bord : formats', () => {
     expect(niceMax(100)).toBe(100);
   });
   it('libellés de temps et de lieu', () => {
-    expect(ageLabel(minutesSince(new Date(0), 30_000))).toBe('à l’instant');
-    expect(ageLabel(6)).toBe('6 min');
-    expect(ageLabel(65)).toBe('1 h 05');
-    expect(dayLabel('2026-10-28')).toEqual({ weekday: 'Mer', date: 28 });
-    expect(todayLabel('Africa/Douala', new Date('2026-11-03T23:30:00Z'))).toBe('Mercredi 4 novembre');
-    expect(tableLabel('7')).toBe('Table 7');
-    expect(tableLabel('Terrasse 3')).toBe('Terrasse 3');
+    const age: AgeMessages = (key, v) => (key === 'minutes' ? `${v.m} min` : `${v.h} h ${v.m}`);
+    expect(minutesSince(new Date(0), 30_000)).toBe(0);
+    expect(ageLabel(6, age)).toBe('6 min');
+    expect(ageLabel(65, age)).toBe('1 h 05');
+    expect(dayLabel('2026-10-28', 'fr-FR')).toEqual({ weekday: 'Mer', date: 28 });
+    expect(dayLabel('2026-10-28', 'en')).toEqual({ weekday: 'Wed', date: 28 });
+    expect(todayLabel('Africa/Douala', 'fr-FR', new Date('2026-11-03T23:30:00Z'))).toBe('Mercredi 4 novembre');
+    expect(todayLabel('Africa/Douala', 'en', new Date('2026-11-03T23:30:00Z'))).toBe('Wednesday, November 4');
   });
 });

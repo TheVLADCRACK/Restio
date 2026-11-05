@@ -41,6 +41,11 @@ export function resolveRoute(host: string | null, rawPathname: string, { rootHos
     if (slug !== raw || pathname.endsWith('/')) return { kind: 'redirect', pathname: `/@${slug}` };
     return { kind: 'rewrite', pathname: `/m/${slug}` };
   }
+  // Parcours de commande du client : récapitulatif, puis suivi par identifiant opaque.
+  const order = /^\/@([a-z0-9-]+)\/commande(?:\/([0-9a-f-]{36}))?$/.exec(pathname);
+  if (order?.[1] && isValidSlug(order[1])) {
+    return { kind: 'rewrite', pathname: `/m/${order[1]}/commande${order[2] ? `/${order[2]}` : ''}` };
+  }
   // Tout autre chemin en « /@… » (sous-chemin, slug décodé contenant « / ») n'existe pas.
   if (pathname.startsWith('/@')) return { kind: 'not-found' };
 

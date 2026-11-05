@@ -1,19 +1,16 @@
 import type { Metadata } from 'next';
-import { BookOpen } from 'lucide-react';
-import { EmptyState } from '../_components/empty-state';
-import { PageHeader } from '../_components/page-header';
+import { getLocale, getTranslations } from 'next-intl/server';
+import { requireMembership } from '@/lib/auth/session';
+import { getMenu } from '@/lib/menu/queries';
+import { publicMenuUrl } from '../_components/public-menu';
+import { MenuWorkspace } from './menu-workspace';
 
-export const metadata: Metadata = { title: 'Menu' };
+export async function generateMetadata(): Promise<Metadata> {
+  return { title: (await getTranslations('menu'))('metaTitle') };
+}
 
-export default function MenuPage() {
-  return (
-    <>
-      <PageHeader title="Menu" subtitle="Vos catégories et vos plats." />
-      <div className="mt-6 rounded-lg border border-line bg-surface md:mt-8">
-        <EmptyState icon={BookOpen} title="Votre menu se construira ici">
-          Vous ajouterez vos catégories et vos plats, avec photo et prix, et indiquerez en un geste ce qui est épuisé.
-        </EmptyState>
-      </div>
-    </>
-  );
+export default async function MenuPage() {
+  const { restaurantId } = await requireMembership();
+  const menu = await getMenu(restaurantId, await getLocale());
+  return <MenuWorkspace menu={menu} previewHref={publicMenuUrl(menu.slug).href} />;
 }

@@ -258,3 +258,23 @@ Non vérifié : navigation au clavier et lecteur d'écran sur la planche ; rendu
 - Codes d'erreur du SDK normalisés en minuscules (`user_already_exists`, `email_not_confirmed`) : les contrôles d'anti-énumération et de reprise de vérification sont corrigés.
 - Connexion admin : la liste blanche est désormais vérifiée sur l'utilisateur renvoyé par la connexion (la session n'est lisible qu'à la requête suivante).
 - Un compte de test non vérifié (`restio-test-signup@example.invalid`) existe sur la branche de test.
+
+## Développement des écrans validés (planche v3, 4 novembre 2026)
+
+Tous les écrans de `design/board.html` validés par le propriétaire sont développés : menu et fiche plat, photos, menu public, récapitulatif et suivi client, commandes, statistiques, QR Code et supports, réglages et sous-pages, notifications, écrans d'authentification, création du restaurant, administration. Interface en français et en anglais (administration : français seul).
+
+**Règle de travail :** toute nouvelle interface passe d'abord par la planche et la validation du propriétaire, puis le code la reproduit fidèlement.
+
+**À faire avant la production :**
+- Migrations : `0002_order_customer_name.sql` et `manual/0007_admin_auth_read.sql` (droits de lecture par colonne sur `neon_auth`, rôle `restio_admin_ops` uniquement).
+- Créer le bucket public `media` sur la branche `production` et fournir les variables `AWS_*` à l'application web.
+- Variables : `PUBLIC_MENU_ORIGIN` (admin), `WHATSAPP_COMMUNITY_URL` et `HELP_CENTER_URL` (web, facultatives).
+- Le journal Drizzle de la branche de test est vide (migrations appliquées en SQL) : `drizzle-kit migrate` n'y fonctionne pas tel quel.
+
+**Écarts et limites connus :**
+- « Service ouvert » de la planche : remplacé par l'état réel du menu, faute d'horaires de service en base.
+- Suppression de compte : enregistre une demande et retire le menu ; l'exécution définitive n'est pas développée.
+- Suivi en direct par rafraîchissement périodique (8 à 15 s) et non par Neon Realtime. Notifications uniquement page ouverte : le push (PWA) reste à faire. Bilan quotidien par e-mail non développé.
+- « Épuisé aujourd'hui » : la remise en vente automatique le lendemain n'est pas développée.
+- Journée de service des commandes : bascule fixée à 5 h, heure du restaurant.
+- Suivi client par identifiant opaque (et non par numéro de commande) pour empêcher l'énumération.

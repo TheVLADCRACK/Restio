@@ -1,3 +1,31 @@
 @import 'tailwindcss';
 @import '@restio/ui/tokens.css';
 @source '../../../packages/ui/src';
+
+/* Barre latérale complète à partir de 1024 px, sauf les pages en mode rail (Commandes). */
+@custom-variant side-full {
+  @media (width >= 64rem) {
+    &:where([data-side='full'], [data-side='full'] *) {
+      @slot;
+    }
+  }
+}
+
+/* Impression d'un ticket : seul le détail de la commande sort sur papier. */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-ticket,
+  .print-ticket * {
+    visibility: visible;
+  }
+  .print-ticket {
+    position: absolute;
+    inset: 0 auto auto 0;
+    height: auto;
+    width: 80mm;
+    border: 0;
+    padding: 0;
+  }
+}

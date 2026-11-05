@@ -1,10 +1,10 @@
 import 'server-only';
-import { and, asc, desc, eq, inArray, sql } from 'drizzle-orm';
+import { and, desc, eq, sql } from 'drizzle-orm';
 import { appSchema } from '@restio/db';
 import { readDb } from '@/lib/db';
+import { mediaUrls } from '@/lib/storage';
 
 const { restaurants, orders, orderItems, dishes } = appSchema;
-const ACTIVE = ['new', 'accepted', 'preparing', 'ready'] as const;
 // Les commandes refusées ou annulées ne comptent ni dans les ventes ni dans le panier moyen.
 const COUNTED = sql`${orders.status} NOT IN ('rejected', 'cancelled')`;
 
@@ -19,14 +19,7 @@ export async function getDashboard(restaurantId: string) {
   const tz = sql`(SELECT ${restaurants.timezone} FROM ${restaurants} WHERE ${restaurants.id} = ${restaurantId})`;
   const startOfToday = sql`(date_trunc('day', now() AT TIME ZONE ${tz}) AT TIME ZONE ${tz})`;
   const startOfWeek = sql`((date_trunc('day', now() AT TIME ZONE ${tz}) - interval '6 days') AT TIME ZONE ${tz})`;
-  const activeIds = d
-    .select({ id: orders.id })
-    .from(orders)
-    .where(and(eq(orders.restaurantId, restaurantId), inArray(orders.status, [...ACTIVE])))
-    .orderBy(asc(orders.createdAt))
-    .limit(6);
-
-  const [restaurantRows, today, pending, series, active, items, topDishes, menu] = await d.batch([
+  const [restaurantRows, today, pending, series, topDishes, menu] = await d.batch([
     d
       .select({ name: restaurants.name, slug: restaurants.slug, currency: restaurants.currency, timezone: restaurants.timezone, isPublished: restaurants.isPublished })
       .from(restaurants)
@@ -48,16 +41,6 @@ export async function getDashboard(restaurantId: string) {
         AND o.status NOT IN ('rejected', 'cancelled')
       GROUP BY day ORDER BY day
     `),
-    d
-      .select({ id: orders.id, number: orders.orderNumber, table: orders.tableLabel, status: orders.status, total: orders.totalAmount, note: orders.customerNote, createdAt: orders.createdAt })
-      .from(orders)
-      .where(and(eq(orders.restaurantId, restaurantId), inArray(orders.status, [...ACTIVE])))
-      .orderBy(asc(orders.createdAt))
-      .limit(6),
-    d
-      .select({ orderId: orderItems.orderId, name: orderItems.dishName, quantity: orderItems.quantity, lineTotal: orderItems.lineTotal })
-      .from(orderItems)
-      .where(and(eq(orderItems.restaurantId, restaurantId), inArray(orderItems.orderId, activeIds))),
     d
       .select({ name: orderItems.dishName, quantity: sql<number>`sum(${orderItems.quantity})::int` })
       .from(orderItems)
@@ -81,7 +64,6 @@ export async function getDashboard(restaurantId: string) {
     today: { orders: todayRow.count, sales: todayRow.sales },
     pending: { count: pending[0]?.count ?? 0, oldest: oldest ? new Date(oldest) : null },
     salesByDay: series.rows.map((r) => ({ day: String(r.day), sales: String(r.sales), orders: Number(r.orders) })),
-    activeOrders: active.map((o) => ({ ...o, items: items.filter((i) => i.orderId === o.id) })),
     topDishes,
     menu: { dishes: menu[0]?.total ?? 0, unavailable: menu[0]?.unavailable ?? 0 },
   };
@@ -99,10 +81,10 @@ export async function getPendingCount(restaurantId: string): Promise<number> {
 /** Nom et adresse publique, pour l'en-tête et la barre latérale. */
 export async function getRestaurantSummary(restaurantId: string) {
   const [row] = await readDb()
-    .select({ name: restaurants.name, slug: restaurants.slug, isPublished: restaurants.isPublished })
+    .select({ name: restaurants.name, slug: restaurants.slug, isPublished: restaurants.isPublished, logoKey: restaurants.logoKey })
     .from(restaurants)
     .where(eq(restaurants.id, restaurantId))
     .limit(1);
   if (!row) throw new Error('restaurant not found for membership');
-  return row;
+  return { name: row.name, slug: row.slug, isPublished: row.isPublished, logoUrl: row.logoKey ? mediaUrls(row.logoKey).thumb : null };
 }

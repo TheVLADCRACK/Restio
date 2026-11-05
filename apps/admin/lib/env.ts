@@ -7,6 +7,8 @@ const schema = z.object({
   NEON_AUTH_BASE_URL: z.string().url(),
   NEON_AUTH_COOKIE_SECRET: z.string().min(32),
   IP_HASH_SALT: z.string().min(32),
+  // Origine du site public, pour le lien « Voir le menu public ».
+  PUBLIC_MENU_ORIGIN: z.url().default('https://restio-app.com'),
   ADMIN_ALLOWED_EMAILS: z
     .string()
     .min(3)

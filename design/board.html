@@ -257,7 +257,7 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
 @keyframes pulse { from { opacity: 1; } to { opacity: .55; } }
 
 /* Toast */
-.toast { display: flex; gap: 12px; align-items: center; background: var(--ink); color: #fff; padding: 12px 14px 12px 16px; border-radius: var(--r-md); box-shadow: var(--shadow-2); max-width: 420px; }
+.toast { display: flex; gap: 12px; align-items: center; background: var(--ink); color: #fff; padding: 12px 10px 12px 16px; border-radius: var(--r-md); box-shadow: var(--shadow-2); max-width: 384px; }
 .toast .dot { width: 28px; height: 28px; border-radius: 50%; background: var(--lime); color: var(--ink); display: grid; place-items: center; flex: 0 0 auto; }
 .toast .dot [data-lucide] { width: 16px; height: 16px; stroke-width: 2.25; }
 .toast p { font-size: 15px; }
@@ -266,7 +266,6 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
 .toast .btn:hover { --bg: var(--ink-2); }
 .toast.err .dot { background: var(--danger); color: #fff; }
 
-.demo-tag { position: absolute; z-index: 3; font-size: 12px; font-weight: 700; background: rgba(15,15,15,.72); color: #fff; padding: 4px 10px; border-radius: var(--r-pill); }
 .pastille { position: absolute; top: 4px; right: 4px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: var(--r-pill); background: var(--danger); color: #fff; font-size: 12px; font-weight: 700; display: grid; place-items: center; border: 2px solid var(--ground); }
 .tab { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 14px; border-radius: var(--r-pill); border: 1px solid var(--line-strong); background: var(--surface); font-weight: 700; font-size: 14px; cursor: pointer; }
 .tab em { font-style: normal; font-size: 12px; min-width: 22px; height: 22px; padding: 0 6px; border-radius: var(--r-pill); background: var(--sunken); display: grid; place-items: center; }
@@ -513,7 +512,6 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
 .auth-visual { position: relative; border-radius: var(--r-lg); overflow: hidden; background: var(--ink); }
 .auth-visual > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .auth-visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,15,15,.15) 0%, rgba(15,15,15,.25) 40%, rgba(15,15,15,.92) 78%); }
-.auth-visual .demo-tag { top: 20px; left: 20px; }
 .auth-visual .float { position: absolute; z-index: 2; top: 76px; right: 40px; width: 320px; display: grid; gap: 10px; }
 .auth-visual .float .ticket { box-shadow: var(--shadow-2); border-color: transparent; }
 .auth-visual .promise { position: absolute; z-index: 2; left: 44px; right: 44px; bottom: 40px; color: #fff; display: grid; gap: 18px; }
@@ -588,7 +586,6 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
 .wl-photo img { width: 100%; height: 100%; object-fit: cover; }
 .wl-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,15,15,.55) 0%, rgba(15,15,15,0) 30%); }
 .wl-photo .brand { position: absolute; z-index: 2; top: 40px; left: 12px; color: #fff; }
-.wl-photo .demo-tag { top: 46px; right: 16px; }
 .wl-sheet { flex: 1; margin-top: -28px; position: relative; z-index: 2; background: var(--surface); border-radius: 28px 28px 0 0; padding: 26px 20px 18px; display: flex; flex-direction: column; gap: 14px; text-align: center; }
 .wl-sheet h1 { font-size: 26px; font-weight: 700; letter-spacing: -.02em; line-height: 1.15; }
 .wl-sheet > p { color: var(--text-2); font-size: 15px; margin-top: -6px; }
@@ -610,7 +607,6 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
 /* Menu public (clair) */
 .pm-banner { position: relative; padding: 8px 12px 0; }
 .pm-banner img { width: 100%; height: 184px; object-fit: cover; border-radius: var(--r-lg); }
-.pm-banner .demo-tag { top: 20px; left: 24px; }
 .pm-id { padding: 16px 16px 14px; }
 .pm-id h1 { font-size: 26px; font-weight: 700; letter-spacing: -.02em; line-height: 1.15; }
 .pm-id .meta { color: var(--text-2); font-size: 15px; margin-top: 2px; }
@@ -652,7 +648,6 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
 .pubd .col { max-width: 720px; margin: 0 auto; padding: 24px 0 140px; }
 .pubd .pm-banner { padding: 0; }
 .pubd .pm-banner img { height: 200px; border-radius: var(--r-xl); }
-.pubd .pm-banner .demo-tag { top: 16px; left: 16px; }
 .pubd .pm-id { padding: 24px 0 16px; }
 .pubd .pm-id h1 { font-size: 34px; }
 .pubd .pm-search, .pubd .pm-cats { margin-inline: 0; padding-inline: 0; }
@@ -676,6 +671,382 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
 .states > div { display: grid; grid-template-columns: 96px 1fr; gap: 12px; align-items: center; font-size: 14px; color: var(--text-2); }
 .states .btn { justify-self: start; }
 
+/* ================= Ajouts v3 ================= */
+.s8 { grid-column: span 8; }
+.sub-h { margin-top: 48px; }
+.sub-h h3 { font-size: 22px; font-weight: 700; letter-spacing: -.015em; }
+.sub-h p { color: var(--text-2); margin-top: 4px; max-width: 70ch; }
+.anchor, section.block { scroll-margin-top: 16px; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 700; text-decoration: none; color: var(--ink); justify-self: start; }
+.back-link [data-lucide] { width: 18px; height: 18px; }
+.su-steps { display: flex; align-items: center; gap: 12px; }
+.su-steps .steps { width: 120px; display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.su-steps .steps i { height: 6px; border-radius: var(--r-pill); background: var(--sunken); }
+.su-steps .steps i.on { background: var(--ink); }
+.su-steps span { font-size: 14px; color: var(--text-2); font-weight: 500; }
+.lang-pop { position: absolute; z-index: 6; top: 46px; right: 0; width: 200px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); box-shadow: var(--shadow-2); padding: 6px; display: grid; }
+.lang-pop button { display: flex; align-items: center; justify-content: space-between; height: 40px; padding: 0 10px; border: 0; border-radius: 10px; background: none; font-size: 15px; font-weight: 500; cursor: pointer; text-align: left; }
+.lang-pop button:hover { background: var(--sunken); }
+.lang-pop button[aria-checked="true"] { font-weight: 700; background: var(--lime-soft); }
+.lang-pop [data-lucide] { width: 18px; height: 18px; }
+.pre .suf { padding: 0 14px 0 8px; color: var(--text-2); font-weight: 500; }
+.m-form .fgrid, .su-form .fgrid { grid-template-columns: 1fr; }
+.m-row > .ic { width: 36px; height: 36px; border-radius: var(--r-sm); background: var(--sunken); display: grid; place-items: center; flex: 0 0 auto; }
+.m-row > .ic [data-lucide] { width: 18px; height: 18px; }
+.av-c { width: 36px; height: 36px; border-radius: 50%; background: var(--sunken); display: grid; place-items: center; font-weight: 700; font-size: 13px; flex: 0 0 auto; }
+.av-c.lg { width: 52px; height: 52px; font-size: 17px; }
+.m-head + .scr .su-form { padding-top: 0; }
+.upl .row { flex-wrap: nowrap; }
+.m-form .upl img, .m-form .upl .ph { width: 80px; height: 80px; }
+.m-form .upl { gap: 12px; }
+.m-menu { padding-bottom: 84px; }
+.tcell .r-mono, .tcell .av-c { display: grid; }
+.adm-auth .toast, .phone-frame .tz-mob .toast { box-shadow: 0 0 0 1px #3A3A38, var(--shadow-2); }
+.auth-form form h1 + p, .su-form h1 + p, .adm-card h1 + p, .adm-sheet h1 + p { color: var(--text-2); margin-top: 6px; }
+.fgrid { align-items: start; }
+.fsec > h2 + .trow, .m-card > h2 + .trow { border-top: 0; padding-top: 0; }
+.stats-k .kpi-val { font-size: 30px; white-space: nowrap; }
+.stats-k .kpi-val small { font-size: 16px; }
+/* Toast : temporaire, fermable, barre de temps */
+.toast { position: relative; overflow: hidden; }
+.toast .x { margin-left: auto; width: 32px; height: 32px; flex: 0 0 auto; border: 0; border-radius: 50%; background: none; color: var(--on-dark-2); display: grid; place-items: center; cursor: pointer; }
+.toast .x:hover { background: var(--ink-2); color: #fff; }
+.toast .x:focus-visible { outline-color: var(--lime); }
+.toast .x [data-lucide] { width: 18px; height: 18px; }
+.toast .btn + .x { margin-left: 0; }
+.toast .tbar { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(255,255,255,.4); transform-origin: left; animation: tdrain 6s linear forwards; }
+.toast:hover .tbar, .toast:focus-within .tbar { animation-play-state: paused; }
+.toast.frozen .tbar { animation: none; transform: scaleX(.62); }
+@keyframes tdrain { to { transform: scaleX(0); } }
+.toast-in { animation: tin 260ms var(--ease) both; }
+.toast-out { animation: tout 200ms var(--ease) both; }
+@keyframes tin { from { opacity: 0; transform: translateY(-8px); } }
+@keyframes tout { to { opacity: 0; transform: translateY(-8px); } }
+.tz-desk { position: absolute; z-index: 8; top: 24px; right: 24px; width: 384px; display: grid; gap: 8px; }
+.tz-mob { position: absolute; z-index: 8; top: 34px; left: 10px; right: 10px; display: grid; gap: 8px; }
+.tz-mob .toast { max-width: none; }
+.toaster { position: fixed; z-index: 50; top: 24px; right: 24px; width: min(384px, calc(100vw - 32px)); display: grid; gap: 8px; }
+@media (max-width: 560px) { .toaster { top: max(16px, env(safe-area-inset-top)); left: 16px; right: 16px; margin-inline: auto; } }
+.place { display: grid; gap: 10px; margin-top: 14px; font-size: 14px; color: var(--text-2); }
+.place div { display: flex; gap: 10px; align-items: flex-start; }
+.place [data-lucide] { width: 18px; height: 18px; margin-top: 2px; color: var(--ink); }
+
+/* Commandes terminées : grisées mais lisibles */
+.ticket.is-done { background: var(--ground); border-style: dashed; }
+.ticket.is-done .ticket-id b, .ticket.is-done ul, .ticket.is-done .ticket-total { color: var(--text-2); }
+.ticket.is-done .ticket-total { border-top-color: var(--line); }
+.ticket.is-refused .ticket-id b { text-decoration: line-through; text-decoration-color: var(--text-3); }
+.done-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start; }
+.done-note { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-2); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: 10px 14px; }
+.done-note [data-lucide] { width: 18px; height: 18px; color: var(--ink); }
+.list .done-note { margin: 0; }
+
+/* Champs : zone de texte, liste, préfixe, options, OTP */
+textarea.input { height: auto; min-height: 104px; padding: 12px 14px; line-height: 1.5; resize: vertical; }
+.sel { position: relative; }
+.sel > [data-lucide] { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--text-3); pointer-events: none; }
+.sel select.input { appearance: none; -webkit-appearance: none; padding-right: 42px; cursor: pointer; }
+.pre { display: flex; align-items: center; height: var(--control-h); border: 1px solid var(--line-strong); border-radius: var(--r-md); background: var(--surface); overflow: hidden; }
+.pre:focus-within { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(15,15,15,.12); }
+.pre > span { padding-left: 14px; color: var(--text-2); white-space: nowrap; }
+.pre .input { border: 0; box-shadow: none !important; padding-left: 1px; height: 100%; border-radius: 0; }
+.ok-msg { display: flex; gap: 6px; align-items: center; font-size: 13px; color: var(--ok); font-weight: 700; }
+.ok-msg [data-lucide] { width: 16px; height: 16px; }
+.opts { display: grid; gap: 8px; }
+.opt { display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 10px 16px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); cursor: pointer; }
+.opt:hover { border-color: var(--line-strong); }
+.opt:has(input:checked) { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
+.opt input { width: 20px; height: 20px; margin: 0; accent-color: var(--ink); flex: 0 0 auto; }
+.opt div { flex: 1; min-width: 0; }
+.opt b { display: block; font-weight: 700; font-size: 16px; }
+.opt span { display: block; font-size: 14px; color: var(--text-2); }
+.opt.is-off { opacity: .55; cursor: not-allowed; }
+.otp { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.otp .input { height: 56px; padding: 0; text-align: center; font-size: 22px; font-weight: 700; }
+.resend { font-size: 14px; color: var(--text-2); text-align: center; }
+.resend b { color: var(--ink); }
+.trow { display: flex; align-items: center; gap: 16px; padding: 14px 0; border-top: 1px solid var(--line); }
+.trow:first-child { border-top: 0; padding-top: 0; }
+.trow > div { flex: 1; min-width: 0; }
+.trow b { display: block; font-weight: 500; font-size: 16px; }
+.trow > div > span { display: block; font-size: 14px; color: var(--text-2); }
+.upl { display: flex; align-items: center; gap: 16px; }
+.upl img, .upl .ph { width: 96px; height: 96px; border-radius: var(--r-md); object-fit: cover; flex: 0 0 auto; }
+.upl .ph { border: 1.5px dashed var(--line-strong); }
+.upl .ph [data-lucide] { width: 24px; height: 24px; }
+.upl > div { display: grid; gap: 8px; min-width: 0; }
+.upl .row { margin: 0; gap: 8px; }
+.upl p { font-size: 13px; color: var(--text-2); }
+.cover { position: relative; }
+.cover img { width: 100%; height: 160px; object-fit: cover; border-radius: var(--r-md); }
+.cover .btn { position: absolute; right: 10px; bottom: 10px; }
+.counter { font-size: 13px; color: var(--text-3); text-align: right; margin-top: -2px; }
+
+/* Sous-pages de réglages (bureau) */
+.crumb { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-2); margin-bottom: 6px; }
+.crumb a { color: var(--text-2); text-decoration: none; font-weight: 500; }
+.crumb a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.crumb [data-lucide] { width: 14px; height: 14px; }
+.set-split { display: grid; grid-template-columns: 280px minmax(0, 760px); gap: 24px; align-items: start; }
+.set-nav { padding: 10px; display: grid; gap: 2px; }
+.set-nav p { font-size: 13px; font-weight: 500; color: var(--text-3); padding: 12px 10px 6px; }
+.set-nav p:first-child { padding-top: 4px; }
+.set-nav a { display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 10px; border-radius: 12px; text-decoration: none; color: var(--text-2); font-size: 15px; font-weight: 500; }
+.set-nav a:hover { background: var(--sunken); color: var(--ink); }
+.set-nav a[aria-current="page"] { background: var(--lime-soft); color: var(--ink); font-weight: 700; }
+.set-nav a [data-lucide] { width: 18px; height: 18px; }
+.form-card { padding: 0; overflow: hidden; }
+.fsec { padding: 24px; display: grid; gap: 16px; border-top: 1px solid var(--line); }
+.fsec:first-child { border-top: 0; }
+.fsec > h2 { font-size: 17px; font-weight: 700; }
+.fsec > h2 + p { font-size: 14px; color: var(--text-2); margin-top: -10px; }
+.fgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.fgrid .full { grid-column: 1 / -1; }
+.save-bar { display: flex; align-items: center; justify-content: flex-end; gap: 8px; padding: 16px 24px; border-top: 1px solid var(--line); background: var(--ground); }
+.save-bar .left { margin-right: auto; font-size: 14px; color: var(--text-2); }
+.warn { display: flex; gap: 10px; padding: 12px 14px; border-radius: var(--r-md); background: var(--new-bg); color: var(--new); font-size: 14px; font-weight: 500; }
+.warn [data-lucide] { width: 18px; height: 18px; margin-top: 1px; }
+.info-box { display: flex; gap: 10px; padding: 12px 14px; border-radius: var(--r-md); background: var(--ground); color: var(--text-2); font-size: 14px; }
+.info-box [data-lucide] { width: 18px; height: 18px; margin-top: 1px; color: var(--ink); }
+.url-box { display: flex; align-items: center; gap: 10px; padding: 6px 6px 6px 14px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--ground); font-size: 15px; font-weight: 500; }
+.url-box span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dev { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+.dev:first-of-type { border-top: 0; }
+.dev .ic { width: 40px; height: 40px; border-radius: var(--r-sm); background: var(--sunken); display: grid; place-items: center; flex: 0 0 auto; }
+.dev div { flex: 1; min-width: 0; }
+.dev b { display: block; font-weight: 500; }
+.dev span { font-size: 14px; color: var(--text-2); }
+
+/* Écrans mobiles secondaires */
+.m-head { flex: 0 0 auto; display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; align-items: center; height: 52px; padding: 0 4px; }
+.m-head h1 { text-align: center; font-size: 17px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.m-head .end { justify-self: end; }
+.m-head .txt-btn { font-size: 15px; font-weight: 700; background: none; border: 0; padding: 0 8px; height: 44px; cursor: pointer; white-space: nowrap; }
+.m-form { padding: 4px 16px 24px; display: grid; gap: 16px; align-content: start; }
+.m-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 16px; display: grid; gap: 14px; }
+.m-card > h2 { font-size: 15px; font-weight: 700; }
+.m-save { flex: 0 0 auto; padding: 12px 16px 16px; background: var(--surface); border-top: 1px solid var(--line); display: grid; gap: 8px; }
+.m-sub { font-size: 14px; color: var(--text-2); padding: 0 4px; }
+.m-grp { font-size: 14px; font-weight: 500; color: var(--text-2); padding: 0 4px; margin-bottom: -8px; }
+
+/* Panneaux : tiroir, fenêtre, feuille mobile */
+.rel { position: relative; }
+.scrim { position: absolute; inset: 0; z-index: 4; background: rgba(15,15,15,.45); }
+.drawer { position: absolute; z-index: 5; top: 0; right: 0; bottom: 0; width: 520px; background: var(--surface); display: flex; flex-direction: column; box-shadow: -12px 0 32px rgba(15,15,15,.14); }
+.drawer-head { display: flex; align-items: center; gap: 12px; padding: 20px 24px; border-bottom: 1px solid var(--line); }
+.drawer-head h2 { font-size: 22px; font-weight: 700; letter-spacing: -.01em; }
+.drawer-head .btn { margin-left: auto; }
+.drawer-body { flex: 1; overflow: hidden; padding: 24px; display: grid; gap: 18px; align-content: start; }
+.drawer-foot { display: flex; gap: 8px; padding: 16px 24px; border-top: 1px solid var(--line); }
+.drawer-foot .danger { margin-right: auto; padding-inline: 12px; }
+.modal { position: absolute; z-index: 5; left: 50%; top: 96px; transform: translateX(-50%); width: 560px; background: var(--surface); border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--shadow-2); }
+.sheet { position: absolute; z-index: 5; left: 0; right: 0; bottom: 0; max-height: 90%; background: var(--surface); border-radius: 28px 28px 0 0; display: flex; flex-direction: column; overflow: hidden; }
+.grab { width: 40px; height: 5px; border-radius: var(--r-pill); background: var(--line-strong); margin: 8px auto 0; flex: 0 0 auto; }
+.dd-img { position: relative; }
+.dd-img img { width: 100%; height: 220px; object-fit: cover; }
+.dd-img .btn { position: absolute; top: 12px; right: 12px; --bg: rgba(255,255,255,.92); --bd: transparent; }
+.dd-body { padding: 18px 20px; display: grid; gap: 14px; }
+.dd-body h2 { font-size: 24px; font-weight: 700; letter-spacing: -.02em; line-height: 1.15; }
+.dd-body > p { color: var(--text-2); font-size: 15px; }
+.dd-body .price { font-size: 20px; font-weight: 700; }
+.dd-foot { display: flex; align-items: center; gap: 12px; padding: 12px 20px 16px; border-top: 1px solid var(--line); }
+.dd-foot .btn-primary { flex: 1; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; border-radius: var(--r-pill); background: var(--sunken); font-size: 13px; font-weight: 700; }
+.chip [data-lucide] { width: 14px; height: 14px; }
+.chip.warn-c { background: var(--new-bg); color: var(--new); }
+
+/* Menu mobile */
+.cat-strip { display: flex; gap: 6px; padding: 0 16px 12px; overflow-x: auto; scrollbar-width: none; }
+.cat-strip::-webkit-scrollbar { display: none; }
+.m-menu { padding: 0 12px 16px; display: grid; gap: 8px; }
+.m-menu h2 { font-size: 15px; font-weight: 700; padding: 8px 4px 0; display: flex; justify-content: space-between; }
+.m-menu h2 span { font-weight: 500; color: var(--text-2); }
+.fab { position: absolute; z-index: 3; right: 16px; bottom: 92px; height: 56px; padding: 0 22px; box-shadow: var(--shadow-2); }
+
+/* Statistiques */
+.hours { display: grid; grid-template-columns: repeat(13, minmax(0, 1fr)); gap: 10px; align-items: end; height: 168px; margin-top: 24px; padding: 0 4px; border-bottom: 1px solid var(--line-strong); }
+.hours i { display: block; background: var(--ink-2); border-radius: 8px 8px 3px 3px; }
+.hours i.peak { background: var(--lime); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.hours-x { display: grid; grid-template-columns: repeat(13, minmax(0, 1fr)); gap: 10px; padding: 8px 4px 0; font-size: 12px; color: var(--text-3); text-align: center; }
+.facts { list-style: none; margin: 14px 0 0; padding: 0; display: grid; }
+.facts li { display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.facts li:first-child { border-top: 0; }
+.facts .ic { width: 36px; height: 36px; border-radius: var(--r-sm); background: var(--sunken); display: grid; place-items: center; flex: 0 0 auto; }
+.facts .ic [data-lucide] { width: 18px; height: 18px; }
+.facts b { display: block; }
+.facts span { color: var(--text-2); font-size: 14px; }
+.ranks .amt { grid-column: 2; font-size: 13px; color: var(--text-2); }
+.m-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 0 12px; }
+.m-kpi { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 12px 14px; display: grid; gap: 4px; }
+.m-kpi span { font-size: 13px; color: var(--text-2); }
+.m-kpi b { font-size: 22px; font-weight: 700; letter-spacing: -.02em; white-space: nowrap; }
+.m-kpi b small { font-size: 13px; font-weight: 500; color: var(--text-3); margin-left: 3px; }
+.m-kpi em { font-style: normal; font-size: 12px; font-weight: 700; color: var(--ok); }
+.m-kpi.is-ink { background: var(--ink); border-color: var(--ink); color: #fff; }
+.m-kpi.is-ink span { color: var(--on-dark-2); }
+.m-seg { padding: 0 12px 12px; }
+.m-seg .seg { display: grid; grid-template-columns: repeat(3, 1fr); }
+.kv.pad { padding: 14px; }
+.mini-bars { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; align-items: end; height: 120px; }
+.mini-bars i { display: block; background: var(--ink-2); border-radius: 6px 6px 2px 2px; }
+.mini-bars i.now { background: var(--lime); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.mini-x { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; font-size: 11px; color: var(--text-3); text-align: center; margin-top: 6px; }
+.mini-hours { display: grid; grid-template-columns: repeat(13, 1fr); gap: 4px; align-items: end; height: 80px; }
+.mini-hours i { display: block; background: var(--ink-2); border-radius: 4px 4px 2px 2px; }
+.mini-hours i.peak { background: var(--lime); box-shadow: inset 0 0 0 1.5px var(--ink); }
+
+/* QR Code */
+.qr-split { display: grid; grid-template-columns: 420px minmax(0, 1fr); gap: 24px; align-items: start; }
+.qr-card { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.qr-big { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; display: grid; place-items: center; }
+.qr-big svg { width: 100%; max-width: 300px; height: auto; display: block; }
+.qr-svg .logo-bg { fill: #fff; }
+.dl2 { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+.sup-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+.sup { display: grid; gap: 10px; padding: 12px; border: 1px solid var(--line); border-radius: var(--r-lg); cursor: pointer; background: var(--surface); text-align: left; font: inherit; }
+.sup[aria-pressed="true"] { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
+.sup b { font-size: 15px; display: flex; justify-content: space-between; align-items: center; }
+.sup b [data-lucide] { width: 18px; height: 18px; }
+.sup span { font-size: 13px; color: var(--text-2); }
+.sup-art { height: 190px; border-radius: var(--r-md); background: var(--ground); display: grid; place-items: center; }
+.tent { width: 112px; background: var(--ink); color: #fff; border-radius: 10px; padding: 12px 10px; display: grid; justify-items: center; gap: 6px; text-align: center; box-shadow: var(--shadow-1); }
+.tent .q { width: 72px; height: 72px; background: #fff; border-radius: 6px; padding: 4px; }
+.tent .q svg { width: 100%; height: 100%; }
+.tent b { font-size: 10px; line-height: 1.2; color: var(--lime); }
+.tent small { font-size: 9px; color: var(--on-dark-2); }
+.tent.sq { width: 104px; border-radius: 14px; }
+.tent.a4 { width: 120px; padding: 16px 12px; background: #fff; color: var(--ink); border: 1px solid var(--line); }
+.tent.a4 b { color: var(--ink); font-size: 11px; }
+.tent.a4 small { color: var(--text-2); }
+.tables { display: flex; flex-wrap: wrap; gap: 6px; }
+.tables .chip { background: var(--surface); border: 1px solid var(--line-strong); }
+.tables .chip.add { border-style: dashed; color: var(--text-2); }
+.m-qr { margin: 0 12px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 16px; display: grid; gap: 12px; }
+.m-qr > .qr-svg { width: 210px; height: 210px; justify-self: center; }
+.m-qr > .slug { justify-self: center; margin-bottom: 4px; }
+
+/* Notifications */
+.npop { position: absolute; z-index: 6; top: 92px; right: 32px; width: 400px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-2); overflow: hidden; }
+.npop-head { display: flex; align-items: center; gap: 8px; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+.npop-head h2 { font-size: 17px; font-weight: 700; }
+.npop-head .btn { margin-left: auto; }
+.nlist { list-style: none; margin: 0; padding: 0; }
+.nitem { position: relative; display: grid; grid-template-columns: 36px minmax(0, 1fr) auto; gap: 12px; padding: 14px 16px; border-top: 1px solid var(--line); }
+.nlist .nitem:first-child { border-top: 0; }
+.nitem .ic { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--sunken); }
+.nitem .ic [data-lucide] { width: 18px; height: 18px; }
+.nitem.new-o .ic { background: var(--new-bg); color: var(--new); }
+.nitem.alert-o .ic { background: var(--danger-bg); color: var(--danger); }
+.nitem b { display: block; font-size: 15px; font-weight: 700; }
+.nitem p { font-size: 14px; color: var(--text-2); }
+.nitem time { font-size: 13px; color: var(--text-3); white-space: nowrap; }
+.nitem.unread::after { content: ""; position: absolute; right: 16px; bottom: 18px; width: 8px; height: 8px; border-radius: 50%; background: var(--danger); }
+.nitem:not(.unread) b { font-weight: 500; }
+.ngrp { font-size: 13px; font-weight: 500; color: var(--text-3); padding: 12px 16px 4px; background: var(--ground); border-top: 1px solid var(--line); }
+.npop-foot { display: flex; justify-content: center; padding: 12px; border-top: 1px solid var(--line); }
+.npop-foot a { font-size: 14px; font-weight: 700; text-decoration: none; display: inline-flex; gap: 6px; align-items: center; }
+.npop-foot [data-lucide] { width: 16px; height: 16px; }
+.m-notif { background: var(--surface); border-block: 1px solid var(--line); }
+
+/* Onboarding */
+.ob { height: 900px; background: var(--ground); display: grid; grid-template-rows: auto 1fr; }
+.ob-top { display: flex; align-items: center; gap: 16px; padding: 24px 40px; }
+.ob-top .steps { width: 240px; margin-left: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.ob-top .steps i { height: 6px; border-radius: var(--r-pill); background: var(--line-strong); }
+.ob-top .steps i.on { background: var(--ink); }
+.ob-top span.num { font-size: 14px; color: var(--text-2); font-weight: 500; }
+.ob-card { width: 560px; margin: 24px auto 0; align-self: start; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-xl); padding: 32px; display: grid; gap: 18px; }
+.ob-card h1 { font-size: 30px; font-weight: 700; letter-spacing: -.02em; line-height: 1.15; }
+.ob-card > div:first-child p { color: var(--text-2); margin-top: 6px; }
+.ob-card .fgrid { gap: 14px; }
+
+/* Commande client */
+.ord-line { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line); }
+.ord-line:first-child { border-top: 0; }
+.ord-line img { width: 56px; height: 56px; border-radius: var(--r-sm); object-fit: cover; }
+.ord-line b { display: block; font-size: 15px; }
+.ord-line span { font-size: 14px; color: var(--text-2); }
+.ord-line .qc button { width: 40px; height: 40px; }
+.ord-line .qc button span { width: 30px; height: 30px; }
+.sum { display: grid; gap: 8px; font-size: 15px; }
+.sum div { display: flex; justify-content: space-between; }
+.sum .tot { font-weight: 700; font-size: 18px; padding-top: 10px; border-top: 1px dashed var(--line-strong); }
+.table-tag { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: var(--r-md); background: var(--lime-soft); }
+.table-tag [data-lucide] { width: 20px; height: 20px; }
+.table-tag b { display: block; }
+.table-tag span { font-size: 13px; color: var(--text-2); }
+.track-hero { display: grid; justify-items: center; text-align: center; gap: 8px; padding: 8px 0 4px; }
+.track-hero .ok-dot { width: 64px; height: 64px; border-radius: 50%; background: var(--lime); border: 2px solid var(--ink); display: grid; place-items: center; }
+.track-hero .ok-dot [data-lucide] { width: 30px; height: 30px; stroke-width: 2.25; }
+.track-hero h2 { font-size: 24px; font-weight: 700; letter-spacing: -.02em; }
+.track-hero p { color: var(--text-2); font-size: 15px; }
+.pubd.page .col { padding-bottom: 40px; }
+.pcard { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; display: grid; gap: 14px; }
+.pcard > h2 { font-size: 18px; font-weight: 700; }
+.pay-note { display: flex; gap: 10px; font-size: 14px; color: var(--text-2); }
+.pay-note [data-lucide] { width: 18px; height: 18px; color: var(--ink); }
+
+/* Administration */
+.adm-tag { height: 22px; padding: 0 8px; border-radius: var(--r-pill); background: var(--ink); color: var(--lime); font-size: 11px; font-weight: 900; letter-spacing: .04em; display: inline-grid; place-items: center; text-transform: uppercase; }
+.side .adm-who { margin-top: auto; background: var(--ground); border-radius: var(--r-lg); padding: 14px; display: grid; gap: 12px; }
+.adm-who .who { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.adm-who .av { width: 40px; height: 40px; border-radius: 50%; background: var(--sunken); display: grid; place-items: center; font-weight: 700; flex: 0 0 auto; }
+.adm-who b { display: block; font-size: 15px; }
+.adm-who span { font-size: 13px; color: var(--text-2); }
+.tbl-card { padding: 0; overflow: hidden; }
+.tbl-tools { display: flex; align-items: center; gap: 8px; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+.tbl-tools .search-in { width: 320px; }
+.tbl-tools .end { margin-left: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; }
+.tbl th { text-align: left; font-size: 13px; font-weight: 500; color: var(--text-2); background: var(--ground); padding: 10px 20px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.tbl td { padding: 12px 20px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.tbl tr:last-child td { border-bottom: 0; }
+.tbl .r { text-align: right; }
+.tbl .mut { color: var(--text-2); font-size: 14px; }
+.tcell { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.tcell b { display: block; font-weight: 700; }
+.tcell span { display: block; font-size: 13px; color: var(--text-2); }
+.r-mono.sm { width: 36px; height: 36px; border-radius: 10px; font-size: 15px; }
+.pager { display: flex; align-items: center; gap: 8px; padding: 12px 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--text-2); }
+.pager .btn:first-of-type { margin-left: auto; }
+.adm-auth { height: 900px; background: var(--ink); display: grid; place-items: center; align-content: center; gap: 28px; }
+.adm-auth .brand { color: #fff; }
+.adm-card { width: 440px; background: var(--surface); border-radius: var(--r-xl); padding: 32px; display: grid; gap: 18px; }
+.adm-card h1 { font-size: 30px; font-weight: 700; letter-spacing: -.02em; }
+.adm-card > div:first-child p { color: var(--text-2); margin-top: 4px; }
+.adm-card .alt { text-align: center; font-size: 15px; }
+.adm-card .alt a { color: var(--text-2); font-weight: 700; text-underline-offset: 3px; }
+.adm-mob-top { height: 200px; flex: 0 0 auto; background: var(--ink); padding: 40px 20px 0; }
+.adm-mob-top .brand { color: #fff; padding: 0; }
+.adm-sheet { flex: 1; margin-top: -28px; background: var(--surface); border-radius: 28px 28px 0 0; padding: 26px 20px 18px; display: flex; flex-direction: column; gap: 16px; position: relative; z-index: 2; }
+.adm-sheet h1 { font-size: 28px; font-weight: 700; letter-spacing: -.02em; }
+.adm-sheet > div:first-child p { color: var(--text-2); margin-top: 4px; }
+.adm-sheet .alt { text-align: center; font-size: 14px; }
+.adm-sheet .alt a { color: var(--text-2); font-weight: 700; }
+.adm-sheet .copy { margin-top: auto; text-align: center; font-size: 13px; color: var(--text-2); }
+.adm-head { background: var(--ink); color: #fff; }
+.adm-head .brand { color: #fff; }
+.tabbar.c4 { grid-template-columns: repeat(4, 1fr); }
+.m-rows { margin: 0 12px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; }
+.m-row { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-top: 1px solid var(--line); text-decoration: none; color: var(--ink); }
+.m-row:first-child { border-top: 0; }
+.m-row div { flex: 1; min-width: 0; }
+.m-row b { display: block; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.m-row div > span { display: block; font-size: 13px; color: var(--text-2); }
+.m-row .chev { width: 18px; height: 18px; color: var(--text-3); }
+.m-search { display: block; position: relative; margin: 0 12px 12px; }
+.m-search > [data-lucide] { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--text-3); }
+.m-search .input { height: 44px; padding-left: 42px; border-radius: var(--r-pill); }
+.log { list-style: none; margin: 0; padding: 0; display: grid; }
+.log li { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 10px 0; border-top: 1px solid var(--line); font-size: 14px; }
+.log li:first-child { border-top: 0; }
+.log li span { color: var(--text-2); grid-column: 1; }
+.log time { color: var(--text-3); grid-row: 1 / span 2; grid-column: 2; font-size: 13px; }
+.kvl { display: grid; grid-template-columns: 140px 1fr; gap: 10px 16px; font-size: 15px; }
+.kvl dt { color: var(--text-2); }
+.kvl dd { margin: 0; font-weight: 500; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+
 .foot { padding: 48px 0 64px; color: var(--text-2); font-size: 14px; }
 .foot .wrap { display: grid; gap: 6px; }
 
@@ -690,10 +1061,10 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
 <header class="board-head">
   <div class="wrap">
     <div class="logo"><img src="../packages/ui/brand/restio-mark-white.png" alt="" width="36" height="36">
-      <div><h1>Restio — planche de validation v2</h1><p>Thème clair · bureau et mobile · 3 novembre 2026</p></div>
+      <div><h1>Restio — planche de validation v3</h1><p>Thème clair · bureau et mobile · 3 novembre 2026</p></div>
     </div>
     <nav aria-label="Sections de la planche">
-      <a href="#tableau-de-bord">Tableau de bord</a><a href="#commandes">Commandes</a><a href="#menu">Menu</a><a href="#reglages">Réglages</a><a href="#connexion">Connexion</a><a href="#menu-public">Menu public</a><a href="#bouton-citron">Bouton citron</a><a href="#couleurs">Couleurs</a><a href="#typo">Typographie</a><a href="#composants">Composants</a>
+      <a href="#tableau-de-bord">Tableau de bord</a><a href="#notifications">Notifications</a><a href="#commandes">Commandes</a><a href="#menu">Menu</a><a href="#statistiques">Statistiques</a><a href="#qr-code">QR Code</a><a href="#reglages">Réglages</a><a href="#connexion">Connexion</a><a href="#onboarding">Création</a><a href="#menu-public">Menu public</a><a href="#commande-client">Commande client</a><a href="#admin">Admin</a><a href="#bouton-citron">Bouton citron</a><a href="#couleurs">Couleurs</a><a href="#typo">Typographie</a><a href="#composants">Composants</a>
     </nav>
   </div>
 </header>
@@ -717,7 +1088,7 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
                 <div><h1>Bonjour, Awa</h1><p>Mardi 3 novembre · service ouvert depuis 11:30</p></div>
                 <div class="acts">
                   <a class="btn btn-dark" href="#menu"><i data-lucide="plus"></i>Ajouter un plat</a>
-                  <button class="btn btn-secondary btn-icon icon-pill" aria-label="Notifications, 2 non lues"><i data-lucide="bell"></i><span class="pastille num" aria-hidden="true">2</span></button>
+                  <a class="btn btn-secondary btn-icon icon-pill" href="#notifications" aria-label="Notifications, 2 non lues"><i data-lucide="bell"></i><span class="pastille num" aria-hidden="true">2</span></a>
                   <a class="btn btn-secondary btn-icon" href="#reglages" aria-label="Réglages"><i data-lucide="settings"></i></a>
                 </div>
               </header>
@@ -729,12 +1100,12 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
                   <p class="kpi-foot"><span>Depuis 11:30</span><span class="delta"><i data-lucide="trending-up"></i><span class="num">+3 vs mardi</span></span></p>
                 </article>
                 <article class="kpi s3">
-                  <div class="kpi-top"><h2>Ventes du jour</h2><a class="kpi-go" href="#tableau-de-bord" aria-label="Voir le détail des ventes"><i data-lucide="arrow-up-right"></i></a></div>
+                  <div class="kpi-top"><h2>Ventes du jour</h2><a class="kpi-go" href="#statistiques" aria-label="Voir le détail des ventes"><i data-lucide="arrow-up-right"></i></a></div>
                   <p class="kpi-val num">96 500<small>FCFA</small></p>
                   <p class="kpi-foot"><span>Depuis 11:30</span><span class="delta"><i data-lucide="trending-up"></i><span class="num">+8 % vs mardi</span></span></p>
                 </article>
                 <article class="kpi s3">
-                  <div class="kpi-top"><h2>Panier moyen</h2><a class="kpi-go" href="#tableau-de-bord" aria-label="Voir les statistiques"><i data-lucide="arrow-up-right"></i></a></div>
+                  <div class="kpi-top"><h2>Panier moyen</h2><a class="kpi-go" href="#statistiques" aria-label="Voir les statistiques"><i data-lucide="arrow-up-right"></i></a></div>
                   <p class="kpi-val num">5 361<small>FCFA</small></p>
                   <p class="kpi-foot"><span>Mardi dernier</span><span class="num">5 120 FCFA</span></p>
                 </article>
@@ -784,7 +1155,7 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
                     <li><span class="rk num">3</span><b>Jus de bissap</b><span class="n num">4</span><span class="bar"><i style="width:45%"></i></span></li>
                     <li><span class="rk num">4</span><b>Ndolé crevettes</b><span class="n num">3</span><span class="bar"><i style="width:34%"></i></span></li>
                   </ol>
-                  <a class="card-foot" href="#tableau-de-bord">Voir les statistiques<i data-lucide="arrow-right"></i></a>
+                  <a class="card-foot" href="#statistiques">Voir les statistiques<i data-lucide="arrow-right"></i></a>
                 </article>
 
                 <article class="card s3 col pubcard">
@@ -792,7 +1163,7 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
                   <div class="qr-row"><span class="qr-tile" aria-hidden="true"><i data-lucide="qr-code"></i></span><p><b class="num">24 plats</b>dont 2 épuisés</p></div>
                   <p class="slug"><i data-lucide="link"></i>@le-comptoir-d-awa</p>
                   <div class="stack">
-                    <a class="btn btn-dark btn-sm btn-block" href="#reglages"><i data-lucide="download"></i>Télécharger le QR Code</a>
+                    <a class="btn btn-dark btn-sm btn-block" href="#qr-code"><i data-lucide="download"></i>Télécharger le QR Code</a>
                     <a class="btn btn-secondary btn-sm btn-block" href="#menu-public"><i data-lucide="external-link"></i>Voir le menu</a>
                   </div>
                 </article>
@@ -813,7 +1184,7 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
             <div class="app-head">
               <span class="tile"><img src="../packages/ui/brand/restio-mark-lime.png" alt="Restio" width="26" height="26"></span>
               <div class="who"><b>Le Comptoir d'Awa</b><span class="live">Service ouvert</span></div>
-              <button class="btn btn-ghost btn-icon bell" aria-label="Notifications, 2 non lues"><i data-lucide="bell"></i><span class="pastille num" aria-hidden="true">2</span></button>
+              <a class="btn btn-ghost btn-icon bell" href="#notifications" aria-label="Notifications, 2 non lues"><i data-lucide="bell"></i><span class="pastille num" aria-hidden="true">2</span></a>
             </div>
             <div class="hello"><h2>Bonjour,<br>Awa</h2><p>Mardi 3 novembre · service ouvert depuis 11:30</p></div>
             <div class="focus-card">
@@ -830,7 +1201,7 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
               <div><dt>Ventes du jour</dt><dd class="num">96 500 FCFA</dd></div>
             </dl>
             <div class="alert" role="note"><i data-lucide="triangle-alert"></i><span>2 plats sont marqués épuisés. <a href="#menu">Vérifier le menu</a></span></div>
-            <div class="sec-title"><h3>Plats les plus commandés</h3><a href="#tableau-de-bord">Statistiques</a></div>
+            <div class="sec-title"><h3>Plats les plus commandés</h3><a href="#statistiques">Statistiques</a></div>
             <div class="kv"><ol class="ranks">
               <li><span class="rk num">1</span><b>Poulet DG</b><span class="n num">9</span><span class="bar"><i style="width:100%"></i></span></li>
               <li><span class="rk num">2</span><b>Brochettes de bœuf</b><span class="n num">6</span><span class="bar"><i style="width:67%"></i></span></li>
@@ -839,7 +1210,7 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
             <div class="sec-title"><h3>Raccourcis</h3></div>
             <div class="quick">
               <a href="#menu"><span class="ic"><i data-lucide="plus"></i></span>Ajouter un plat</a>
-              <a href="#reglages"><span class="ic"><i data-lucide="qr-code"></i></span>QR Code</a>
+              <a href="#qr-code"><span class="ic"><i data-lucide="qr-code"></i></span>QR Code</a>
             </div>
           </div>
           <nav class="tabbar" aria-label="Navigation principale" data-tabbar="home"></nav>
@@ -850,11 +1221,19 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
   </div>
 </section>
 
+<section class="block" id="notifications">
+  <div class="wrap">
+    <h2>Notifications</h2>
+    <p class="lead">La cloche ouvre la liste des événements : nouvelles commandes, commandes qui attendent, plats épuisés, bilan de la veille. Les non lues portent un point rouge. Sur mobile, la liste occupe tout l’écran.</p>
+  </div>
+  <div data-mount="notifs"></div>
+</section>
+
 <!-- ================= 2. COMMANDES ================= -->
 <section class="block" id="commandes">
   <div class="wrap">
     <h2>Commandes</h2>
-    <p class="lead">Mode « passe de cuisine » : une colonne par étape, la barre latérale se replie pour laisser la place aux tickets, le détail de la commande sélectionnée reste ouvert à droite. Le bouton citron fait avancer le ticket ; cliquez sur un ticket pour afficher son détail.</p>
+    <p class="lead">Mode « passe de cuisine » : une colonne par étape, la barre latérale se replie pour laisser la place aux tickets, le détail de la commande sélectionnée reste ouvert à droite. Le bouton citron fait avancer le ticket ; cliquez sur un ticket pour afficher son détail. L’onglet « Terminées » affiche les commandes servies du jour, grisées mais lisibles ; elles sont archivées automatiquement le lendemain matin pour repartir d’une liste propre.</p>
   </div>
   <div class="wide">
     <figure class="browser">
@@ -868,14 +1247,14 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
                 <div><h1>Commandes</h1><p class="num" id="kdsSub">Mardi 3 novembre · 4 en cours · 14 terminées</p></div>
                 <div class="acts">
                   <label class="search-in"><span class="vh">Rechercher une commande</span><i data-lucide="search"></i><input class="input" placeholder="N° de commande ou table"></label>
-                  <button class="btn btn-secondary btn-icon icon-pill" aria-label="Notifications, 2 non lues"><i data-lucide="bell"></i><span class="pastille num" aria-hidden="true">2</span></button>
+                  <a class="btn btn-secondary btn-icon icon-pill" href="#notifications" aria-label="Notifications, 2 non lues"><i data-lucide="bell"></i><span class="pastille num" aria-hidden="true">2</span></a>
                 </div>
               </header>
               <div class="toolbar">
                 <div role="tablist" aria-label="Filtrer" style="display:flex;gap:6px">
-                  <button class="tab" role="tab" aria-selected="true">En cours <em class="num" id="kdsLive">4</em></button>
-                  <button class="tab" role="tab" aria-selected="false">Terminées <em class="num" id="kdsDone">14</em></button>
-                  <button class="tab" role="tab" aria-selected="false">Refusées <em class="num">0</em></button>
+                  <button class="tab" role="tab" aria-selected="true" data-k="live">En cours <em class="num" id="kdsLive">4</em></button>
+                  <button class="tab" role="tab" aria-selected="false" data-k="done">Terminées <em class="num" id="kdsDone">14</em></button>
+                  <button class="tab" role="tab" aria-selected="false" data-k="refused">Refusées <em class="num">0</em></button>
                 </div>
                 <span class="sep" aria-hidden="true"></span>
                 <button class="btn btn-secondary btn-sm">Toutes les tables<i data-lucide="chevron-down"></i></button>
@@ -898,7 +1277,7 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
           <div class="app-head">
             <span class="tile"><img src="../packages/ui/brand/restio-mark-lime.png" alt="Restio" width="26" height="26"></span>
             <div class="who"><b>Le Comptoir d'Awa</b><span class="live">Service ouvert</span></div>
-            <button class="btn btn-ghost btn-icon bell" aria-label="Notifications, 2 non lues"><i data-lucide="bell"></i><span class="pastille num" aria-hidden="true">2</span></button>
+            <a class="btn btn-ghost btn-icon bell" href="#notifications" aria-label="Notifications, 2 non lues"><i data-lucide="bell"></i><span class="pastille num" aria-hidden="true">2</span></a>
           </div>
           <div class="tabs" role="tablist" aria-label="Filtrer les commandes" id="orderTabs">
             <button class="tab" role="tab" aria-selected="true" data-f="todo">À traiter <em class="num" id="cTodo">2</em></button>
@@ -961,6 +1340,23 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
       <figcaption class="cap">Bureau : un seul bouton citron, « Ajouter un plat »</figcaption>
     </figure>
   </div>
+  <div data-mount="menuMore"></div>
+</section>
+
+<section class="block" id="statistiques">
+  <div class="wrap">
+    <h2>Statistiques</h2>
+    <p class="lead">Une période en haut (aujourd’hui, 7 jours, 30 jours), puis les chiffres clés comparés à la période précédente, les ventes par jour, les plats les plus commandés et les heures d’affluence. Même grammaire que le tableau de bord.</p>
+  </div>
+  <div data-mount="stats"></div>
+</section>
+
+<section class="block" id="qr-code">
+  <div class="wrap">
+    <h2>QR Code</h2>
+    <p class="lead">Le QR Code du menu, avec le logo Restio au centre, à télécharger en PNG ou en PDF, et les supports prêts à imprimer : chevalet de table, autocollant, affiche. Option : un QR Code par table pour que la commande arrive avec le bon numéro.</p>
+  </div>
+  <div data-mount="qr"></div>
 </section>
 
 <!-- ================= 4. RÉGLAGES ================= -->
@@ -1009,11 +1405,19 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
   </div>
 </section>
 
+<section class="block" id="reglages-pages">
+  <div class="wrap">
+    <h2>Réglages : pages détaillées</h2>
+    <p class="lead">Sur ordinateur, la liste des réglages reste à gauche et la page s’ouvre à droite, avec « Enregistrer » en citron en bas. Sur mobile, chaque page s’ouvre en plein écran avec un bouton retour et le bouton d’enregistrement collé en bas. Notifications et Langue s’enregistrent à chaque changement.</p>
+  </div>
+  <div data-mount="settingsPages"></div>
+</section>
+
 <!-- ================= 5. CONNEXION ================= -->
 <section class="block" id="connexion">
   <div class="wrap">
     <h2>Connexion et inscription</h2>
-    <p class="lead">Bureau : formulaire à gauche, à droite une promesse produit vraie et un vrai composant (le ticket), sans témoignage inventé. Mobile : grande photo de plat, feuille blanche arrondie, un seul bouton citron. Photos de démonstration.</p>
+    <p class="lead">Bureau : formulaire à gauche, à droite une promesse produit vraie et un vrai composant (le ticket), sans témoignage inventé. Mobile : grande photo de plat, feuille blanche arrondie, un seul bouton citron.</p>
   </div>
   <div class="wide">
     <figure class="browser">
@@ -1041,7 +1445,6 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
               </div>
               <div class="auth-visual">
                 <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=1200&q=60&fm=webp" alt="" loading="lazy">
-                <span class="demo-tag">Photo de démonstration</span>
                 <div class="float" id="authTicket"></div>
                 <div class="promise">
                   <h2>Votre menu QR qui reçoit les commandes des tables.</h2>
@@ -1067,7 +1470,6 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
           <div class="wl-photo">
             <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=720&q=60&fm=webp" alt="">
             <span class="brand"><img src="../packages/ui/brand/restio-mark-white.png" alt="" width="30" height="30"><b>Restio</b></span>
-            <span class="demo-tag">Photo de démonstration</span>
           </div>
           <div class="wl-sheet">
             <h1>Bienvenue sur Restio</h1>
@@ -1108,6 +1510,22 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
   </div>
 </section>
 
+<section class="block" id="connexion-suite">
+  <div class="wrap">
+    <h2>Connexion : autres écrans</h2>
+    <p class="lead">Même gabarit que la connexion : sur ordinateur, le formulaire à gauche et le visuel avec ses deux cartes à droite ; sur mobile, une colonne. Les erreurs et confirmations sont des messages temporaires, pas des encadrés fixes.</p>
+  </div>
+  <div data-mount="authMore"></div>
+</section>
+
+<section class="block" id="onboarding">
+  <div class="wrap">
+    <h2>Création du restaurant</h2>
+    <p class="lead">Juste après la vérification de l’e-mail : deux étapes courtes, vous puis votre restaurant. La devise et le fuseau horaire sont proposés selon le pays.</p>
+  </div>
+  <div data-mount="onboarding"></div>
+</section>
+
 <!-- ================= 6. MENU PUBLIC ================= -->
 <section class="block" id="menu-public">
   <div class="wrap">
@@ -1118,12 +1536,12 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
         <div class="phone-frame">
           <div class="status-bar"><span>20:12</span><span>4G</span></div>
           <div class="scr">
-            <div class="pm-banner"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=720&q=60&fm=webp" alt="Plats du restaurant"><span class="demo-tag">Photos de démonstration</span></div>
+            <div class="pm-banner"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=720&q=60&fm=webp" alt="Plats du restaurant"></div>
             <div class="pm-id"><h1>Le Comptoir d'Awa</h1><p class="meta">Cuisine camerounaise · Douala</p><p class="desc">Grillades au feu de bois et plats du pays, préparés à la commande.</p></div>
             <label class="pm-search"><span class="vh">Rechercher un plat</span><i data-lucide="search"></i><input class="input" placeholder="Rechercher un plat"></label>
             <div class="pm-cats" role="tablist" aria-label="Catégories"><button class="tab" role="tab" aria-selected="true">Tous</button><button class="tab" role="tab" aria-selected="false">Grillades</button><button class="tab" role="tab" aria-selected="false">Plats</button><button class="tab" role="tab" aria-selected="false">Salades</button><button class="tab" role="tab" aria-selected="false">Boissons</button></div>
             <div class="pm-list" data-pub></div>
-            <p class="pm-powered"><span>Propulsé par <img src="../packages/ui/brand/restio-mark-ink.png" alt="" width="18" height="18"><b>Restio</b></span>Photos de démonstration</p>
+            <p class="pm-powered"><span>Propulsé par <img src="../packages/ui/brand/restio-mark-ink.png" alt="" width="18" height="18"><b>Restio</b></span></p>
           </div>
           <div class="pm-bar" data-bar></div>
         </div>
@@ -1139,7 +1557,7 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
           <div class="pubd">
             <div class="pubd-top"><div><span class="r-mono" aria-hidden="true">A</span><b>Le Comptoir d'Awa</b><button class="btn btn-ghost btn-sm" aria-label="Langue : français"><i data-lucide="globe"></i>FR</button></div></div>
             <div class="col">
-              <div class="pm-banner"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=1440&q=60&fm=webp" alt="Plats du restaurant" loading="lazy"><span class="demo-tag">Photos de démonstration</span></div>
+              <div class="pm-banner"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=1440&q=60&fm=webp" alt="Plats du restaurant" loading="lazy"></div>
               <div class="pm-id"><h1>Le Comptoir d'Awa</h1><p class="meta">Cuisine camerounaise · Douala</p><p class="desc">Grillades au feu de bois et plats du pays, préparés à la commande.</p></div>
               <label class="pm-search"><span class="vh">Rechercher un plat</span><i data-lucide="search"></i><input class="input" placeholder="Rechercher un plat"></label>
               <div class="pm-cats" role="tablist" aria-label="Catégories"><button class="tab" role="tab" aria-selected="true">Tous</button><button class="tab" role="tab" aria-selected="false">Grillades</button><button class="tab" role="tab" aria-selected="false">Plats</button><button class="tab" role="tab" aria-selected="false">Salades</button><button class="tab" role="tab" aria-selected="false">Boissons</button></div>
@@ -1154,6 +1572,22 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
   </div>
 </section>
 
+<section class="block" id="commande-client">
+  <div class="wrap">
+    <h2>Commande du client</h2>
+    <p class="lead">Le parcours du client après le menu : fiche du plat, récapitulatif, envoi, puis suivi en direct jusqu’au service. Aucun compte ni paiement en ligne.</p>
+  </div>
+  <div data-mount="client"></div>
+</section>
+
+<section class="block" id="admin">
+  <div class="wrap">
+    <h2>Administration</h2>
+    <p class="lead">admin.restio-app.com : connexion et base de données séparées, réservées à l’équipe Restio. Même langage visuel que l’application, mais l’action principale est en noir. Données de démonstration.</p>
+  </div>
+  <div data-mount="admin"></div>
+</section>
+
 <!-- ================= 7. BOUTON CITRON ================= -->
 <section class="block" id="bouton-citron">
   <div class="wrap">
@@ -1164,7 +1598,7 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
         <h3>Essayer</h3>
         <p class="note">Maintenez appuyé pour voir le remplissage, relâchez pour simuler l'envoi.</p>
         <div class="try">
-          <button class="btn btn-primary btn-fill" id="fillDemo"><i data-lucide="shopping-bag"></i><span class="num">Commander · 9 500 FCFA</span></button>
+          <button class="btn btn-primary btn-fill" id="fillDemo"><span class="num">Commander · 9 500 FCFA</span></button>
           <p id="fillMsg" role="status">Prêt.</p>
         </div>
       </div>
@@ -1337,6 +1771,23 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
       </div>
 
       <div class="panel">
+        <h3>Messages temporaires (toast)</h3>
+        <p class="note">Remplacent les encadrés fixes dans les formulaires. Disparaissent seuls après 6 s (pause au survol ou au focus), ou à la croix.</p>
+        <div class="stage">
+          <div class="toast frozen" role="status"><span class="dot"><i data-lucide="check"></i></span><p>Mot de passe enregistré<span>Connectez-vous avec votre nouveau mot de passe.</span></p><button class="x" type="button" aria-label="Fermer le message"><i data-lucide="x"></i></button><span class="tbar" aria-hidden="true"></span></div>
+          <div class="toast err frozen" role="alert"><span class="dot"><i data-lucide="circle-alert"></i></span><p>Adresse e-mail ou mot de passe incorrect.<span>Vérifiez vos informations puis réessayez.</span></p><button class="x" type="button" aria-label="Fermer le message"><i data-lucide="x"></i></button><span class="tbar" aria-hidden="true"></span></div>
+          <div class="toast info frozen" role="status"><span class="dot"><i data-lucide="info"></i></span><p>Nouvelle version disponible<span>Elle s’appliquera au prochain chargement.</span></p><button class="x" type="button" aria-label="Fermer le message"><i data-lucide="x"></i></button><span class="tbar" aria-hidden="true"></span></div>
+        </div>
+        <div class="lbl">Essayer</div>
+        <div class="row"><button class="btn btn-secondary btn-sm" data-toast="ok">Succès</button><button class="btn btn-secondary btn-sm" data-toast="err">Erreur</button><button class="btn btn-secondary btn-sm" data-toast="info">Information</button></div>
+        <div class="place">
+          <div><i data-lucide="monitor"></i><span>Bureau : en haut à droite, à 24 px du bord, 384 px de large au plus. Le formulaire est au centre ou à gauche : rien n’est caché.</span></div>
+          <div><i data-lucide="smartphone"></i><span>Mobile : en haut, centré, sous la zone de l’heure. Il couvre la photo ou l’en-tête, jamais les champs ni le bouton.</span></div>
+          <div><i data-lucide="layers"></i><span>Plusieurs messages s’empilent, le plus récent en haut. Erreur : <code>role="alert"</code> ; succès et information : <code>role="status"</code>.</span></div>
+        </div>
+      </div>
+
+      <div class="panel">
         <h3>Chargement et retours</h3>
         <p class="note">Squelette fidèle à la structure, jamais de spinner au milieu du contenu.</p>
         <div class="stage"><div class="ticket" aria-hidden="true">
@@ -1345,8 +1796,8 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
           <div class="sk" style="height:48px;border-radius:99px"></div>
         </div></div>
         <div style="display:grid;gap:10px;margin-top:16px">
-          <div class="toast" role="status"><span class="dot"><i data-lucide="check"></i></span><p>Plat enregistré<span>Visible sur votre menu public</span></p><button class="btn btn-ghost btn-sm on-dark">Annuler</button></div>
-          <div class="toast err" role="alert"><span class="dot"><i data-lucide="wifi-off"></i></span><p>Connexion perdue<span>Nouvelle tentative dans 5 s</span></p></div>
+          <div class="toast frozen" role="status"><span class="dot"><i data-lucide="check"></i></span><p>Plat enregistré<span>Visible sur votre menu public</span></p><button class="btn btn-ghost btn-sm on-dark">Annuler</button><button class="x" type="button" aria-label="Fermer le message"><i data-lucide="x"></i></button><span class="tbar" aria-hidden="true"></span></div>
+          <div class="toast err frozen" role="alert"><span class="dot"><i data-lucide="wifi-off"></i></span><p>Connexion perdue<span>Nouvelle tentative dans 5 s</span></p><button class="x" type="button" aria-label="Fermer le message"><i data-lucide="x"></i></button><span class="tbar" aria-hidden="true"></span></div>
         </div>
       </div>
     </div>
@@ -1356,10 +1807,11 @@ section.block > .wrap > p.lead { color: var(--text-2); max-width: 70ch; margin-t
 </main>
 
 <footer class="foot"><div class="wrap">
-  <p>Icônes : Lucide (contour 1,75 px). Police : Satoshi (Fontshare). Photos : Unsplash, licence libre, démonstration uniquement. Restaurant, chiffres et commandes : données de démonstration.</p>
+  <p>Icônes : Lucide (contour 1,75 px). Police : Satoshi (Fontshare). Photos : Unsplash, licence libre. Restaurant, chiffres et commandes : données de démonstration.</p>
   <p>Référence écrite : DESIGN.md.</p>
 </div></footer>
 
+<div class="toaster" id="toaster" aria-live="polite"></div>
 <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
 <script>
 const MARK = '../packages/ui/brand/restio-mark-';
@@ -1370,9 +1822,10 @@ const NEXT = ['Accepter', 'Lancer la préparation', 'Marquer prête', 'Remettre 
 const BADGE = [['s-new','bell-ring'],['s-info','check'],['s-prep','chef-hat'],['s-ok','concierge-bell']];
 
 /* ---------- Navigation (barre latérale, rail, barre basse) ---------- */
-const NAV_MAIN = [['home','house','Accueil','#tableau-de-bord'],['orders','receipt-text','Commandes','#commandes',2],['menu','book-open','Menu','#menu'],['stats','chart-column','Statistiques','#tableau-de-bord'],['qr','qr-code','QR Code','#reglages']];
+const NAV_MAIN = [['home','house','Accueil','#tableau-de-bord'],['orders','receipt-text','Commandes','#commandes',2],['menu','book-open','Menu','#menu'],['stats','chart-column','Statistiques','#statistiques'],['qr','qr-code','QR Code','#qr-code']];
 const NAV_OTHER = [['settings','settings','Réglages','#reglages'],['help','circle-help',"Centre d'aide",'#reglages']];
 const navItem = active => ([k, ic, l, href, c]) => `<a href="${href}"${k === active ? ' aria-current="page"' : ''}><i data-lucide="${ic}"></i><span>${l}</span>${c ? `<span class="count num" aria-label="${c} nouvelles">${c}</span>` : ''}</a>`;
+function fillNav() {
 document.querySelectorAll('[data-side]').forEach(el => {
   const a = el.dataset.side;
   el.innerHTML = `<span class="brand"><img src="${MARK}ink.png" alt="" width="30" height="30"><b>Restio</b></span>
@@ -1385,11 +1838,12 @@ document.querySelectorAll('[data-rail]').forEach(el => {
   const a = el.dataset.rail, link = ([k, ic, l, href, c]) => `<a href="${href}" aria-label="${l}" title="${l}"${k === a ? ' aria-current="page"' : ''}><i data-lucide="${ic}"></i>${c ? `<span class="pastille num" aria-hidden="true">${c}</span>` : ''}</a>`;
   el.innerHTML = `<img src="${MARK}ink.png" alt="Restio" width="32" height="32">${NAV_MAIN.map(link).join('')}<hr>${NAV_OTHER.map(link).join('')}<span class="r-mono" aria-hidden="true">A</span>`;
 });
-const TABBAR = [['home','house','Accueil','#tableau-de-bord'],['orders','receipt-text','Commandes','#commandes',2],['menu','book-open','Menu','#menu'],['stats','chart-column','Stats','#tableau-de-bord'],['settings','settings','Réglages','#reglages']];
+const TABBAR = [['home','house','Accueil','#tableau-de-bord'],['orders','receipt-text','Commandes','#commandes',2],['menu','book-open','Menu','#menu'],['stats','chart-column','Stats','#statistiques'],['settings','settings','Réglages','#reglages']];
 document.querySelectorAll('[data-tabbar]').forEach(el => {
   const a = el.dataset.tabbar;
   el.innerHTML = TABBAR.map(([k, ic, l, href, c]) => `<a href="${href}"${k === a ? ' aria-current="page"' : ''}><span class="ic"><i data-lucide="${ic}"></i>${c ? `<span class="pastille num">${c}</span>` : ''}</span>${l}</a>`).join('');
 });
+}
 
 /* ---------- Tickets ---------- */
 const mk = () => [
@@ -1405,7 +1859,7 @@ const ageHTML = o => o.min >= 10 ? `<span>${tbl(o.table)}</span><span class="lat
   : o.min >= 5 ? `<span>${tbl(o.table)}</span><span class="late"><i data-lucide="clock"></i>attend depuis ${o.min} min</span>` : `<span>${tbl(o.table)} · il y a ${o.min} min</span>`;
 let moved = null, sel = 40;
 function ticketHTML(o, key, opts = {}) {
-  if (o.step > 3) return `<article class="ticket is-done" aria-label="Commande ${o.n}"><div class="ticket-top"><span class="badge s-muted"><i data-lucide="circle-check-big"></i>Terminée</span><div class="ticket-id"><b>#${o.n}</b><span>${tbl(o.table)} · remise à l'instant</span></div></div></article>`;
+  if (o.step > 3) return doneHTML({ ...o, at: "à l'instant" });
   const [cls, ic] = BADGE[o.step];
   const rail = STEPS.map((_, i) => `<i class="${i < o.step ? 'on' : i === o.step ? 'now' : ''}"></i>`).join('');
   return `<article class="ticket${moved === key ? ' just-moved' : ''}${opts.sel ? ' is-sel' : ''}" aria-label="Commande ${o.n}" data-n="${o.n}">
@@ -1420,6 +1874,20 @@ function ticketHTML(o, key, opts = {}) {
       ${o.step === 0 ? `<button class="btn btn-secondary btn-icon" aria-label="Refuser la commande ${o.n}"><i data-lucide="x"></i></button>` : `<button class="btn btn-secondary btn-icon" aria-label="Plus d'actions"><i data-lucide="ellipsis"></i></button>`}
     </div>`}</article>`;
 }
+const DONE = [
+  [38, '9', [[2,'Poulet DG',4500]], '12:20'], [37, 'Terrasse 1', [[1,'Poisson braisé',6000],[1,'Jus de bissap',1000]], '12:12'],
+  [36, '4', [[2,'Brochettes de bœuf',3500],[2,'Plantain frit',1000]], '12:05'], [35, '11', [[1,'Ndolé crevettes',5000]], '11:58'],
+  [34, '2', [[3,'Jus de bissap',1000],[1,'Salade avocat',2500]], '11:54'], [33, 'Terrasse 2', [[1,'Plateau du Comptoir',12000]], '11:49'],
+  [32, '6', [[2,'Poulet DG',4500],[2,'Jus de bissap',1000]], '11:44'], [31, '8', [[1,'Soya de bœuf',2500]], '11:41'],
+  [30, '3', [[1,'Poulet braisé',4500],[1,'Plantain frit',1000]], '11:37'], [29, 'Terrasse 4', [[2,'Salade avocat',2500]], '11:35'],
+  [28, '10', [[1,'Pepper soup de bœuf',3000],[1,'Jus de bissap',1000]], '11:33'], [27, '5', [[1,'Brochettes de bœuf',3500]], '11:32'],
+  [26, '1', [[2,'Ndolé crevettes',5000]], '11:31'], [25, '7', [[1,'Poisson braisé',6000]], '11:30'],
+].map(([n, table, items, at]) => ({ n, table, items, at: 'à ' + at }));
+const doneHTML = o => `<article class="ticket is-done" aria-label="Commande ${o.n}, terminée"><div class="ticket-top"><span class="badge s-muted"><i data-lucide="circle-check-big"></i>Terminée</span><div class="ticket-id"><b class="num">#${o.n}</b><span>${tbl(o.table)} · remise ${o.at}</span></div></div>
+  <ul>${o.items.map(([q, n, p]) => `<li><span class="q num">${q}×</span><span>${n}</span><span class="p num">${fmt(q * p)}</span></li>`).join('')}</ul>
+  <div class="ticket-total"><span>Total</span><span class="num">${fmt(total(o))}</span></div></article>`;
+const DONE_NOTE = `<p class="done-note"><i data-lucide="archive"></i>Les commandes terminées sont archivées automatiquement demain matin : la journée repart à zéro.</p>`;
+let kFilter = 'live';
 const group = s => s === 0 ? 'todo' : s < 3 ? 'cook' : s === 3 ? 'ready' : 'done';
 let filter = 'todo';
 const TL = ['Reçue', 'Acceptée', 'En préparation', 'Prête', 'Remise au client'];
@@ -1437,11 +1905,11 @@ function renderOrders() {
   // Mobile
   const mob = SETS.mob, list = document.getElementById('orderList');
   const shown = mob.map((o, i) => [o, i]).filter(([o]) => group(o.step) === filter);
-  list.innerHTML = shown.length ? shown.map(([o, i]) => ticketHTML(o, 'mob:' + i)).join('') :
+  list.innerHTML = filter === 'done' ? DONE_NOTE + shown.map(([o, i]) => ticketHTML(o, 'mob:' + i)).join('') + DONE.map(doneHTML).join('') : shown.length ? shown.map(([o, i]) => ticketHTML(o, 'mob:' + i)).join('') :
     `<div class="empty"><svg class="ill" viewBox="0 0 120 96" aria-hidden="true"><rect x="22" y="10" width="76" height="76" rx="14" fill="#fff" stroke="#0F0F0F" stroke-width="2"/><path d="M44 50l10 10 22-22" stroke="#0F0F0F" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="92" cy="18" r="10" fill="#C7FF2E" stroke="#0F0F0F" stroke-width="2"/></svg><h4>Tout est traité</h4><p>Les nouvelles commandes s'afficheront ici automatiquement.</p></div>`;
   const c = { todo: 0, cook: 0, ready: 0, done: 0 };
   mob.forEach(o => c[group(o.step)]++);
-  cTodo.textContent = c.todo; cCook.textContent = c.cook; cReady.textContent = c.ready; cDone.textContent = 14 + c.done;
+  cTodo.textContent = c.todo; cCook.textContent = c.cook; cReady.textContent = c.ready; cDone.textContent = DONE.length + c.done;
   // Tableau de bord
   dashTickets.innerHTML = SETS.dash.map((o, i) => ticketHTML(o, 'dash:' + i)).join('');
   dashCount.textContent = SETS.dash.filter(o => o.step <= 3).length;
@@ -1452,8 +1920,9 @@ function renderOrders() {
     return `<section class="lane" style="--c:var(${color})"><div class="lane-head"><i data-lucide="${ic}"></i><h2>${title}</h2><span class="cnt num">${ts.length}</span></div>
       ${ts.length ? ts.map(([o, i]) => ticketHTML(o, 'kds:' + i, { sel: o.n === sel })).join('') : `<p class="lane-empty">${empty}</p>`}</section>`;
   };
-  kds.innerHTML = lane('Nouvelles', 'bell-ring', '--new', [0], 'Aucune nouvelle commande') + lane('En préparation', 'chef-hat', '--prep', [1, 2], 'Rien en cuisine') + lane('Prêtes', 'concierge-bell', '--ok', [3], 'Aucune commande prête');
-  const live = SETS.kds.filter(o => o.step <= 3).length, done = 14 + SETS.kds.filter(o => o.step > 3).length;
+  kds.innerHTML = kFilter === 'done' ? `<div style="grid-column:1/-1;display:grid;gap:16px">${DONE_NOTE}<div class="done-grid">${SETS.kds.filter(o => o.step > 3).map(o => ticketHTML(o, 'x')).join('')}${DONE.map(doneHTML).join('')}</div></div>`
+    : kFilter === 'refused' ? `<p class="lane-empty" style="grid-column:1/-1">Aucune commande refusée aujourd'hui.</p>` : lane('Nouvelles', 'bell-ring', '--new', [0], 'Aucune nouvelle commande') + lane('En préparation', 'chef-hat', '--prep', [1, 2], 'Rien en cuisine') + lane('Prêtes', 'concierge-bell', '--ok', [3], 'Aucune commande prête');
+  const live = SETS.kds.filter(o => o.step <= 3).length, done = DONE.length + SETS.kds.filter(o => o.step > 3).length;
   kdsLive.textContent = live; kdsDone.textContent = done;
   kdsSub.textContent = `Mardi 3 novembre · ${live} en cours · ${done} terminées`;
   kdsDetail.innerHTML = detailHTML(SETS.kds.find(o => o.n === sel));
@@ -1476,10 +1945,13 @@ document.addEventListener('click', e => {
   }
   const kt = e.target.closest('#kds .ticket[data-n]');
   if (kt) { sel = +kt.dataset.n; renderOrders(); return; }
+  const kt2 = e.target.closest('.toolbar .tab[data-k]');
+  if (kt2) { kFilter = kt2.dataset.k; kt2.parentElement.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', t === kt2)); renderOrders(); return; }
   const tab = e.target.closest('#orderTabs .tab');
   if (tab) {
     filter = tab.dataset.f;
     document.querySelectorAll('#orderTabs .tab').forEach(t => t.setAttribute('aria-selected', t === tab));
+    tab.parentElement.scrollTo({ left: tab.offsetLeft - 16, behavior: 'smooth' });
     renderOrders(); return;
   }
   const tg = e.target.closest('.toggle');
@@ -1541,7 +2013,7 @@ function renderPub() {
   const n = Object.values(cart).reduce((a, b) => a + b, 0), tot = PUB.reduce((t, d) => t + (cart[d.id] || 0) * d.price, 0);
   document.querySelectorAll('[data-bar]').forEach(el => {
     el.hidden = !n;
-    el.innerHTML = `<div class="tot"><span class="num">Total provisoire · ${n} article${n > 1 ? 's' : ''}</span><b class="num">${fmt(tot)}</b></div><button class="btn btn-primary btn-fill"><i data-lucide="shopping-bag"></i>Commander</button>`;
+    el.innerHTML = `<div class="tot"><span class="num">Total provisoire · ${n} article${n > 1 ? 's' : ''}</span><b class="num">${fmt(tot)}</b></div><button class="btn btn-primary btn-fill">Commander</button>`;
   });
   lucide.createIcons();
 }
@@ -1550,6 +2022,24 @@ document.addEventListener('click', e => {
   if (i) cart[i.dataset.inc] = (cart[i.dataset.inc] || 0) + 1;
   if (d) cart[d.dataset.dec] = Math.max(0, (cart[d.dataset.dec] || 0) - 1);
   if (i || d) renderPub();
+});
+
+/* ---------- Toasts : temporaires (6 s, pause au survol), fermeture par la croix ---------- */
+const TOASTS = { ok: ['', 'check', 'Plat enregistré', 'Visible sur votre menu public.'], err: ['err', 'circle-alert', 'Adresse e-mail ou mot de passe incorrect.', 'Vérifiez vos informations puis réessayez.'], info: ['info', 'info', 'Nouvelle version disponible', 'Elle s’appliquera au prochain chargement.'] };
+const dismiss = t => { t.classList.add('toast-out'); t.addEventListener('animationend', () => t.remove(), { once: true }); };
+function pushToast(k) {
+  const [kind, ic, title, sub] = TOASTS[k], box = document.getElementById('toaster');
+  box.insertAdjacentHTML('afterbegin', `<div class="toast ${kind} toast-in" role="${kind === 'err' ? 'alert' : 'status'}"><span class="dot"><i data-lucide="${ic}"></i></span><p>${title}<span>${sub}</span></p><button class="x" type="button" aria-label="Fermer le message"><i data-lucide="x"></i></button><span class="tbar" aria-hidden="true"></span></div>`);
+  const t = box.firstElementChild;
+  t.querySelector('.tbar').addEventListener('animationend', () => dismiss(t));
+  lucide.createIcons();
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-toast]'); if (b) return pushToast(b.dataset.toast);
+  const x = e.target.closest('.toast .x'); if (!x) return;
+  const t = x.closest('.toast');
+  if (t.closest('#toaster')) return dismiss(t);
+  t.style.visibility = 'hidden'; setTimeout(() => { t.style.visibility = ''; }, 1200); // exemples figés : réapparaissent pour la relecture
 });
 
 /* ---------- Bouton citron : envoi simulé, bloqué contre le double envoi ---------- */
@@ -1570,10 +2060,341 @@ const fit = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() =>
   v.style.height = Math.ceil(d.offsetHeight * k) + 'px';
 })); };
 const ro = new ResizeObserver(fit);
-document.querySelectorAll('.viewport').forEach(v => { ro.observe(v); ro.observe(v.firstElementChild); });
+
+/* ================= Écrans v3 : construits par gabarits, montés dans [data-mount] ================= */
+function qrSVG(seed = 7, label = "QR Code du menu du Comptoir d'Awa") {
+  const n = 29, c0 = 10; let x = seed;
+  const rnd = () => (x = (x * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
+  const m = [...Array(n)].map(() => Array(n).fill(0));
+  const finder = (r, c) => { for (let i = -1; i < 8; i++) for (let j = -1; j < 8; j++) { const y = r + i, z = c + j; if (y < 0 || z < 0 || y >= n || z >= n) continue;
+    m[y][z] = i >= 0 && i <= 6 && j >= 0 && j <= 6 && (i === 0 || i === 6 || j === 0 || j === 6 || (i >= 2 && i <= 4 && j >= 2 && j <= 4)) ? 1 : 2; } };
+  finder(0, 0); finder(0, n - 7); finder(n - 7, 0);
+  for (let i = 8; i < n - 8; i++) { m[6][i] = i % 2 ? 2 : 1; m[i][6] = i % 2 ? 2 : 1; }
+  let d = '';
+  for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) {
+    let v = m[r][c];
+    if (!v) { if (r >= c0 - 1 && r < c0 + 10 && c >= c0 - 1 && c < c0 + 10) continue; v = rnd() < .5 ? 1 : 2; }
+    if (v === 1) d += `M${c} ${r}h1v1h-1z`;
+  }
+  return `<svg class="qr-svg" viewBox="-2 -2 ${n + 4} ${n + 4}" role="img" aria-label="${label}"><rect x="-2" y="-2" width="${n + 4}" height="${n + 4}" fill="#fff"/><path d="${d}" fill="#0F0F0F"/><rect x="${c0}" y="${c0}" width="9" height="9" rx="2.2" fill="#0F0F0F"/><image href="${MARK}lime.png" x="${c0 + 1.5}" y="${c0 + 1.5}" width="6" height="6"/></svg>`;
+}
+const bbar = url => `<div class="browser-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-lucide="lock"></i><span>${url}</span></span></div>`;
+const desk = (url, inner, cap) => `<div class="wide"><figure class="browser"><div class="browser-win">${bbar(url)}<div class="viewport"><div class="desk">${inner}</div></div></div><figcaption class="cap">${cap}</figcaption></figure></div>`;
+const phone = (inner, cap, { t = '12:41', cls = '' } = {}) => `<figure><div class="phone-frame ${cls}"><div class="status-bar"><span>${t}</span><span>4G</span></div>${inner}</div><figcaption class="cap">${cap}</figcaption></figure>`;
+const screens = (...p) => `<div class="wrap"><div class="screens">${p.join('')}</div></div>`;
+const sub = (h, p = '') => `<div class="wrap sub-h"><h3>${h}</h3>${p ? `<p>${p}</p>` : ''}</div>`;
+const app = (side, main, extra = '') => `<div class="app rel"><aside class="side" data-side="${side}"></aside><div class="main">${main}</div>${extra}</div>`;
+const head = (h, p = '', acts = '', crumb = '') => `<header class="page-head"><div>${crumb}<h1>${h}</h1>${p ? `<p>${p}</p>` : ''}</div>${acts ? `<div class="acts">${acts}</div>` : ''}</header>`;
+const crumb = (...parts) => `<nav class="crumb" aria-label="Fil d'Ariane">${parts.map(([l, h]) => h ? `<a href="${h}">${l}</a><i data-lucide="chevron-right"></i>` : `<span aria-current="page">${l}</span>`).join('')}</nav>`;
+const BELL = `<a class="btn btn-secondary btn-icon icon-pill" href="#notifications" aria-label="Notifications, 2 non lues"><i data-lucide="bell"></i><span class="pastille num" aria-hidden="true">2</span></a>`;
+const field = (id, label, input, hint = '', cls = '') => `<div class="field${cls ? ' ' + cls : ''}"><label for="${id}">${label}</label>${input}${hint ? `<span class="hint" id="${id}-h">${hint}</span>` : ''}</div>`;
+const inp = (id, v = '', a = '') => `<input id="${id}" class="input" value="${v}" ${a}>`;
+const pw = (id, ph = '', ac = 'current-password') => `<div class="in-ic"><i data-lucide="lock"></i><input id="${id}" class="input" type="password" autocomplete="${ac}" placeholder="${ph}"><button type="button" class="btn btn-ghost btn-icon eye" aria-label="Afficher le mot de passe"><i data-lucide="eye"></i></button></div>`;
+const mail = (id, v = '', ph = 'vous@exemple.com') => `<div class="in-ic"><i data-lucide="mail"></i><input id="${id}" class="input" type="email" autocomplete="email" value="${v}" placeholder="${ph}"></div>`;
+const selF = (id, opts, v) => `<div class="sel"><select id="${id}" class="input">${opts.map(o => `<option${o === v ? ' selected' : ''}>${o}</option>`).join('')}</select><i data-lucide="chevron-down"></i></div>`;
+const tel = (id, v) => `<div class="phone"><span class="cc" aria-hidden="true">CM +237</span><input id="${id}" class="input num" inputmode="tel" autocomplete="tel" value="${v}"></div>`;
+const tog = (on, label) => `<button class="toggle" role="switch" aria-checked="${on}" aria-label="${label}"></button>`;
+const trow = (b, s, on) => `<div class="trow"><div><b>${b}</b>${s ? `<span>${s}</span>` : ''}</div>${tog(on, b)}</div>`;
+const otp = (id, filled = []) => `<div class="otp" role="group" aria-label="Code à 6 chiffres">${[0, 1, 2, 3, 4, 5].map(i => `<input class="input num${i === filled.length ? ' is-focus' : ''}" inputmode="numeric" maxlength="1" aria-label="Chiffre ${i + 1}" value="${filled[i] || ''}"${i === 0 ? ` id="${id}" autocomplete="one-time-code"` : ''}>`).join('')}</div>`;
+const mhead = (title, back = '#reglages', end = '') => `<div class="m-head"><a class="btn btn-ghost btn-icon" href="${back}" aria-label="Retour"><i data-lucide="arrow-left"></i></a><h1>${title}</h1>${end || '<span></span>'}</div>`;
+const tabbar = k => `<nav class="tabbar" aria-label="Navigation principale" data-tabbar="${k}"></nav>`;
+const APPHEAD = `<div class="app-head"><span class="tile"><img src="${MARK}lime.png" alt="Restio" width="26" height="26"></span><div class="who"><b>Le Comptoir d'Awa</b><span class="live">Service ouvert</span></div><a class="btn btn-ghost btn-icon bell" href="#notifications" aria-label="Notifications, 2 non lues"><i data-lucide="bell"></i><span class="pastille num" aria-hidden="true">2</span></a></div>`;
+const toastH = (kind, ic, title, s = '', live = false) => `<div class="toast ${kind}${live ? '' : ' frozen'}" role="${kind === 'err' ? 'alert' : 'status'}"><span class="dot"><i data-lucide="${ic}"></i></span><p>${title}${s ? `<span>${s}</span>` : ''}</p><button class="x" type="button" aria-label="Fermer le message"><i data-lucide="x"></i></button><span class="tbar" aria-hidden="true"></span></div>`;
+const save = (label = 'Enregistrer', left = '') => `<div class="save-bar">${left ? `<span class="left">${left}</span>` : ''}<button class="btn btn-ghost">Annuler</button><button class="btn btn-primary btn-fill">${label}</button></div>`;
+const clean = h => h.replace(/ id="[^"]*"/g, '');
+const G = () => document.querySelector('.g-logo').outerHTML;
+
+/* ---------- Réglages : contenu partagé bureau / mobile ---------- */
+const SLUG = { 'Informations': 'rg-infos', 'Adresse publique': 'rg-adresse', 'Apparence du menu': 'rg-apparence', 'QR Code et supports': 'qr-code', 'Profil': 'rg-profil', 'Mot de passe': 'rg-mdp', 'Notifications': 'rg-notifs', 'Langue': 'rg-langue' };
+const setNav = cur => `<nav class="card set-nav" aria-label="Réglages">${SETTINGS.slice(0, 2).map(([g, rows]) => `<p>${g}</p>${rows.map(([ic, l]) => `<a href="#${SLUG[l]}"${l === cur ? ' aria-current="page"' : ''}><i data-lucide="${ic}"></i>${l}</a>`).join('')}`).join('')}</nav>`;
+const SP = {
+  'Informations': { p: 'Ce que vos clients voient en haut de votre menu.', save: 'Enregistrer', secs: k => [
+    ['Votre restaurant', `<div class="fgrid">${field(k + 'n', 'Nom du restaurant', inp(k + 'n', "Le Comptoir d'Awa"), '', 'full')}${field(k + 'c', 'Type de cuisine', inp(k + 'c', 'Cuisine camerounaise'))}${field(k + 'v', 'Ville', inp(k + 'v', 'Douala', 'autocomplete="address-level2"'))}${field(k + 'd', 'Description', `<textarea id="${k}d" class="input" rows="3" maxlength="160">Grillades au feu de bois et plats du pays, préparés à la commande.</textarea><span class="counter num">66 / 160</span>`, '', 'full')}</div>`],
+    ['Contact et région', `<div class="fgrid">${field(k + 'p', 'Pays', selF(k + 'p', ['Cameroun', 'Côte d’Ivoire', 'Sénégal', 'France', 'États-Unis'], 'Cameroun'))}${field(k + 'w', 'Numéro WhatsApp', tel(k + 'w', '6 99 12 34 56'))}${field(k + 'm', 'Devise des prix', selF(k + 'm', ['Franc CFA (FCFA)', 'Euro (€)', 'Dollar US ($)'], 'Franc CFA (FCFA)'))}${field(k + 't', 'Fuseau horaire', selF(k + 't', ['Afrique/Douala (UTC+1)', 'Afrique/Abidjan (UTC+0)', 'Europe/Paris (UTC+1)'], 'Afrique/Douala (UTC+1)'), 'Sert à compter « aujourd’hui » et à archiver les commandes chaque matin.')}</div>`],
+    ['Commandes', trow('Recevoir des commandes', 'Désactivé : votre menu reste consultable, le bouton Commander est masqué.', true)],
+  ] },
+  'Adresse publique': { p: 'Le lien de votre menu, imprimé dans vos QR Codes.', save: 'Enregistrer l’adresse', secs: k => [
+    ['Adresse de votre menu', `<div class="url-box"><i data-lucide="link"></i><span>restio-app.com/@le-comptoir-d-awa</span><button class="btn btn-ghost btn-sm"><i data-lucide="copy"></i>Copier</button></div>
+      ${field(k + 's', 'Identifiant', `<div class="pre"><span>restio-app.com/@</span><input id="${k}s" class="input" value="le-comptoir-d-awa" spellcheck="false" aria-describedby="${k}s-h"></div>`, '3 à 40 caractères : lettres minuscules, chiffres et tirets.')}
+      <div class="warn" role="note"><i data-lucide="triangle-alert"></i><span>Si vous changez d’adresse, les QR Codes déjà imprimés ne fonctionneront plus : il faudra les réimprimer. L’ancienne adresse ne sera jamais donnée à un autre restaurant.</span></div>`],
+    ['Visibilité', trow('Menu publié', 'Visible par toute personne qui scanne le QR Code ou ouvre le lien.', true)],
+  ] },
+  'Apparence du menu': { p: 'Photo, logo et affichage de votre menu public.', save: 'Enregistrer', secs: k => [
+    ['Photo de couverture', `<div class="cover"><img src="${img('1600891964599-f61ba0e24092', 900)}" alt="Couverture actuelle du menu" loading="lazy"><button class="btn btn-secondary btn-sm"><i data-lucide="image"></i>Changer</button></div><p class="hint" style="font-size:13px;color:var(--text-2)">Paysage, 1600 × 600 px conseillé. Optimisée automatiquement.</p>`],
+    ['Logo', `<div class="upl"><span class="r-mono" style="width:96px;height:96px;border-radius:24px;font-size:40px" aria-hidden="true">A</span><div><div class="row"><button class="btn btn-secondary btn-sm"><i data-lucide="upload"></i>Importer un logo</button></div><p>Carré, 512 px minimum. Sans logo, l’initiale de votre restaurant est utilisée.</p></div></div>`],
+    ['Thème du menu', `<div class="opts"><label class="opt"><input type="radio" name="${k}th" checked><div><b>Clair</b><span>Fond clair, lisible en salle comme en terrasse.</span></div></label><label class="opt is-off"><input type="radio" name="${k}th" disabled><div><b>Sombre</b><span>Bientôt disponible.</span></div></label></div>`],
+    ['Affichage', trow('Photos des plats', 'Sans photo, la ligne du plat reste compacte.', true) + trow('Descriptions des plats', 'Deux lignes au maximum sur le menu.', true)],
+  ] },
+  'Profil': { p: 'Vos informations personnelles.', save: 'Enregistrer', secs: k => [
+    ['Vous', `<div class="fgrid">${field(k + 'f', 'Prénom', inp(k + 'f', 'Awa', 'autocomplete="given-name"'))}${field(k + 'l', 'Nom', inp(k + 'l', 'Nkem', 'autocomplete="family-name"'))}${field(k + 'e', 'Adresse e-mail', inp(k + 'e', 'awa@exemple.com', 'disabled'), '', 'full')}<span class="ok-msg full" style="margin-top:-8px"><i data-lucide="badge-check"></i>Adresse vérifiée</span>${field(k + 'c', 'Pays de votre numéro', selF(k + 'c', ['Cameroun (+237)', 'Côte d’Ivoire (+225)', 'France (+33)'], 'Cameroun (+237)'))}${field(k + 't', 'Numéro de téléphone', `<input id="${k}t" class="input num" inputmode="tel" autocomplete="tel-national" value="6 99 12 34 56">`)}</div>`],
+    ['Supprimer le compte', `<p style="font-size:15px;color:var(--text-2)">Supprime votre compte, votre restaurant, votre menu et l’historique des commandes. Cette action est définitive.</p><div><button class="btn btn-ghost danger" style="padding-inline:12px"><i data-lucide="trash-2"></i>Supprimer mon compte</button></div>`],
+  ] },
+  'Mot de passe': { p: 'Choisissez un mot de passe que vous n’utilisez nulle part ailleurs.', save: 'Mettre à jour', left: '<a class="link" href="#connexion-suite">Mot de passe oublié ?</a>', secs: k => [
+    ['Changer le mot de passe', `${field(k + 'a', 'Mot de passe actuel', pw(k + 'a'))}${field(k + 'b', 'Nouveau mot de passe', pw(k + 'b', '10 caractères minimum', 'new-password'), '10 caractères minimum.')}${field(k + 'c', 'Confirmer le nouveau mot de passe', pw(k + 'c', '', 'new-password'))}<label class="check" style="font-size:15px"><input type="checkbox" checked>Déconnecter mes autres appareils</label>`],
+  ] },
+  'Notifications': { p: 'Enregistré automatiquement à chaque changement.', secs: k => [
+    ['Nouvelles commandes', trow('Notification sur cet appareil', 'Même quand Restio est fermé, si l’application est installée.', true) + trow('Son à chaque commande', 'Sonnerie : clochette.', true) + trow('Rappel si une commande attend', 'Après 5 minutes sans réponse.', true)],
+    ['Appareils', `<div class="dev"><span class="ic"><i data-lucide="monitor"></i></span><div><b>Cet ordinateur</b><span>Chrome · macOS</span></div><span class="badge s-ok"><i data-lucide="check"></i>Activé</span></div><div class="dev"><span class="ic"><i data-lucide="smartphone"></i></span><div><b>iPhone d’Awa</b><span>Safari · activé le 2 novembre</span></div><button class="btn btn-ghost btn-sm">Retirer</button></div>`],
+    ['Par e-mail', trow('Bilan de la veille', 'Chaque matin : commandes, ventes, plats les plus commandés.', false)],
+  ] },
+  'Langue': { p: 'Appliquée tout de suite.', secs: k => [
+    ['Langue de l’application', `<div class="opts" role="radiogroup" aria-label="Langue"><label class="opt"><input type="radio" name="${k}lg" checked><div><b>Langue de l’appareil</b><span>Actuellement : Français</span></div></label><label class="opt"><input type="radio" name="${k}lg"><div><b>Français</b></div></label><label class="opt"><input type="radio" name="${k}lg"><div><b>English</b></div></label></div><div class="info-box"><i data-lucide="info"></i><span>Votre menu public s’affiche dans la langue du téléphone de chaque client, en français ou en anglais.</span></div>`],
+  ] },
+};
+function setDeskPage(l) {
+  const sp = SP[l], k = 'd' + SLUG[l].slice(3);
+  const body = sp.secs(k).map(([t, h]) => `<section class="fsec"><h2>${t}</h2>${h}</section>`).join('');
+  const tz = l === 'Langue' ? `<div class="tz-desk">${toastH('', 'check', 'Langue mise à jour', 'Restio s’affiche maintenant en français.')}</div>` : '';
+  return desk('restio-app.com/reglages/' + SLUG[l].slice(3), app('settings', head(l, sp.p, '', crumb(['Réglages', '#reglages'], [l])) + `<div class="set-split">${setNav(l)}<div class="card form-card">${body}${sp.save ? save(sp.save, sp.left || '') : ''}</div></div>`, tz), `Bureau : ${l}`);
+}
+function setMobPage(l) {
+  const sp = SP[l], k = 'm' + SLUG[l].slice(3);
+  const body = sp.secs(k).map(([t, h]) => `<section class="m-card"><h2>${t}</h2>${h}</section>`).join('');
+  return phone(mhead(l) + `<div class="scr"><div class="m-form">${body}</div></div>` + (sp.save ? `<div class="m-save"><button class="btn btn-primary btn-fill btn-block">${sp.save}</button></div>` : ''), `Mobile : ${l}`);
+}
+
+/* ---------- Gabarits connexion ---------- */
+const LANG_BTN = (l = 'Français') => `<button class="btn btn-ghost btn-sm" aria-haspopup="menu" aria-label="Langue : ${l}"><i data-lucide="globe"></i>${l}<i data-lucide="chevron-down"></i></button>`;
+const authDesk = (form, { lang = 'Français', foot = ['© 2026 Restio', 'Besoin d’aide ? <a href="#reglages">Communauté WhatsApp</a>'], visual, pop = '' } = {}) =>
+  `<div class="auth"><div class="auth-card"><div class="auth-form"><div class="auth-top rel"><span class="brand"><img src="${MARK}ink.png" alt="" width="30" height="30"><b>Restio</b></span>${LANG_BTN(lang)}${pop}</div>${form}<div class="auth-foot"><span>${foot[0]}</span><span>${foot[1]}</span></div></div>${visual || clean(document.querySelector('#connexion .auth-visual').outerHTML)}</div></div>`;
+const suSteps = (n, of = 2) => `<div class="su-steps"><div class="steps" role="img" aria-label="Étape ${n} sur ${of}">${[...Array(of)].map((_, i) => `<i${i < n ? ' class="on"' : ''}></i>`).join('')}</div><span class="num">Étape ${n} sur ${of}</span></div>`;
+const backLink = (h = '#connexion', l = 'Retour à la connexion') => `<a class="back-link" href="${h}"><i data-lucide="arrow-left"></i>${l}</a>`;
+const VERIFY = k => `<div><h1>Vérifiez votre adresse</h1><p>Nous avons envoyé un code à 6 chiffres à <b>awa@exemple.com</b>. Il est valable 10 minutes.</p></div>${field(k, 'Code reçu par e-mail', otp(k, ['4', '8', '2']))}<button class="btn btn-primary btn-fill btn-block" type="submit">Vérifier</button><p class="resend">Rien reçu ? Vérifiez vos courriers indésirables ou <b>renvoyez le code</b> dans <span class="num">0:42</span>.</p><p class="switch"><a class="link" href="#connexion">Changer d’adresse</a></p>`;
+const FORGOT = k => `<div><h1>Mot de passe oublié</h1><p>Indiquez l’adresse e-mail de votre compte. Nous vous enverrons un code pour choisir un nouveau mot de passe.</p></div>${field(k, 'Adresse e-mail', mail(k, 'awa@exemple.com'))}<button class="btn btn-primary btn-fill btn-block" type="submit">Recevoir un code</button>`;
+const RESET = k => `<div><h1>Nouveau mot de passe</h1><p>Saisissez le code envoyé à <b>awa@exemple.com</b>, puis votre nouveau mot de passe.</p></div>${field(k + 'c', 'Code à 6 chiffres', otp(k + 'c', ['4', '8', '2', '9', '1', '6']))}${field(k + 'p', 'Nouveau mot de passe', pw(k + 'p', '10 caractères minimum', 'new-password'), '10 caractères minimum.')}<button class="btn btn-primary btn-fill btn-block" type="submit">Enregistrer le mot de passe</button><p class="switch"><a class="link" href="#connexion">Renvoyer le code</a></p>`;
+const SIGNUP = k => `<div><h1>Créez votre compte</h1><p>Ensuite, vous ajouterez votre restaurant et votre menu.</p></div>${field(k + 'm', 'Adresse e-mail', mail(k + 'm', '', 'vous@exemple.com'))}${field(k + 'p', 'Mot de passe', pw(k + 'p', '10 caractères minimum', 'new-password'), '10 caractères minimum.')}<label class="check" style="font-size:14px;align-items:flex-start"><input type="checkbox" style="margin-top:2px"><span>J’accepte les <a class="link" href="#connexion">conditions d’utilisation</a> et la <a class="link" href="#connexion">politique de confidentialité</a>.</span></label><button class="btn btn-primary btn-fill btn-block" type="submit">Continuer</button><div class="or">ou</div><button class="btn btn-secondary btn-block" type="button">${G()}Continuer avec Google</button><p class="switch">Déjà un compte ? <a class="link" href="#connexion">Se connecter</a></p>`;
+const form = (inner, cls = '') => `<form class="${cls}" onsubmit="return false" novalidate>${inner}</form>`;
+const EN_VISUAL = () => `<div class="auth-visual"><img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=1200&q=60&fm=webp" alt="" loading="lazy"><div class="float"><div class="toast frozen" role="presentation"><span class="dot"><i data-lucide="bell-ring"></i></span><p>New order<span>Table 7 · just now</span></p></div><article class="ticket" aria-label="Order 42"><div class="ticket-top"><span class="badge s-new"><i data-lucide="bell-ring"></i>New</span><div class="ticket-id"><b class="num">#42</b><span>Table 7 · 2 min ago</span></div></div><ul><li><span class="q num">2×</span><span>Poulet DG</span><span class="p num">9,000 FCFA</span></li><li><span class="q num">1×</span><span>Bissap juice</span><span class="p num">1,000 FCFA</span></li></ul><p class="note"><i data-lucide="message-square-text"></i>No chili in one of the two dishes</p><div class="ticket-total"><span>Total</span><span class="num">10,000 FCFA</span></div><div class="rail" role="img" aria-label="Step 1 of 4: New"><i class="now"></i><i></i><i></i><i></i></div></article></div><div class="promise"><h2>Your QR menu that takes orders from every table.</h2><ul><li><i data-lucide="check"></i>Every order is saved, never lost</li><li><i data-lucide="check"></i>Tracked live, from table to hand-off</li><li><i data-lucide="check"></i>Built for your phone and your computer</li></ul></div></div>`;
+
+/* ---------- Administration ---------- */
+const ADM_NAV = [['adm-home', 'layout-dashboard', 'Vue d’ensemble', '#admin'], ['adm-resto', 'store', 'Restaurants', '#admin-restaurants'], ['adm-users', 'users', 'Comptes', '#admin-comptes']];
+const ADM_OTHER = [['adm-set', 'settings', 'Réglages', '#admin-reglages']];
+const admSide = a => `<aside class="side"><span class="brand"><img src="${MARK}ink.png" alt="" width="30" height="30"><b>Restio</b><span class="adm-tag">Admin</span></span><p class="grp">Pilotage</p><nav aria-label="Navigation de l’administration">${ADM_NAV.map(navItem(a)).join('')}</nav><p class="grp">Autres</p><nav aria-label="Autres pages">${ADM_OTHER.map(navItem(a)).join('')}</nav><div class="adm-who"><div class="who"><span class="av">NF</span><div><b>Nadia Fotso</b><span>Administratrice</span></div></div><a class="btn btn-secondary btn-sm btn-block" href="#admin-auth"><i data-lucide="log-out"></i>Se déconnecter</a></div></aside>`;
+const admApp = (a, main) => `<div class="app">${admSide(a)}<div class="main">${main}</div></div>`;
+const ADM_TAB = [['adm-home', 'layout-dashboard', 'Accueil', '#admin'], ['adm-resto', 'store', 'Restaurants', '#admin-restaurants'], ['adm-users', 'users', 'Comptes', '#admin-comptes'], ['adm-set', 'settings', 'Réglages', '#admin-reglages']];
+const admTab = a => `<nav class="tabbar c4" aria-label="Navigation de l’administration">${ADM_TAB.map(([k, ic, l, h]) => `<a href="${h}"${k === a ? ' aria-current="page"' : ''}><span class="ic"><i data-lucide="${ic}"></i></span>${l}</a>`).join('')}</nav>`;
+const ADM_HEAD = `<div class="app-head"><span class="tile"><img src="${MARK}lime.png" alt="Restio" width="26" height="26"></span><div class="who"><b>Restio <span class="adm-tag">Admin</span></b><span class="m-sub" style="padding:0">Nadia Fotso</span></div></div>`;
+const RESTOS = [
+  ['A', "Le Comptoir d'Awa", 'le-comptoir-d-awa', 'Douala', 'CM', 'Awa Nkem', 24, 1012, 'ok', '12 oct.'],
+  ['C', 'Chez Mama Ngo', 'chez-mama-ngo', 'Yaoundé', 'CM', 'Mireille Ngo', 0, 0, 'cfg', '3 nov.'],
+  ['B', 'Le Baobab Gourmand', 'le-baobab-gourmand', 'Dakar', 'SN', 'Moussa Diop', 31, 12, 'ok', '2 nov.'],
+  ['M', 'Maquis du Plateau', 'maquis-du-plateau', 'Abidjan', 'CI', 'Aya Kouassi', 18, 4, 'ok', '2 nov.'],
+  ['B', 'Bistro Lumière', 'bistro-lumiere', 'Lyon', 'FR', 'Camille Roux', 22, 87, 'ok', '1 nov.'],
+  ['S', "Smoky Joe's BBQ", 'smoky-joes-bbq', 'Houston', 'US', 'Joe Carter', 15, 64, 'ok', '31 oct.'],
+  ['L', 'La Terrasse de Bonapriso', 'la-terrasse-de-bonapriso', 'Douala', 'CM', 'Eric Mbarga', 27, 0, 'stop', '18 oct.'],
+  ['K', 'Kribi Fish Corner', 'kribi-fish-corner', 'Kribi', 'CM', 'Sandrine Ebah', 12, 143, 'ok', '9 oct.'],
+];
+const ST = { ok: '<span class="badge s-ok"><i data-lucide="circle-check"></i>Actif</span>', cfg: '<span class="badge s-new"><i data-lucide="hourglass"></i>Menu vide</span>', stop: '<span class="badge s-danger"><i data-lucide="circle-pause"></i>Suspendu</span>' };
+const admAuth = (title, p, body, alt, tz = '') => `<div class="adm-auth rel"><span class="brand"><img src="${MARK}white.png" alt="" width="30" height="30"><b>Restio</b></span><form class="adm-card" onsubmit="return false" novalidate><div><h1>${title}</h1><p>${p}</p></div>${body}<p class="alt">${alt}</p></form>${tz}</div>`;
+const admMob = (title, p, body, alt, tz = '') => `<div class="adm-mob-top"><span class="brand"><img src="${MARK}white.png" alt="" width="30" height="30"><b>Restio</b></span></div><form class="adm-sheet" onsubmit="return false" novalidate><div><h1>${title}</h1><p>${p}</p></div>${body}<p class="alt">${alt}</p><p class="copy">© 2026 Restio</p></form>${tz}`;
+const ADM_SIGNIN = k => [`${field(k + 'm', 'Adresse e-mail', mail(k + 'm', '', ''))}${field(k + 'p', 'Mot de passe', pw(k + 'p'))}<button class="btn btn-dark btn-block" type="submit">Se connecter</button>`, '<a href="#admin-auth">Premier accès ou mot de passe oublié</a>'];
+const ADM_FIRST = k => [`${field(k + 'm', 'Adresse e-mail', mail(k + 'm', 'nadia@restio-app.com', ''), 'Seules les adresses de l’équipe Restio reçoivent un code.')}<button class="btn btn-dark btn-block" type="submit">Recevoir un code</button>`, '<a href="#admin-auth">Retour à la connexion</a>'];
+const ADM_SETPW = k => [`${field(k + 'c', 'Code reçu par e-mail', otp(k + 'c', ['7', '3', '0', '5', '1', '8']))}${field(k + 'p', 'Nouveau mot de passe', pw(k + 'p', '14 caractères minimum', 'new-password'), '14 caractères minimum.')}<button class="btn btn-dark btn-block" type="submit">Enregistrer le mot de passe</button>`, '<a href="#admin-auth">Changer d’adresse</a>'];
+
+/* ---------- Montage ---------- */
+const MOUNT = {
+  notifs() {
+    const main = clean(document.querySelector('#tableau-de-bord .main').innerHTML).replace(/<section class="blk s12"[\s\S]*?<\/section>/, '');
+    const items = `<ul class="nlist">
+      <li class="nitem new-o unread"><span class="ic"><i data-lucide="bell-ring"></i></span><div><b>Nouvelle commande #42</b><p>Table 7 · 2 articles · 10 000 FCFA</p></div><time>2 min</time></li>
+      <li class="nitem new-o unread"><span class="ic"><i data-lucide="bell-ring"></i></span><div><b>Nouvelle commande #41</b><p>Terrasse 3 · 3 articles · 10 500 FCFA</p></div><time>6 min</time></li>
+      <li class="nitem alert-o"><span class="ic"><i data-lucide="clock-alert"></i></span><div><b>#40 en préparation depuis 10 min</b><p>Table 2 · Ndolé crevettes, plantain frit</p></div><time>4 min</time></li>
+      <li class="nitem"><span class="ic"><i data-lucide="circle-slash"></i></span><div><b>Côtes de porc braisées : épuisé</b><p>Affiché « Épuisé » sur votre menu jusqu’à demain</p></div><time>11:52</time></li></ul>
+      <p class="ngrp">Hier</p><ul class="nlist"><li class="nitem"><span class="ic"><i data-lucide="chart-column"></i></span><div><b>Bilan de lundi</b><p>23 commandes · 120 900 FCFA</p></div><time>Hier</time></li></ul>`;
+    const pop = `<div class="npop" role="dialog" aria-label="Notifications"><div class="npop-head"><h2>Notifications</h2><span class="cnt num">2</span><button class="btn btn-ghost btn-sm">Tout marquer comme lu</button></div>${items}<div class="npop-foot"><a href="#rg-notifs"><i data-lucide="settings"></i>Réglages des notifications</a></div></div>`;
+    return desk('restio-app.com/tableau-de-bord', `<div class="app rel"><aside class="side" data-side="home"></aside><div class="main">${main}</div>${pop}</div>`, 'Bureau : panneau ouvert depuis la cloche, la page reste visible')
+      + screens(phone(mhead('Notifications', '#tableau-de-bord', '<button class="txt-btn end">Tout lire</button>') + `<div class="scr"><div class="info-box" style="margin:0 12px 12px"><i data-lucide="bell-ring"></i><span>Activez les notifications pour être prévenu même écran verrouillé. <a class="link" href="#rg-notifs">Activer</a></span></div><div class="m-notif"><p class="ngrp" style="border-top:0">Aujourd’hui</p>${items}</div></div>`, 'Mobile : plein écran, le plus récent en haut'));
+  },
+  menuMore() {
+    const mainD = clean(document.querySelector('#menu .main').innerHTML);
+    const k = 'dd';
+    const dishForm = (k, mob) => `<div class="upl"><img src="${img('1555939594-58d7cb561ad1', 240)}" alt="Photo actuelle : brochettes de bœuf"><div><div class="row"><button class="btn btn-secondary btn-sm"><i data-lucide="image"></i>Changer</button><button class="btn btn-ghost btn-sm">Retirer</button></div><p>JPG, PNG ou WebP, 8 Mo max. Recadrée en carré et optimisée automatiquement.</p></div></div>
+      ${field(k + 'n', 'Nom du plat', inp(k + 'n', 'Brochettes de bœuf'))}
+      ${field(k + 'd', 'Description', `<textarea id="${k}d" class="input" rows="3" maxlength="160">Trois brochettes marinées au soya, oignons et piment doux.</textarea><span class="counter num">58 / 160</span>`)}
+      <div class="fgrid">${field(k + 'p', 'Prix', `<div class="pre"><input id="${k}p" class="input num" inputmode="numeric" value="3 500" style="padding-left:14px"><span class="suf">FCFA</span></div>`)}${field(k + 'c', 'Catégorie', selF(k + 'c', ['Grillades', 'Plats du pays', 'Salades', 'Accompagnements', 'Boissons'], 'Grillades'))}</div>
+      ${trow('Disponible', 'Visible et commandable sur votre menu.', true)}`;
+    const drawer = `<div class="scrim" aria-hidden="true"></div><aside class="drawer" role="dialog" aria-label="Modifier le plat"><div class="drawer-head"><h2>Modifier le plat</h2><button class="btn btn-ghost btn-icon btn-sm" aria-label="Fermer"><i data-lucide="x"></i></button></div><form class="drawer-body" onsubmit="return false" novalidate>${dishForm('dd', false)}</form><div class="drawer-foot"><button class="btn btn-ghost danger"><i data-lucide="trash-2"></i>Supprimer</button><button class="btn btn-secondary">Annuler</button><button class="btn btn-primary btn-fill">Enregistrer</button></div></aside>`;
+    const rows = MENU.map(([n, d, p, im, on]) => `<div class="dish-row${on ? '' : ' is-off'}">${im ? `<img src="${img(im, 160)}" alt="" width="64" height="64" loading="lazy">` : '<div class="ph"><i data-lucide="image-plus"></i></div>'}<div class="info"><b>${n}</b><span class="num">${on ? fmt(p) : 'Épuisé aujourd’hui'}</span></div>${tog(on, n + ' disponible')}</div>`).join('');
+    const mobList = `<div class="m-head"><span></span><h1>Menu</h1><a class="btn btn-ghost btn-icon end" href="#menu-public" aria-label="Aperçu du menu public"><i data-lucide="eye"></i></a></div>
+      <label class="m-search"><span class="vh">Rechercher un plat</span><i data-lucide="search"></i><input class="input" placeholder="Rechercher un plat"></label>
+      <div class="cat-strip" role="tablist" aria-label="Catégories"><button class="tab" role="tab" aria-selected="false">Tous <em class="num">24</em></button><button class="tab" role="tab" aria-selected="true">Grillades <em class="num">6</em></button><button class="tab" role="tab" aria-selected="false">Plats du pays <em class="num">7</em></button><button class="tab" role="tab" aria-selected="false">Salades <em class="num">3</em></button><button class="tab" role="tab" aria-selected="false">Boissons <em class="num">5</em></button><button class="tab" role="tab" aria-selected="false"><i data-lucide="settings-2"></i>Gérer</button></div>
+      <div class="scr"><div class="m-menu"><h2>Grillades <span class="num">6 plats · 1 épuisé</span></h2>${rows}</div></div>
+      <button class="btn btn-primary btn-fill fab"><i data-lucide="plus"></i>Ajouter un plat</button>${tabbar('menu')}`;
+    const mobSheet = mhead('Modifier le plat', '#menu') + `<div class="scr"><form class="m-form" onsubmit="return false" novalidate>${dishForm('md', true)}<button class="btn btn-ghost danger btn-block"><i data-lucide="trash-2"></i>Supprimer le plat</button></form></div><div class="m-save"><button class="btn btn-primary btn-fill btn-block">Enregistrer</button></div>`;
+    return screens(phone(mobList, 'Mobile : une catégorie à la fois, disponibilité en un geste'), phone(mobSheet, 'Mobile : fiche du plat, plein écran'))
+      + sub('Fiche du plat sur ordinateur', 'S’ouvre à droite, le menu reste visible. « Ajouter un plat » ouvre la même fiche, vide, titrée « Nouveau plat ».')
+      + desk('restio-app.com/menu', `<div class="app rel"><aside class="side" data-side="menu"></aside><div class="main">${mainD}</div>${drawer}</div>`, 'Bureau : fiche en tiroir, un seul bouton citron « Enregistrer »');
+  },
+  stats() {
+    const chart = clean(document.querySelector('#tableau-de-bord .chart').outerHTML);
+    const legend = clean(document.querySelector('#tableau-de-bord .legend').outerHTML);
+    const H = [6, 22, 34, 18, 6, 4, 7, 14, 26, 31, 20, 9, 3], mx = 34, hours = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
+    const seg = (mob) => `<div class="seg" role="tablist" aria-label="Période"><button role="tab" aria-selected="false">Aujourd'hui</button><button role="tab" aria-selected="true">7 jours</button><button role="tab" aria-selected="false">30 jours</button></div>`;
+    const kpi = (t, v, foot, ink) => `<article class="kpi s3"><div class="kpi-top"><h2>${t}</h2></div><p class="kpi-val num">${v}</p><p class="kpi-foot">${foot}</p></article>`;
+    const TOP = [['Poulet DG', 58, 261000], ['Brochettes de bœuf', 41, 143500], ['Jus de bissap', 37, 37000], ['Ndolé crevettes', 25, 125000], ['Poisson braisé', 19, 114000]];
+    const ranks = (n) => `<ol class="ranks">${TOP.slice(0, n).map(([d, q, a], i) => `<li><span class="rk num">${i + 1}</span><b>${d}</b><span class="n num">${q}</span><span class="bar"><i style="width:${Math.round(q / 58 * 100)}%"></i></span></li>`).join('')}</ol>`;
+    const main = head('Statistiques', 'Du mercredi 28 octobre au mardi 3 novembre', seg() + BELL) + `<div class="g12 stats-k">
+      ${kpi('Ventes', '1 317 500<small>FCFA</small>', '<span>vs 7 jours précédents</span><span class="delta"><i data-lucide="trending-up"></i><span class="num">+12 %</span></span>')}
+      ${kpi('Commandes', '246', '<span>vs 7 jours précédents</span><span class="delta"><i data-lucide="trending-up"></i><span class="num">+9 %</span></span>')}
+      ${kpi('Panier moyen', '5 356<small>FCFA</small>', '<span>7 jours précédents</span><span class="num">5 210 FCFA</span>')}
+      ${kpi('Refusées ou annulées', '3', '<span>Sur 249 commandes reçues</span><span class="num">1,2 %</span>')}
+      <article class="card s8"><div class="card-head"><div><h2>Ventes par jour</h2><p style="font-size:14px;color:var(--text-2);margin-top:2px">Moyenne : 188 000 FCFA par jour</p></div></div>${chart}${legend}</article>
+      <article class="card s4 col"><div class="card-head"><h2>Plats les plus commandés</h2><span class="end" style="font-size:14px;color:var(--text-2)">Quantités</span></div>${ranks(5)}</article>
+      <article class="card s8"><div class="card-head"><div><h2>Heures d’affluence</h2><p style="font-size:14px;color:var(--text-2);margin-top:2px">Commandes reçues par heure, sur 7 jours</p></div></div>
+        <div class="hours" role="img" aria-label="Pic à 13 h (34 commandes) et à 20 h (31 commandes)">${H.map(v => `<i class="${v === mx ? 'peak' : ''}" style="height:${Math.round(v / mx * 100)}%"></i>`).join('')}</div>
+        <div class="hours-x" aria-hidden="true">${hours.map(h => `<span>${h} h</span>`).join('')}</div></article>
+      <article class="card s4"><div class="card-head"><h2>À retenir</h2></div><ul class="facts">
+        <li><span class="ic"><i data-lucide="calendar-check"></i></span><div><b>Samedi 31 octobre</b><span>Meilleur jour : 264 600 FCFA</span></div></li>
+        <li><span class="ic"><i data-lucide="clock"></i></span><div><b>13 h à 14 h</b><span>Heure la plus chargée</span></div></li>
+        <li><span class="ic"><i data-lucide="utensils"></i></span><div><b>Plats du pays</b><span>41 % des ventes</span></div></li></ul></article></div>`;
+    const mini = [60.8, 48.3, 70, 88.2, 99.3, 40.3, 32.2];
+    const mob = `<h1 class="m-title">Statistiques</h1><div class="scr"><div class="m-seg">${seg(true)}</div>
+      <div class="m-kpis"><div class="m-kpi"><span>Ventes</span><b class="num">1,32 M<small>FCFA</small></b><em class="num">+12 %</em></div><div class="m-kpi"><span>Commandes</span><b class="num">246</b><em class="num">+9 %</em></div><div class="m-kpi"><span>Panier moyen</span><b class="num">5 356<small>FCFA</small></b></div><div class="m-kpi"><span>Refusées</span><b class="num">3</b></div></div>
+      <div class="sec-title"><h3>Ventes par jour</h3></div><div class="kv pad"><div class="mini-bars" role="img" aria-label="Ventes par jour, meilleur jour samedi">${mini.map((v, i) => `<i class="${i === 6 ? 'now' : ''}" style="height:${v}%"></i>`).join('')}</div><div class="mini-x" aria-hidden="true"><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span><span>Lun</span><b>Auj.</b></div></div>
+      <div class="sec-title"><h3>Plats les plus commandés</h3></div><div class="kv">${ranks(3)}</div>
+      <div class="sec-title"><h3>Heures d’affluence</h3></div><div class="kv pad" style="margin-bottom:16px"><div class="mini-hours" role="img" aria-label="Pic à 13 h et à 20 h">${H.map(v => `<i class="${v === mx ? 'peak' : ''}" style="height:${Math.round(v / mx * 100)}%"></i>`).join('')}</div><div class="mini-x" style="grid-template-columns:repeat(3,1fr)" aria-hidden="true"><span style="text-align:left">11 h</span><span>17 h</span><span style="text-align:right">23 h</span></div></div>
+      </div>${tabbar('stats')}`;
+    const empty = `<h1 class="m-title">Statistiques</h1><div class="scr"><div class="m-seg">${seg(true)}</div><div class="empty"><svg class="ill" viewBox="0 0 120 96" aria-hidden="true"><rect x="22" y="10" width="76" height="76" rx="14" fill="#fff" stroke="#0F0F0F" stroke-width="2"/><path d="M40 66V54M54 66V44M68 66V50M82 66V36" stroke="#0F0F0F" stroke-width="6" stroke-linecap="round"/><circle cx="92" cy="18" r="10" fill="#C7FF2E" stroke="#0F0F0F" stroke-width="2"/></svg><h4>Pas encore de chiffres</h4><p>Vos ventes, vos plats et vos heures d’affluence apparaîtront après vos premières commandes.</p><div class="row"><a class="btn btn-dark btn-sm" href="#qr-code"><i data-lucide="qr-code"></i>Télécharger le QR Code</a></div></div></div>${tabbar('stats')}`;
+    return desk('restio-app.com/statistiques', app('stats', main), 'Bureau : période en haut, mêmes cartes que le tableau de bord')
+      + screens(phone(mob, 'Mobile : chiffres clés puis détails'), phone(empty, 'Mobile : avant la première commande'));
+  },
+  qr() {
+    const tent = (cls, t) => `<div class="tent ${cls}"><span class="q">${qrSVG(11, 'Aperçu du QR Code')}</span><b>Scannez pour commander</b><small>${t}</small></div>`;
+    const sup = (t, s, art, on) => `<button class="sup" aria-pressed="${on}"><span class="sup-art">${art}</span><b>${t}${on ? '<i data-lucide="circle-check"></i>' : ''}</b><span>${s}</span></button>`;
+    const tables = `<div class="tables">${[...Array(12)].map((_, i) => `<span class="chip num">Table ${i + 1}</span>`).join('')}${[1, 2, 3, 4].map(i => `<span class="chip num">Terrasse ${i}</span>`).join('')}<button class="chip add"><i data-lucide="plus"></i>Ajouter</button></div>`;
+    const main = head('QR Code', 'Vos clients le scannent pour ouvrir votre menu et commander.', BELL) + `<div class="qr-split">
+      <div class="card qr-card"><div class="qr-big">${qrSVG(7)}</div><div class="url-box"><i data-lucide="link"></i><span>restio-app.com/@le-comptoir-d-awa</span><button class="btn btn-ghost btn-sm"><i data-lucide="copy"></i>Copier</button></div>
+        <div class="dl2"><button class="btn btn-primary btn-fill"><i data-lucide="download"></i>Télécharger en PNG</button><button class="btn btn-secondary">PDF</button></div>
+        <div class="info-box"><i data-lucide="scan-line"></i><span>Testez-le avec votre téléphone avant d’imprimer.</span></div></div>
+      <div class="card"><div class="card-head"><div><h2>Supports à imprimer</h2><p style="font-size:14px;color:var(--text-2);margin-top:2px">Votre QR Code mis en page, prêt à imprimer.</p></div></div>
+        <div class="sup-grid">${sup('Chevalet de table', 'A6, à plier · un par table', tent('', 'Table 7'), true)}${sup('Autocollant', '8 × 8 cm · tables, vitrine', tent('sq', 'Le Comptoir d’Awa'), false)}${sup('Affiche', 'A4 · comptoir, entrée', tent('a4', 'Le Comptoir d’Awa'), false)}</div>
+        <section class="fsec" style="padding:24px 0 0;margin-top:24px">${trow('Un QR Code par table', 'La commande arrive avec le bon numéro de table, sans saisie du client.', true)}${tables}
+          <div class="row" style="margin-top:4px"><button class="btn btn-dark"><i data-lucide="download"></i>Télécharger 16 chevalets (PDF)</button><button class="btn btn-ghost"><i data-lucide="printer"></i>Imprimer</button></div></section></div></div>`;
+    const mob = mhead('QR Code', '#reglages') + `<div class="scr"><div class="m-qr">${qrSVG(7)}<p class="slug"><i data-lucide="link"></i>@le-comptoir-d-awa</p><button class="btn btn-primary btn-fill btn-block"><i data-lucide="download"></i>Télécharger en PNG</button><button class="btn btn-secondary btn-block"><i data-lucide="share-2"></i>Partager le lien</button></div>
+      <div class="sec-title"><h3>Supports à imprimer</h3></div><div class="m-rows" style="margin-bottom:16px">
+      ${[['tent', 'Chevalet de table', 'A6 · un par table'], ['sticker', 'Autocollant', '8 × 8 cm'], ['file-text', 'Affiche', 'A4 · comptoir'], ['hash', 'Numéros de table', '16 tables · un QR Code par table']].map(([ic, b, s]) => `<a class="m-row" href="#qr-code"><span class="ic"><i data-lucide="${ic}"></i></span><div><b>${b}</b><span>${s}</span></div><i data-lucide="chevron-right" class="chev"></i></a>`).join('')}</div></div>`;
+    return desk('restio-app.com/qr-code', app('qr', main), 'Bureau : le QR Code à gauche, les supports à droite')
+      + screens(phone(mob, 'Mobile : depuis Réglages ou le raccourci du tableau de bord'));
+  },
+  settingsPages() {
+    return Object.keys(SP).map(l => `<div id="${SLUG[l]}" class="anchor">${sub(l)}${setDeskPage(l)}${screens(setMobPage(l))}</div>`).join('')
+      + `<div class="wrap"><p class="lead" style="margin-top:32px">« QR Code et supports » ouvre directement la page <a class="link" href="#qr-code">QR Code</a>.</p></div>`;
+  },
+  authMore() {
+    const lpop = `<div class="lang-pop" role="menu" aria-label="Langue"><button role="menuitemradio" aria-checked="false">Français</button><button role="menuitemradio" aria-checked="true">English<i data-lucide="check"></i></button></div>`;
+    const en = form(`<div><h1>Sign in</h1><p>Find your orders and your menu.</p></div>${field('en-m', 'Email address', mail('en-m', '', 'you@example.com'))}${field('en-p', 'Password', pw('en-p').replace('Afficher le mot de passe', 'Show password'))}<div class="line"><label class="check"><input type="checkbox" checked>Remember me</label><a class="link" href="#connexion">Forgot password?</a></div><button class="btn btn-primary btn-fill btn-block" type="submit">Sign in</button><div class="or">or</div><button class="btn btn-secondary btn-block" type="button">${G()}Continue with Google</button><p class="switch">No account yet? <a class="link" href="#connexion">Create an account</a></p>`);
+    const mSignin = `<div class="wl-photo" style="height:250px"><img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=720&q=60&fm=webp" alt=""><span class="brand"><img src="${MARK}white.png" alt="" width="30" height="30"><b>Restio</b></span></div>
+      <div class="wl-sheet" style="text-align:left;gap:14px"><form class="su-form" style="padding:0" onsubmit="return false" novalidate><div><h1>Connexion</h1><p>Retrouvez vos commandes et votre menu.</p></div>${field('ms-m', 'Adresse e-mail', mail('ms-m', 'awa@exemple.com'))}${field('ms-p', 'Mot de passe', pw('ms-p'))}<div style="text-align:right;margin-top:-6px"><a class="link" href="#connexion-suite">Mot de passe oublié ?</a></div><button class="btn btn-primary btn-fill btn-block" type="submit">Se connecter</button><div class="or">ou</div><button class="btn btn-secondary btn-block" type="button">${G()}Continuer avec Google</button><p class="switch">Pas encore de compte ? <a class="link" href="#connexion">Créer un compte</a></p></form></div>
+      <div class="tz-mob">${toastH('err', 'circle-alert', 'Adresse e-mail ou mot de passe incorrect.', 'Vérifiez vos informations puis réessayez.')}</div>`;
+    return sub('Langue', 'Le site suit la langue de l’appareil (français ou anglais). Le sélecteur en haut du formulaire change la langue et s’en souvient.')
+      + desk('restio-app.com/sign-in', authDesk(en, { lang: 'English', foot: ['© 2026 Restio', 'Need help? <a href="#reglages">WhatsApp community</a>'], visual: EN_VISUAL(), pop: lpop }), 'Bureau, en anglais : menu de langue ouvert')
+      + sub('Inscription', 'Étape 1 : e-mail et mot de passe. Étape 2 : le code reçu par e-mail. Ensuite, la création du restaurant.')
+      + desk('restio-app.com/inscription', authDesk(form(suSteps(1) + SIGNUP('ds'))), 'Bureau : inscription, étape 1')
+      + desk('restio-app.com/verification', authDesk(form(suSteps(2) + VERIFY('dv'))), 'Bureau : inscription, étape 2 (code reçu par e-mail)')
+      + screens(phone(`<div class="su-head"><a class="btn btn-ghost btn-icon" href="#connexion" aria-label="Retour"><i data-lucide="arrow-left"></i></a><div class="steps" role="img" aria-label="Étape 2 sur 2"><i class="on"></i><i class="on"></i></div><span class="num">2 sur 2</span></div><div class="scr">${form(VERIFY('mv'), 'su-form')}</div>`, 'Mobile : inscription, étape 2', { t: '09:43' }),
+        phone(mSignin, 'Mobile : connexion, message d’erreur temporaire au-dessus de la photo', { cls: 'welcome', t: '09:41' }))
+      + sub('Mot de passe oublié', 'Un code à 6 chiffres par e-mail, puis le nouveau mot de passe.')
+      + desk('restio-app.com/mot-de-passe-oublie', authDesk(form(backLink() + FORGOT('df'))), 'Bureau : mot de passe oublié')
+      + desk('restio-app.com/nouveau-mot-de-passe', authDesk(form(backLink() + RESET('dr'))), 'Bureau : nouveau mot de passe')
+      + screens(phone(mhead('', '#connexion') + `<div class="scr">${form(FORGOT('mf'), 'su-form')}</div>`, 'Mobile : mot de passe oublié', { t: '09:44' }), phone(mhead('', '#connexion-suite') + `<div class="scr">${form(RESET('mr'), 'su-form')}</div>`, 'Mobile : nouveau mot de passe', { t: '09:46' }));
+  },
+  onboarding() {
+    const P = k => `<div><h1>Faisons connaissance</h1><p>Quelques informations sur vous avant de créer votre restaurant.</p></div><div class="fgrid">${field(k + 'f', 'Prénom', inp(k + 'f', 'Awa', 'autocomplete="given-name"'))}${field(k + 'l', 'Nom', inp(k + 'l', 'Nkem', 'autocomplete="family-name"'))}${field(k + 'c', 'Pays de votre numéro', selF(k + 'c', ['Cameroun (+237)', 'Côte d’Ivoire (+225)', 'France (+33)', 'États-Unis (+1)'], 'Cameroun (+237)'), '', 'full')}${field(k + 't', 'Numéro de téléphone', `<input id="${k}t" class="input num" inputmode="tel" autocomplete="tel-national" value="6 99 12 34 56">`, '', 'full')}</div><button class="btn btn-primary btn-fill btn-block" type="submit">Continuer</button>`;
+    const R = k => `<div><h1>Créez votre restaurant</h1><p>Ces informations servent à préparer votre menu et vos prix.</p></div><div class="fgrid">${field(k + 'n', 'Nom du restaurant', inp(k + 'n', "Le Comptoir d'Awa"), 'Votre adresse : restio-app.com/@le-comptoir-d-awa', 'full')}${field(k + 'p', 'Pays', selF(k + 'p', ['Cameroun', 'Côte d’Ivoire', 'Sénégal', 'France', 'États-Unis'], 'Cameroun'))}${field(k + 'v', 'Ville', inp(k + 'v', 'Douala'))}${field(k + 'w', 'Numéro WhatsApp', tel(k + 'w', '6 99 12 34 56'), '', 'full')}${field(k + 'm', 'Devise des prix', selF(k + 'm', ['Franc CFA (FCFA)', 'Euro (€)', 'Dollar US ($)'], 'Franc CFA (FCFA)'), 'Proposée selon votre pays.')}${field(k + 'o', 'Date d’ouverture (facultatif)', `<input id="${k}o" class="input" placeholder="jj/mm/aaaa" inputmode="numeric">`, 'Laissez vide si vous ne savez plus.')}</div><div class="dl2" style="grid-template-columns:auto 1fr"><button class="btn btn-secondary" type="button">Retour</button><button class="btn btn-primary btn-fill" type="submit">Créer mon restaurant</button></div>`;
+    const ob = (n, label, inner) => `<div class="ob"><div class="ob-top"><span class="brand"><img src="${MARK}ink.png" alt="" width="30" height="30"><b>Restio</b></span><div class="steps" role="img" aria-label="Étape ${n} sur 2"><i class="on"></i><i${n > 1 ? ' class="on"' : ''}></i></div><span class="num">${n} sur 2 · ${label}</span><a class="btn btn-ghost btn-sm" href="#connexion">Se déconnecter</a></div><form class="ob-card" onsubmit="return false" novalidate>${inner}</form></div>`;
+    const mob = (n, inner) => `<div class="su-head"><a class="btn btn-ghost btn-icon" href="#onboarding" aria-label="Retour"><i data-lucide="arrow-left"></i></a><div class="steps" role="img" aria-label="Étape ${n} sur 2"><i class="on"></i><i${n > 1 ? ' class="on"' : ''}></i></div><span class="num">${n} sur 2</span></div><div class="scr">${form(inner, 'su-form')}</div>`;
+    return desk('restio-app.com/bienvenue', ob(1, 'Vous', P('op')), 'Bureau : étape 1, vous')
+      + desk('restio-app.com/bienvenue', ob(2, 'Restaurant', R('or')), 'Bureau : étape 2, votre restaurant')
+      + screens(phone(mob(1, P('mp')), 'Mobile : étape 1', { t: '09:48' }), phone(mob(2, R('mo')), 'Mobile : étape 2', { t: '09:50' }));
+  },
+  client() {
+    const pubMob = clean(document.querySelector('#menu-public .phone-frame').innerHTML).replace(/<div class="status-bar">[\s\S]*?<\/div>/, '');
+    const pubDesk = clean(document.querySelector('#menu-public .pubd').innerHTML);
+    const dd = (cls) => `<div class="dd-img"><img src="${img('1555939594-58d7cb561ad1', 900)}" alt="Brochettes de bœuf"><button class="btn btn-secondary btn-icon btn-sm" aria-label="Fermer"><i data-lucide="x"></i></button></div>
+      <div class="dd-body"><div><h2>Brochettes de bœuf</h2><p class="price num" style="margin-top:6px">3 500 FCFA</p></div><p>Trois brochettes marinées au soya, oignons et piment doux.</p><div class="chips"><span class="chip">Grillades</span><span class="chip warn-c"><i data-lucide="flame"></i>Piment doux</span></div>
+      ${field(cls + 'n', 'Une précision pour la cuisine ? (facultatif)', `<input id="${cls}n" class="input" placeholder="Ex. sans oignons">`)}</div>
+      <div class="dd-foot"><div class="qc"><button aria-label="Retirer une brochette"><span><i data-lucide="minus"></i></span></button><output class="num">2</output><button class="plus" aria-label="Ajouter une brochette"><span><i data-lucide="plus"></i></span></button></div><button class="btn btn-primary btn-fill"><span class="num">Ajouter · 7 000 FCFA</span></button></div>`;
+    const lines = `<div class="ord-line"><img src="${img('1555939594-58d7cb561ad1', 160)}" alt=""><div><b>Brochettes de bœuf</b><span class="num">7 000 FCFA</span></div><div class="qc"><button aria-label="Retirer une brochette"><span><i data-lucide="minus"></i></span></button><output class="num">2</output><button class="plus" aria-label="Ajouter une brochette"><span><i data-lucide="plus"></i></span></button></div></div>
+      <div class="ord-line"><img src="${img('1512621776951-a57141f2eefd', 160)}" alt=""><div><b>Salade avocat</b><span class="num">2 500 FCFA</span></div><div class="qc"><button aria-label="Retirer une salade"><span><i data-lucide="minus"></i></span></button><output class="num">1</output><button class="plus" aria-label="Ajouter une salade"><span><i data-lucide="plus"></i></span></button></div></div>`;
+    const tableTag = `<div class="table-tag"><i data-lucide="map-pin"></i><div><b>Table 7</b><span>Reconnue grâce au QR Code de votre table</span></div></div>`;
+    const extra = k => `${field(k + 'n', 'Une précision pour la cuisine ? (facultatif)', `<textarea id="${k}n" class="input" rows="2" placeholder="Ex. une sauce à part"></textarea>`)}${field(k + 'p', 'Votre prénom (facultatif)', `<input id="${k}p" class="input" autocomplete="given-name" placeholder="Pour vous appeler au service">`)}`;
+    const sum = `<div class="sum"><div><span>2 articles · 3 plats</span><span class="num">9 500 FCFA</span></div><div class="tot"><span>Total</span><span class="num">9 500 FCFA</span></div></div><p class="pay-note"><i data-lucide="hand-coins"></i>Le paiement se fait sur place, au service.</p>`;
+    const sendBtn = `<button class="btn btn-primary btn-fill btn-block"><span class="num">Envoyer · 9 500 FCFA</span></button>`;
+    const tl = `<ol class="tl"><li class="done"><span class="d"></span><span>Reçue</span><time class="num">20:14</time></li><li class="done"><span class="d"></span><span>Acceptée</span><time class="num">20:15</time></li><li class="now"><span class="d"></span><span>En préparation</span><time class="num">20:16</time></li><li><span class="d"></span><span>Prête</span><time>—</time></li><li><span class="d"></span><span>Servie</span><time>—</time></li></ol>`;
+    const hero = `<div class="track-hero"><span class="ok-dot"><i data-lucide="chef-hat"></i></span><h2>En préparation</h2><p class="num">Commande #61 · Table 7 · envoyée à 20:14</p><span class="live">Mise à jour en direct</span></div>`;
+    const items = `<ul class="det-items"><li><span class="q num">2×</span><span>Brochettes de bœuf</span><span class="p num">7 000 FCFA</span></li><li><span class="q num">1×</span><span>Salade avocat</span><span class="p num">2 500 FCFA</span></li></ul><div class="det-total"><span>Total</span><span class="num">9 500 FCFA</span></div>`;
+    const pubTop = `<div class="pubd-top"><div><span class="r-mono" aria-hidden="true">A</span><b>Le Comptoir d'Awa</b><button class="btn btn-ghost btn-sm" aria-label="Langue : français"><i data-lucide="globe"></i>FR</button></div></div>`;
+    return sub('Fiche d’un plat', 'Toucher un plat ouvre sa fiche : grande photo, description, quantité, précision pour la cuisine.')
+      + screens(phone(pubMob + `<div class="scrim" aria-hidden="true"></div><div class="sheet" role="dialog" aria-label="Brochettes de bœuf"><div class="grab" aria-hidden="true"></div>${dd('pd')}</div>`, 'Mobile : fiche du plat en feuille', { t: '20:12' }))
+      + desk('restio-app.com/@le-comptoir-d-awa', `<div class="pubd">${pubDesk}<div class="scrim" aria-hidden="true"></div><div class="modal" role="dialog" aria-label="Brochettes de bœuf">${dd('pdd')}</div></div>`, 'Bureau : fiche du plat en fenêtre centrée')
+      + sub('Récapitulatif', 'Dernière vérification avant l’envoi. Pas de paiement en ligne : le client paie au service.')
+      + screens(phone(mhead('Votre commande', '#menu-public') + `<div class="scr"><div class="m-form">${tableTag}<section class="m-card"><h2>Articles</h2><div>${lines}</div></section><section class="m-card">${extra('cr')}</section><section class="m-card">${sum}</section></div></div><div class="m-save">${sendBtn}</div>`, 'Mobile : récapitulatif', { t: '20:13' }),
+        phone(mhead('Suivi de commande', '#menu-public') + `<div class="scr"><div class="m-form">${hero}<section class="m-card"><h2>Suivi</h2>${tl}</section><section class="m-card"><h2>Votre commande</h2>${items}</section><p class="pay-note"><i data-lucide="hand-coins"></i>Le paiement se fait sur place, au service.</p></div></div><div class="m-save"><a class="btn btn-secondary btn-block" href="#menu-public">Commander autre chose</a></div>`, 'Mobile : suivi en direct après l’envoi', { t: '20:16' }))
+      + desk('restio-app.com/@le-comptoir-d-awa/commande', `<div class="pubd page">${pubTop}<div class="col" style="display:grid;gap:16px"><div class="pm-id" style="padding:8px 0 0">${backLink('#menu-public', 'Retour au menu')}<h1 style="margin-top:10px">Votre commande</h1></div>${tableTag}<section class="pcard"><h2>Articles</h2><div>${lines}</div></section><section class="pcard">${extra('dc')}</section><section class="pcard">${sum}${sendBtn}</section></div></div>`, 'Bureau : récapitulatif, colonne de 720 px')
+      + desk('restio-app.com/@le-comptoir-d-awa/commande/61', `<div class="pubd page">${pubTop}<div class="col" style="display:grid;gap:16px"><section class="pcard">${hero}</section><section class="pcard"><h2>Suivi</h2>${tl}</section><section class="pcard"><h2>Votre commande</h2>${items}<p class="pay-note"><i data-lucide="hand-coins"></i>Le paiement se fait sur place, au service.</p></section><a class="btn btn-secondary" href="#menu-public" style="justify-self:center">Commander autre chose</a></div></div>`, 'Bureau : suivi de commande');
+  },
+  admin() {
+    const kp = (t, v, f, ink) => `<article class="kpi s3${ink ? ' is-ink' : ''}"><div class="kpi-top"><h2>${t}</h2>${ink ? '<a class="kpi-go" href="#admin-restaurants" aria-label="Voir ces restaurants"><i data-lucide="arrow-right"></i></a>' : ''}</div><p class="kpi-val num">${v}</p><p class="kpi-foot">${f}</p></article>`;
+    const row = r => `<tr><td><div class="tcell"><span class="r-mono sm" aria-hidden="true">${r[0]}</span><div><b>${r[1]}</b><span>@${r[2]}</span></div></div></td><td>${r[3]} <span class="mut">${r[4]}</span></td><td>${r[5]}</td><td class="r num">${r[6]}</td><td class="r num">${r[7].toLocaleString('fr-FR').replace(/ /g, ' ')}</td><td>${ST[r[8]]}</td><td class="mut num">${r[9]}</td><td><a class="btn btn-ghost btn-icon btn-sm" href="#admin-restaurant" aria-label="Ouvrir ${r[1]}"><i data-lucide="chevron-right"></i></a></td></tr>`;
+    const thead = '<thead><tr><th>Restaurant</th><th>Ville</th><th>Propriétaire</th><th class="r">Plats</th><th class="r">Commandes 30 j</th><th>Statut</th><th>Inscrit</th><th><span class="vh">Ouvrir</span></th></tr></thead>';
+    const filt = `<div role="tablist" aria-label="Filtrer" style="display:flex;gap:6px"><button class="tab" role="tab" aria-selected="true">Tous <em class="num">128</em></button><button class="tab" role="tab" aria-selected="false">Actifs <em class="num">121</em></button><button class="tab" role="tab" aria-selected="false">Menu vide <em class="num">5</em></button><button class="tab" role="tab" aria-selected="false">Suspendus <em class="num">2</em></button></div>`;
+    const search = ph => `<label class="search-in"><span class="vh">${ph}</span><i data-lucide="search"></i><input class="input" placeholder="${ph}"></label>`;
+    const home = head('Vue d’ensemble', 'Mardi 3 novembre · toute la plateforme') + `<div class="g12 stats-k">
+      ${kp('Restaurants actifs', '121', '<span>Sur 128 inscrits</span><span class="delta"><i data-lucide="trending-up"></i><span class="num">+9 en 7 j</span></span>')}
+      ${kp('Commandes aujourd’hui', '2 431', '<span>Toutes devises</span><span class="delta"><i data-lucide="trending-up"></i><span class="num">+6 % vs mardi</span></span>')}
+      ${kp('Nouveaux comptes', '23', '<span>7 derniers jours</span><span class="num">6 non vérifiés</span>')}
+      ${kp('Inactifs depuis 7 j', '14', '<span>À accompagner</span><b class="num">dont 5 menus vides</b>', true)}
+      <section class="card s12 tbl-card"><div class="tbl-tools"><h2 style="font-size:18px;font-weight:700">Derniers restaurants inscrits</h2><a class="btn btn-ghost btn-sm end" href="#admin-restaurants">Tous les restaurants<i data-lucide="arrow-right"></i></a></div><table class="tbl">${thead}<tbody>${RESTOS.slice(0, 6).map(row).join('')}</tbody></table></section></div>`;
+    const list = head('Restaurants', '128 restaurants inscrits') + `<section class="card tbl-card"><div class="tbl-tools">${search('Nom, ville ou propriétaire')}${filt}</div><table class="tbl">${thead}<tbody>${RESTOS.map(row).join('')}</tbody></table><div class="pager"><span class="num">1 à 8 sur 128</span><button class="btn btn-secondary btn-sm" disabled><i data-lucide="chevron-left"></i>Précédent</button><button class="btn btn-secondary btn-sm">Suivant<i data-lucide="chevron-right"></i></button></div></section>`;
+    const kvl = rows => `<dl class="kvl">${rows.map(([a, b]) => `<dt>${a}</dt><dd>${b}</dd>`).join('')}</dl>`;
+    const INFO = [['Adresse', '@le-comptoir-d-awa'], ['Ville', 'Douala, Cameroun'], ['Devise', 'Franc CFA (FCFA)'], ['Fuseau', 'Afrique/Douala'], ['Menu', 'Publié · 24 plats'], ['Inscrit', '12 octobre 2026']];
+    const OWNER = [['Nom', 'Awa Nkem'], ['E-mail', 'awa@exemple.com'], ['Vérifié', 'Oui'], ['Téléphone', '+237 6 99 12 34 56'], ['Connexion', 'E-mail et mot de passe'], ['Dernière visite', 'Aujourd’hui, 11:28']];
+    const LOG = `<ul class="log"><li><b>Plat marqué épuisé</b><span>Côtes de porc braisées · Awa Nkem</span><time class="num">11:52</time></li><li><b>Menu publié</b><span>Awa Nkem</span><time class="num">14 oct.</time></li><li><b>Adresse modifiée</b><span>@comptoir-awa → @le-comptoir-d-awa</span><time class="num">13 oct.</time></li><li><b>Restaurant créé</b><span>Awa Nkem</span><time class="num">12 oct.</time></li></ul>`;
+    const detail = head("Le Comptoir d'Awa", 'Douala · inscrit le 12 octobre 2026', `<a class="btn btn-secondary" href="#menu-public"><i data-lucide="external-link"></i>Voir le menu public</a><button class="btn btn-ghost danger"><i data-lucide="circle-pause"></i>Suspendre</button>`, crumb(['Restaurants', '#admin-restaurants'], ["Le Comptoir d'Awa"])) + `<div class="g12 stats-k">
+      ${kp('Commandes 30 j', '1 012', '<span>Moyenne</span><span class="num">34 par jour</span>')}${kp('Ventes 30 j', '5 420 000<small>FCFA</small>', '<span>Panier moyen</span><span class="num">5 356 FCFA</span>')}${kp('Refusées', '11', '<span>Sur 30 jours</span><span class="num">1,1 %</span>')}${kp('Abonnement', 'Gratuit', '<span>Paiements non activés</span><span></span>')}
+      <article class="card s4"><div class="card-head"><h2>Restaurant</h2><span class="end">${ST.ok}</span></div><div style="margin-top:14px">${kvl(INFO)}</div></article>
+      <article class="card s4"><div class="card-head"><h2>Propriétaire</h2></div><div style="margin-top:14px">${kvl(OWNER)}</div></article>
+      <article class="card s4"><div class="card-head"><h2>Journal</h2></div><div style="margin-top:6px">${LOG}</div></article></div>`;
+    const USERS = [['AN', 'Awa Nkem', 'awa@exemple.com', "Le Comptoir d'Awa", true, 'E-mail', 'Aujourd’hui'], ['MN', 'Mireille Ngo', 'mireille.ngo@exemple.com', 'Chez Mama Ngo', false, 'E-mail', '3 nov.'], ['MD', 'Moussa Diop', 'moussa@exemple.sn', 'Le Baobab Gourmand', true, 'Google', '2 nov.'], ['AK', 'Aya Kouassi', 'aya.k@exemple.ci', 'Maquis du Plateau', true, 'Google', 'Hier'], ['CR', 'Camille Roux', 'camille@exemple.fr', 'Bistro Lumière', true, 'E-mail', 'Aujourd’hui'], ['JC', 'Joe Carter', 'joe@example.com', "Smoky Joe's BBQ", true, 'Google', 'Aujourd’hui']];
+    const users = head('Comptes et abonnements', '134 comptes · 128 restaurants') + `<div class="g12 stats-k">
+      ${kp('Comptes', '134', '<span>Propriétaires</span><span class="num">+23 en 7 j</span>')}${kp('E-mails non vérifiés', '6', '<span>Inscription non terminée</span><span></span>')}${kp('Offre Gratuite', '128', '<span>Tous les restaurants</span><span class="num">100 %</span>')}${kp('Offres payantes', '0', '<span>Paiements non activés</span><span></span>')}
+      <section class="card s12 tbl-card"><div class="tbl-tools">${search('Nom ou e-mail')}<div role="tablist" aria-label="Filtrer" style="display:flex;gap:6px"><button class="tab" role="tab" aria-selected="true">Tous <em class="num">134</em></button><button class="tab" role="tab" aria-selected="false">Non vérifiés <em class="num">6</em></button></div></div>
+      <table class="tbl"><thead><tr><th>Compte</th><th>Restaurant</th><th>E-mail</th><th>Connexion</th><th>Dernière visite</th><th>Offre</th></tr></thead><tbody>${USERS.map(u => `<tr><td><div class="tcell"><span class="av-c">${u[0]}</span><div><b>${u[1]}</b><span>${u[2]}</span></div></div></td><td>${u[3]}</td><td>${u[4] ? '<span class="badge s-ok"><i data-lucide="check"></i>Vérifié</span>' : '<span class="badge s-new"><i data-lucide="mail-warning"></i>Non vérifié</span>'}</td><td class="mut">${u[5]}</td><td class="mut">${u[6]}</td><td><span class="badge s-muted">Gratuit</span></td></tr>`).join('')}</tbody></table>
+      <div class="pager"><span class="num">1 à 6 sur 134</span><button class="btn btn-secondary btn-sm" disabled><i data-lucide="chevron-left"></i>Précédent</button><button class="btn btn-secondary btn-sm">Suivant<i data-lucide="chevron-right"></i></button></div></section></div>`;
+    const setts = head('Réglages', 'Votre compte d’administration') + `<div class="card form-card" style="max-width:760px">
+      <section class="fsec"><h2>Votre compte</h2><div class="kvl">${[['Nom', 'Nadia Fotso'], ['E-mail', 'nadia@restio-app.com']].map(([a, b]) => `<dt>${a}</dt><dd>${b}</dd>`).join('')}</div><div><button class="btn btn-secondary btn-sm"><i data-lucide="lock"></i>Changer le mot de passe</button></div></section>
+      <section class="fsec"><h2>Administrateurs</h2><div class="dev"><span class="ic"><i data-lucide="user"></i></span><div><b>Nadia Fotso (vous)</b><span>nadia@restio-app.com</span></div></div><div class="dev"><span class="ic"><i data-lucide="user"></i></span><div><b>Paul Ekané</b><span>paul@restio-app.com</span></div></div><div class="info-box"><i data-lucide="shield-check"></i><span>La liste des administrateurs est fixée dans la configuration du serveur. Elle ne se modifie pas depuis cette page.</span></div></section>
+      <section class="fsec"><h2>Sessions actives</h2><div class="dev"><span class="ic"><i data-lucide="monitor"></i></span><div><b>Cet ordinateur</b><span>Chrome · macOS · Paris</span></div><span class="badge s-ok">Actuelle</span></div><div class="dev"><span class="ic"><i data-lucide="smartphone"></i></span><div><b>iPhone</b><span>Safari · Douala · hier</span></div><button class="btn btn-ghost btn-sm">Déconnecter</button></div></section></div>`;
+    const aRows = (rs) => `<div class="m-rows">${rs.map(r => `<a class="m-row" href="#admin-restaurant"><span class="r-mono sm" aria-hidden="true">${r[0]}</span><div><b>${r[1]}</b><span>${r[3]} · ${r[6]} plats · ${r[7].toLocaleString('fr-FR').replace(/\u202f/g, ' ')} cmd. 30 j</span></div>${r[8] === 'ok' ? '' : ST[r[8]]}<i data-lucide="chevron-right" class="chev"></i></a>`).join('')}</div>`;
+    const mHome = ADM_HEAD + `<div class="scr"><div class="hello"><h2>Vue d’ensemble</h2><p>Mardi 3 novembre</p></div><div class="m-kpis"><div class="m-kpi"><span>Restaurants actifs</span><b class="num">121</b><em>+9 en 7 j</em></div><div class="m-kpi"><span>Commandes auj.</span><b class="num">2 431</b><em>+6 %</em></div><div class="m-kpi"><span>Nouveaux comptes</span><b class="num">23</b></div><div class="m-kpi is-ink"><span>Inactifs 7 j</span><b class="num">14</b></div></div><div class="sec-title"><h3>Derniers inscrits</h3><a href="#admin-restaurants">Tout voir</a></div>${aRows(RESTOS.slice(0, 4))}</div>${admTab('adm-home')}`;
+    const mList = `<h1 class="m-title">Restaurants</h1><label class="m-search"><span class="vh">Rechercher</span><i data-lucide="search"></i><input class="input" placeholder="Nom, ville ou propriétaire"></label><div class="tabs" role="tablist" aria-label="Filtrer"><button class="tab" role="tab" aria-selected="true">Tous <em class="num">128</em></button><button class="tab" role="tab" aria-selected="false">Actifs <em class="num">121</em></button><button class="tab" role="tab" aria-selected="false">Menu vide <em class="num">5</em></button><button class="tab" role="tab" aria-selected="false">Suspendus <em class="num">2</em></button></div><div class="scr">${aRows(RESTOS)}<div style="height:16px"></div></div>${admTab('adm-resto')}`;
+    const mDetail = mhead("Le Comptoir d'Awa", '#admin-restaurants') + `<div class="scr"><div class="m-form"><div class="m-kpis" style="padding:0"><div class="m-kpi"><span>Commandes 30 j</span><b class="num">1 012</b></div><div class="m-kpi"><span>Ventes 30 j</span><b class="num">5,42 M<small>FCFA</small></b></div></div><section class="m-card"><h2 style="display:flex;justify-content:space-between;align-items:center">Restaurant ${ST.ok}</h2>${kvl(INFO)}</section><section class="m-card"><h2>Propriétaire</h2>${kvl(OWNER)}</section><section class="m-card"><h2>Journal</h2>${LOG}</section><a class="btn btn-secondary btn-block" href="#menu-public"><i data-lucide="external-link"></i>Voir le menu public</a><button class="btn btn-ghost danger btn-block"><i data-lucide="circle-pause"></i>Suspendre le restaurant</button></div></div>`;
+    const mUsers = `<h1 class="m-title">Comptes</h1><label class="m-search"><span class="vh">Rechercher</span><i data-lucide="search"></i><input class="input" placeholder="Nom ou e-mail"></label><div class="m-kpis" style="margin-bottom:12px"><div class="m-kpi"><span>Comptes</span><b class="num">134</b></div><div class="m-kpi"><span>Offre Gratuite</span><b class="num">128</b></div></div><div class="scr"><div class="m-rows">${USERS.map(u => `<div class="m-row"><span class="av-c">${u[0]}</span><div><b>${u[1]}</b><span>${u[3]} · ${u[6]}</span></div>${u[4] ? '' : '<span class="badge s-new">Non vérifié</span>'}</div>`).join('')}</div><div style="height:16px"></div></div>${admTab('adm-users')}`;
+    const mSet = `<h1 class="m-title">Réglages</h1><div class="scr"><div class="m-set"><div class="prof"><span class="av-c lg">NF</span><div><b>Nadia Fotso</b><span>nadia@restio-app.com</span></div></div>
+      <section class="sgroup"><h2>Compte</h2><div class="slist">${sRow(['lock', 'Mot de passe', ''])}${sRow(['monitor-smartphone', 'Sessions actives', '2'])}</div></section>
+      <section class="sgroup"><h2>Équipe</h2><div class="slist">${sRow(['shield-check', 'Administrateurs', '2'])}</div></section>${logout}</div></div>${admTab('adm-set')}`;
+    const okT = `<div class="tz-desk">${toastH('', 'check', 'Mot de passe enregistré', 'Connectez-vous avec votre nouveau mot de passe.')}</div>`;
+    const okM = `<div class="tz-mob">${toastH('', 'check', 'Mot de passe enregistré', 'Connectez-vous avec votre nouveau mot de passe.')}</div>`;
+    const [si, sa] = ADM_SIGNIN('as'), [mi, ma] = ADM_SIGNIN('ams'), [fi, fa] = ADM_FIRST('af'), [mfi, mfa] = ADM_FIRST('amf'), [pi, pa] = ADM_SETPW('ap'), [mpi, mpa] = ADM_SETPW('amp');
+    return `<div id="admin-auth" class="anchor">${sub('Connexion', 'Écran séparé de l’application restaurateur, bouton noir. Après « Enregistrer le mot de passe », retour ici avec un message temporaire.')}`
+      + desk('admin.restio-app.com/connexion', admAuth('Administration', 'Accès réservé à l’équipe Restio.', si, sa, okT), 'Bureau : connexion, message de confirmation en haut à droite')
+      + desk('admin.restio-app.com/premier-acces', admAuth('Premier accès', 'Recevez un code pour choisir votre mot de passe.', fi, fa), 'Bureau : premier accès ou mot de passe oublié')
+      + desk('admin.restio-app.com/mot-de-passe', admAuth('Choisir le mot de passe', 'Code envoyé à nadia@restio-app.com.', pi, pa), 'Bureau : choix du mot de passe')
+      + screens(phone(admMob('Administration', 'Accès réservé à l’équipe Restio.', mi, ma, okM), 'Mobile : connexion avec confirmation', { cls: 'welcome' }), phone(admMob('Premier accès', 'Recevez un code pour choisir votre mot de passe.', mfi, mfa), 'Mobile : premier accès', { cls: 'welcome' }), phone(admMob('Choisir le mot de passe', 'Code envoyé à nadia@restio-app.com.', mpi, mpa), 'Mobile : choix du mot de passe', { cls: 'welcome' })) + '</div>'
+      + `<div id="admin-home" class="anchor">${sub('Vue d’ensemble')}${desk('admin.restio-app.com', admApp('adm-home', home), 'Bureau : la carte noire signale les restaurants à accompagner')}${screens(phone(mHome, 'Mobile : vue d’ensemble'))}</div>`
+      + `<div id="admin-restaurants" class="anchor">${sub('Restaurants')}${desk('admin.restio-app.com/restaurants', admApp('adm-resto', list), 'Bureau : recherche, filtres par statut, 8 lignes par page')}${screens(phone(mList, 'Mobile : liste des restaurants'))}</div>`
+      + `<div id="admin-restaurant" class="anchor">${sub('Fiche restaurant')}${desk('admin.restio-app.com/restaurants/le-comptoir-d-awa', admApp('adm-resto', detail), 'Bureau : activité, informations, propriétaire, journal')}${screens(phone(mDetail, 'Mobile : fiche restaurant'))}</div>`
+      + `<div id="admin-comptes" class="anchor">${sub('Comptes et abonnements', 'Une seule offre au lancement : Gratuite. Les paiements ne sont pas activés.')}${desk('admin.restio-app.com/comptes', admApp('adm-users', users), 'Bureau : comptes et offres')}${screens(phone(mUsers, 'Mobile : comptes'))}</div>`
+      + `<div id="admin-reglages" class="anchor">${sub('Réglages')}${desk('admin.restio-app.com/reglages', admApp('adm-set', setts), 'Bureau : compte, administrateurs, sessions')}${screens(phone(mSet, 'Mobile : réglages'))}</div>`;
+  },
+};
 
 renderOrders();
 renderPub();
+document.querySelectorAll('[data-mount]').forEach(el => { el.outerHTML = MOUNT[el.dataset.mount](); });
+fillNav();
+lucide.createIcons();
+document.querySelectorAll('.viewport').forEach(v => { ro.observe(v); ro.observe(v.firstElementChild); });
 document.fonts && document.fonts.ready.then(fit);
 </script>
 </body>

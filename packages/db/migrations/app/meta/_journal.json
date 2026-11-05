@@ -15,6 +15,13 @@
       "when": 1793690919219,
       "tag": "0001_order_number_default",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793753573939,
+      "tag": "0002_order_customer_name",
+      "breakpoints": true
     }
   ]
 }

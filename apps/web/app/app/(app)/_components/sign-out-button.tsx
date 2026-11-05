@@ -1,10 +1,12 @@
 'use client';
 
 import { useFormStatus } from 'react-dom';
+import { useTranslations } from 'next-intl';
 import { LogOut } from 'lucide-react';
 
 // Bouton bloqué pendant l'envoi : pas de double déconnexion.
 export function SignOutButton() {
+  const t = useTranslations('settings');
   const { pending } = useFormStatus();
   return (
     <button
@@ -16,7 +18,7 @@ export function SignOutButton() {
       <span aria-hidden="true" className="grid size-9 shrink-0 place-items-center rounded-sm bg-status-danger-bg">
         <LogOut className="size-[18px]" strokeWidth={1.75} />
       </span>
-      <span className="text-base font-bold">{pending ? 'Déconnexion…' : 'Se déconnecter'}</span>
+      <span className="text-base font-bold">{pending ? t('signingOut') : t('signOut')}</span>
     </button>
   );
 }

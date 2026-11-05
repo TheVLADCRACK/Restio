@@ -1,11 +1,13 @@
+import { getTranslations } from 'next-intl/server';
 // Squelettes fidèles au tableau de bord (Creux, pulsation lente, figée si mouvement réduit).
 const bone = 'animate-[pulse_1.6s_ease-in-out_infinite] rounded-full bg-sunken';
 const card = 'min-w-0 rounded-lg border border-line bg-surface';
 
-export default function DashboardLoading() {
+export default async function DashboardLoading() {
+  const t = await getTranslations('dashboard');
   return (
     <div aria-busy="true" aria-live="polite">
-      <span className="sr-only">Chargement du tableau de bord…</span>
+      <span className="sr-only">{t('loading')}</span>
       <div aria-hidden="true">
         <div className="flex flex-col gap-4 sm:min-h-14 sm:flex-row sm:items-center">
           <div className="grid gap-2.5">

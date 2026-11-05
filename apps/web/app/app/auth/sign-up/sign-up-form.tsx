@@ -1,33 +1,43 @@
 'use client';
 
 import Link from 'next/link';
-import { CircleAlert, Lock, Mail } from 'lucide-react';
-import { Alert } from '@restio/ui/components/alert';
+import { useTranslations } from 'next-intl';
+import { CircleAlert } from 'lucide-react';
 import { Button } from '@restio/ui/components/button';
 import { Field } from '@restio/ui/components/field';
+import { PasswordInput } from '@restio/ui/components/password-input';
 import { TextInput } from '@restio/ui/components/text-input';
+import { Toast } from '@/components/toast';
 import { signUpAction } from '@/lib/auth/actions';
 import { GoogleSignIn, OrDivider } from '../_components/google-sign-in';
 import { useAuthForm } from '../_components/use-auth-form';
 
-const legalLink = 'font-bold text-ink underline decoration-line-strong underline-offset-4 hover:decoration-ink';
+const legalLink = 'text-ink underline underline-offset-2';
 
 export function SignUpForm() {
+  const t = useTranslations('auth');
+  const tc = useTranslations('common');
   const { state, pending, formProps } = useAuthForm(signUpAction);
   const termsError = state?.fieldErrors?.terms;
+  const legal = (href: string, chunks: React.ReactNode) => (
+    <Link href={href} target="_blank" rel="noopener" className={legalLink}>
+      {chunks}
+      <span className="sr-only"> {tc('newTab')}</span>
+    </Link>
+  );
   return (
     <div className="grid gap-5">
       <form {...formProps} className="grid gap-4">
-        {state?.error && <Alert tone="error">{state.error}</Alert>}
-        <Field id="email" label="Adresse email" error={state?.fieldErrors?.email}>
-          <TextInput icon={Mail} name="email" type="email" autoComplete="email" inputMode="email" autoCapitalize="none" spellCheck={false} placeholder="vous@exemple.com" required />
+        {state?.error && !pending && <Toast tone="error">{state.error}</Toast>}
+        <Field id="email" label={t('fields.email')} error={state?.fieldErrors?.email}>
+          <TextInput name="email" type="email" autoComplete="email" inputMode="email" autoCapitalize="none" spellCheck={false} placeholder={t('fields.emailPlaceholder')} required />
         </Field>
-        <Field id="password" label="Mot de passe" hint="10 caractères minimum" error={state?.fieldErrors?.password}>
-          <TextInput icon={Lock} name="password" type="password" autoComplete="new-password" minLength={10} required />
+        <Field id="password" label={t('fields.password')} hint={t('fields.passwordHint')} error={state?.fieldErrors?.password}>
+          <PasswordInput name="password" autoComplete="new-password" minLength={10} placeholder={t('fields.passwordMin')} showLabel={tc('showPassword')} hideLabel={tc('hidePassword')} required />
         </Field>
         <div className="grid gap-1.5">
           {/* Consentement obligatoire : vérifié aussi côté serveur (signUpAction). */}
-          <label htmlFor="terms" className="flex min-h-11 cursor-pointer items-start gap-3 py-1 text-[0.9375rem] text-ink">
+          <label htmlFor="terms" className="flex min-h-11 cursor-pointer items-start gap-3 py-1 text-sm text-ink">
             <input
               id="terms"
               name="terms"
@@ -37,17 +47,7 @@ export function SignUpForm() {
               aria-describedby={termsError ? 'terms-error' : undefined}
               className="mt-0.5 size-5 shrink-0 cursor-pointer accent-ink aria-invalid:outline-2 aria-invalid:outline-offset-2 aria-invalid:outline-status-danger"
             />
-            <span>
-              J’accepte les{' '}
-              <Link href="/legal/conditions" target="_blank" rel="noopener" className={legalLink}>
-                conditions d’utilisation<span className="sr-only"> (nouvel onglet)</span>
-              </Link>{' '}
-              et la{' '}
-              <Link href="/legal/confidentialite" target="_blank" rel="noopener" className={legalLink}>
-                politique de confidentialité<span className="sr-only"> (nouvel onglet)</span>
-              </Link>
-              .
-            </span>
+            <span>{t.rich('fields.terms', { terms: (c) => legal('/legal/conditions', c), privacy: (c) => legal('/legal/confidentialite', c) })}</span>
           </label>
           {termsError && (
             <p id="terms-error" className="flex items-start gap-1.5 text-sm font-medium text-status-danger">
@@ -56,13 +56,13 @@ export function SignUpForm() {
             </p>
           )}
         </div>
-        <Button type="submit" variant="primary" block loading={pending} loadingText="Création du compte…">
-          Créer mon compte
+        <Button type="submit" variant="primary" block loading={pending} loadingText={t('signUp.loading')}>
+          {t('signUp.submit')}
         </Button>
       </form>
       <OrDivider />
       <GoogleSignIn />
-      <p className="text-center text-sm text-text-2">Avec Google, vous acceptez les mêmes conditions d’utilisation et politique de confidentialité.</p>
+      <p className="text-center text-sm text-text-2">{t('google.consent')}</p>
     </div>
   );
 }

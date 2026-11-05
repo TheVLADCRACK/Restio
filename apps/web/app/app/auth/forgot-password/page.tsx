@@ -1,17 +1,17 @@
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import { WebAuthShell } from '../_components/web-auth-shell';
-import { AuthLink } from '../_components/auth-link';
+import { BackLink, MobileBack } from '../_components/auth-steps';
 import { ForgotPasswordForm } from './forgot-password-form';
 
-export const metadata: Metadata = { title: 'Mot de passe oublié' };
+export async function generateMetadata(): Promise<Metadata> {
+  return { title: (await getTranslations('auth.forgot'))('metaTitle') };
+}
 
-export default function ForgotPasswordPage() {
+export default async function ForgotPasswordPage() {
+  const t = await getTranslations('auth.forgot');
   return (
-    <WebAuthShell
-      title="Mot de passe oublié"
-      description="Indiquez l’adresse email de votre compte. Nous vous enverrons un code pour choisir un nouveau mot de passe."
-      footer={<AuthLink href="/auth/sign-in">Retour à la connexion</AuthLink>}
-    >
+    <WebAuthShell title={t('title')} description={t('description')} mobileTop={<MobileBack href="/auth/sign-in" />} eyebrow={<BackLink href="/auth/sign-in" label={t('back')} />}>
       <ForgotPasswordForm />
     </WebAuthShell>
   );

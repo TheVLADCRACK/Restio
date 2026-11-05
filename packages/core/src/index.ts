@@ -6,3 +6,4 @@ export * from './phone';
 export * from './profile-input';
 export * from './restaurant-input';
 export * from './locale-defaults';
+export * from './menu-input';

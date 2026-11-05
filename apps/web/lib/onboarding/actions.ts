@@ -1,8 +1,9 @@
 'use server';
 
 import { redirect } from 'next/navigation';
+import { getTranslations } from 'next-intl/server';
 import { like, sql } from 'drizzle-orm';
-import { profileInputSchema, restaurantInputSchema, slugify, suggestSlug } from '@restio/core';
+import { normalizePhone, PhoneError, profileInputSchema, restaurantInputSchema, slugify, suggestSlug } from '@restio/core';
 import { appSchema } from '@restio/db';
 import { requireUser } from '@/lib/auth/session';
 import { db } from '@/lib/db';
@@ -10,16 +11,15 @@ import { getProfile, hasRestaurant, hasRestaurantNow } from './state';
 
 export type OnboardingFormState = { error?: string; fieldErrors?: Record<string, string> } | null;
 
-const FIELD_MESSAGES: Record<string, string> = {
-  invalid_phone: 'Ce numéro n’est pas valide pour le pays choisi.',
-  invalid_country: 'Choisissez un pays dans la liste.',
-  invalid_currency: 'Choisissez une devise dans la liste.',
-  invalid_timezone: 'Fuseau horaire inconnu.',
-  future_date: 'La date d’ouverture ne peut pas être dans le futur.',
-};
+// Codes d'erreur renvoyés par @restio/core, traduits dans la langue de la requête.
+const FIELD_CODES = ['invalid_phone', 'invalid_country', 'invalid_currency', 'invalid_timezone', 'future_date'] as const;
+type FieldCode = (typeof FIELD_CODES)[number];
 
-function toFieldErrors(issues: { path: PropertyKey[]; message: string }[]): Record<string, string> {
-  return Object.fromEntries(issues.map((i) => [String(i.path[0] ?? 'form'), FIELD_MESSAGES[i.message] ?? 'Valeur invalide.']));
+async function toFieldErrors(issues: { path: PropertyKey[]; message: string }[]): Promise<Record<string, string>> {
+  const t = await getTranslations('onboarding.errors');
+  return Object.fromEntries(
+    issues.map((i) => [String(i.path[0] ?? 'form'), (FIELD_CODES as readonly string[]).includes(i.message) ? t(i.message as FieldCode) : t('invalid')]),
+  );
 }
 
 const text = (form: FormData, key: string) => {
@@ -34,9 +34,10 @@ export async function saveProfileAction(_prev: OnboardingFormState, form: FormDa
     lastName: text(form, 'lastName'),
     phoneCountry: text(form, 'phoneCountry'),
     phone: text(form, 'phone'),
-    whatsapp: text(form, 'whatsapp'),
+    // Planche : un seul numéro à cette étape ; le WhatsApp public du restaurant se saisit à l'étape suivante.
+    whatsapp: text(form, 'phone'),
   });
-  if (!parsed.success) return { fieldErrors: toFieldErrors(parsed.error.issues) };
+  if (!parsed.success) return { fieldErrors: await toFieldErrors(parsed.error.issues) };
 
   const values = { ...parsed.data, updatedAt: new Date() };
   await db()
@@ -76,8 +77,18 @@ export async function createRestaurantAction(_prev: OnboardingFormState, form: F
     currency: text(form, 'currency'),
     timezone: text(form, 'timezone'),
   });
-  if (!parsed.success) return { fieldErrors: toFieldErrors(parsed.error.issues) };
+  if (!parsed.success) return { fieldErrors: await toFieldErrors(parsed.error.issues) };
   const data = parsed.data;
+  let publicWhatsapp: string | null = null;
+  const whatsapp = text(form, 'whatsapp').trim();
+  if (whatsapp) {
+    try {
+      publicWhatsapp = normalizePhone(whatsapp, data.countryCode);
+    } catch (error) {
+      if (!(error instanceof PhoneError)) throw error;
+      return { fieldErrors: { whatsapp: (await getTranslations('onboarding.errors'))('invalid_phone') } };
+    }
+  }
 
   const base = slugify(data.name);
   // Deux restaurants peuvent viser le même slug au même instant : la base tranche, on réessaie avec le suivant.
@@ -87,7 +98,7 @@ export async function createRestaurantAction(_prev: OnboardingFormState, form: F
       await db().transaction(async (tx) => {
         const [restaurant] = await tx
           .insert(appSchema.restaurants)
-          .values({ slug, name: data.name, countryCode: data.countryCode, city: data.city, openedOn: data.openedOn ?? null, currency: data.currency, timezone: data.timezone })
+          .values({ slug, name: data.name, countryCode: data.countryCode, city: data.city, openedOn: data.openedOn ?? null, currency: data.currency, timezone: data.timezone, publicWhatsapp })
           .returning({ id: appSchema.restaurants.id });
         if (!restaurant) throw new Error('restaurant insert returned nothing');
         await tx.insert(appSchema.restaurantMembers).values({ restaurantId: restaurant.id, userId: user.id, role: 'owner' });
@@ -102,5 +113,5 @@ export async function createRestaurantAction(_prev: OnboardingFormState, form: F
       throw error;
     }
   }
-  return { error: 'Impossible de réserver une adresse pour ce nom. Réessayez avec un nom légèrement différent.' };
+  return { error: (await getTranslations('onboarding.errors'))('slugUnavailable') };
 }

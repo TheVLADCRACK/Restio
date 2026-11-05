@@ -368,6 +368,7 @@ Toutes ces fonctions sont `SECURITY DEFINER` avec `search_path` figé et sans dr
 - Clés générées par le serveur : `restaurants/<restaurant_id>/<logo|banner|dishes>/<uuidv7>.webp`. Aucun nom de fichier fourni par l'utilisateur n'est conservé.
 - Le serveur limite la taille du corps avant lecture, vérifie le format réel (signature du fichier), limite le nombre de pixels décodés (`sharp` `limitInputPixels`) et réencode en WebP avant l'envoi.
 - Remplacement ou suppression d'une image : l'ancien objet est supprimé après validation de la transaction.
+- Deux variantes par image (`<uuid>.webp` et `<uuid>-thumb.webp`), servies avec un cache immuable : une nouvelle clé par version. Le navigateur compresse avant l'envoi, le serveur revérifie et réencode.
 
 ## 7. Migrations
 

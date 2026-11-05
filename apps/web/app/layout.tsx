@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getTranslations } from 'next-intl/server';
 import './globals.css';
 
-export const metadata: Metadata = {
-  title: { default: 'Restio', template: '%s · Restio' },
-  description: 'Menus QR et commandes pour restaurants.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('meta');
+  return { title: { default: 'Restio', template: '%s · Restio' }, description: t('description') };
+}
 
 export const viewport: Viewport = {
   themeColor: '#0F0F0F',
@@ -12,10 +14,12 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
-      <body className="min-h-dvh bg-ground text-ink">{children}</body>
+    <html lang={await getLocale()}>
+      <body className="min-h-dvh bg-ground text-ink">
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+      </body>
     </html>
   );
 }

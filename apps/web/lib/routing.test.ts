@@ -13,6 +13,14 @@ describe('resolveRoute', () => {
     expect(resolveRoute('restio-app.com', '/@le-comptoir', hosts)).toEqual({ kind: 'rewrite', pathname: '/m/le-comptoir' });
   });
 
+  it('réécrit le parcours de commande du client', () => {
+    const id = '019a0000-0000-7000-8000-000000000000';
+    expect(resolveRoute('restio-app.com', '/@chez-awa/commande', hosts)).toEqual({ kind: 'rewrite', pathname: '/m/chez-awa/commande' });
+    expect(resolveRoute('restio-app.com', `/@chez-awa/commande/${id}`, hosts)).toEqual({ kind: 'rewrite', pathname: `/m/chez-awa/commande/${id}` });
+    expect(resolveRoute('restio-app.com', '/@chez-awa/commande/61', hosts).kind).toBe('not-found');
+    expect(resolveRoute('restio-app.com', '/@chez-awa/autre', hosts).kind).toBe('not-found');
+  });
+
   it('normalise la casse et la barre finale par redirection', () => {
     expect(resolveRoute('restio-app.com', '/@Le-Comptoir', hosts)).toEqual({ kind: 'redirect', pathname: '/@le-comptoir' });
     expect(resolveRoute('restio-app.com', '/@le-comptoir/', hosts)).toEqual({ kind: 'redirect', pathname: '/@le-comptoir' });

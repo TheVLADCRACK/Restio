@@ -24,6 +24,13 @@ export const createOrderInputSchema = z.strictObject({
     .refine((v) => !NUL.test(v), 'invalid_characters')
     .optional()
     .transform((v) => (v === '' ? undefined : v)),
+  customerName: z
+    .string()
+    .trim()
+    .max(40)
+    .refine((v) => !CONTROL_CHARS.test(v), 'invalid_characters')
+    .optional()
+    .transform((v) => (v === '' ? undefined : v)),
   items: z.array(orderItemInputSchema).min(1).max(MAX_ORDER_LINES),
 });
 

@@ -1,22 +1,26 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Alert } from '@restio/ui/components/alert';
+import { useTranslations } from 'next-intl';
 import { Button } from '@restio/ui/components/button';
+import { Toast } from '@/components/toast';
 import { authClient } from '@/lib/auth/client';
 
 // Séparateur « ou » entre le formulaire et Google (planche).
-export function OrDivider() {
+export function OrDivider({ label }: { label?: string }) {
+  const t = useTranslations('common');
   return (
     <div className="flex items-center gap-3 text-sm text-text-2">
       <span aria-hidden="true" className="h-px flex-1 bg-line" />
-      ou
+      {label ?? t('or')}
       <span aria-hidden="true" className="h-px flex-1 bg-line" />
     </div>
   );
 }
 
-export function GoogleSignIn() {
+/** `short` : libellé « Google » seul (accueil mobile, bouton en duo). */
+export function GoogleSignIn({ short = false }: { short?: boolean }) {
+  const t = useTranslations('auth.google');
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
 
@@ -45,11 +49,11 @@ export function GoogleSignIn() {
 
   return (
     <div className="grid gap-3">
-      <Button variant="secondary" block loading={loading} loadingText="Ouverture de Google…" onClick={signIn}>
-        <GoogleLogo />
-        Continuer avec Google
+      <Button variant="secondary" block loading={loading} loadingText={short ? undefined : t('loading')} onClick={signIn}>
+        {!loading && <GoogleLogo />}
+        {short ? t('short') : t('button')}
       </Button>
-      {failed && <Alert tone="error">La connexion avec Google n’a pas abouti. Réessayez dans un instant.</Alert>}
+      {failed && <Toast tone="error">{t('failed')}</Toast>}
     </div>
   );
 }

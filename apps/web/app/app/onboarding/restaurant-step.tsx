@@ -1,22 +1,18 @@
-import { WebAuthShell } from '../auth/_components/web-auth-shell';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { countryOptions, currencyOptions, pick } from './_components/options';
+import { OnboardingFrame } from './_components/onboarding-frame';
 import { RestaurantForm } from './_components/restaurant-form';
-import { StepIndicator } from './_components/step-indicator';
 
-type Props = { firstName: string; suggestedCountry?: string; suggestedCurrency?: string };
+type Props = { suggestedCountry?: string; suggestedCurrency?: string };
 
-export function RestaurantStep({ firstName, suggestedCountry, suggestedCurrency }: Props) {
-  const countries = countryOptions();
-  const currencies = currencyOptions();
+export async function RestaurantStep({ suggestedCountry, suggestedCurrency }: Props) {
+  const t = await getTranslations('onboarding');
+  const locale = await getLocale();
+  const countries = countryOptions(locale);
+  const currencies = currencyOptions(locale);
   return (
-    <WebAuthShell dish="grill" title={`Votre restaurant, ${firstName}`} description="Ces informations servent à préparer votre menu et vos prix.">
-      <StepIndicator step={2} total={2} />
-      <RestaurantForm
-        countries={countries}
-        currencies={currencies}
-        initialCountry={pick(suggestedCountry, countries)}
-        initialCurrency={pick(suggestedCurrency, currencies)}
-      />
-    </WebAuthShell>
+    <OnboardingFrame step={2} label={t('stepRestaurant')} back="/onboarding?etape=profil" title={t('restaurant.title')} description={t('restaurant.description')}>
+      <RestaurantForm countries={countries} currencies={currencies} initialCountry={pick(suggestedCountry, countries)} initialCurrency={pick(suggestedCurrency, currencies)} />
+    </OnboardingFrame>
   );
 }

@@ -12,8 +12,8 @@ export function RequestCodeForm() {
   const [state, action, pending] = useActionState(requestAdminCodeAction, null);
   return (
     <form action={action} className="grid gap-4" noValidate>
-      {state?.error && <Alert tone="error">{state.error}</Alert>}
-      <Field id="email" label="Adresse email">
+      {state?.error && !pending && <Alert tone="error">{state.error}</Alert>}
+      <Field id="email" label="Adresse e-mail">
         <TextInput icon={Mail} name="email" type="email" autoComplete="username" autoCapitalize="none" spellCheck={false} required />
       </Field>
       <Button type="submit" variant="dark" block loading={pending} loadingText="Envoi…">

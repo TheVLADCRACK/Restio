@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next';
+import createNextIntlPlugin from 'next-intl/plugin';
 
 // shortcut: 'unsafe-inline' pour les scripts de Next.js ; passer à des nonces générés dans le proxy avant d'ajouter du contenu tiers (Phase 6).
 const csp = [
@@ -26,9 +27,12 @@ const securityHeaders = [
 const config: NextConfig = {
   poweredByHeader: false,
   transpilePackages: ['@restio/core', '@restio/db', '@restio/ui'],
+  // Photos compressées dans le navigateur avant l'envoi ; Vercel plafonne le corps à 4,5 Mo.
+  serverExternalPackages: ['sharp'],
+  experimental: { serverActions: { bodySizeLimit: '4.5mb' } },
   async headers() {
     return [{ source: '/:path*', headers: securityHeaders }];
   },
 };
 
-export default config;
+export default createNextIntlPlugin('./i18n/request.ts')(config);

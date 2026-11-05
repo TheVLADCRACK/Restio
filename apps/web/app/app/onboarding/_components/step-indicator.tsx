@@ -1,5 +1,8 @@
+import { useTranslations } from 'next-intl';
+
 // Placé sous le titre (pas de surtitre) : la barre est décorative, le texte porte l'information.
 export function StepIndicator({ step, total }: { step: number; total: number }) {
+  const t = useTranslations('onboarding');
   return (
     <div className="mb-6 grid gap-2">
       <div aria-hidden="true" className="flex gap-1.5">
@@ -8,7 +11,7 @@ export function StepIndicator({ step, total }: { step: number; total: number }) 
         ))}
       </div>
       <p className="text-sm font-medium text-text-2">
-        Étape {step} sur {total}
+        {t('step', { step, total })}
       </p>
     </div>
   );
