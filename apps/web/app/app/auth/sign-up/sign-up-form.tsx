@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { CircleAlert } from 'lucide-react';
+import { CircleAlert, Mail } from 'lucide-react';
 import { Button } from '@restio/ui/components/button';
 import { Field } from '@restio/ui/components/field';
 import { PasswordInput } from '@restio/ui/components/password-input';
@@ -30,7 +30,7 @@ export function SignUpForm() {
       <form {...formProps} className="grid gap-4">
         {state?.error && !pending && <Toast tone="error">{state.error}</Toast>}
         <Field id="email" label={t('fields.email')} error={state?.fieldErrors?.email}>
-          <TextInput name="email" type="email" autoComplete="email" inputMode="email" autoCapitalize="none" spellCheck={false} placeholder={t('fields.emailPlaceholder')} required />
+          <TextInput icon={Mail} iconClassName="max-lg:hidden" className="max-lg:pl-3.5" name="email" type="email" autoComplete="email" inputMode="email" autoCapitalize="none" spellCheck={false} placeholder={t('fields.emailPlaceholder')} required />
         </Field>
         <Field id="password" label={t('fields.password')} hint={t('fields.passwordHint')} error={state?.fieldErrors?.password}>
           <PasswordInput name="password" autoComplete="new-password" minLength={10} placeholder={t('fields.passwordMin')} showLabel={tc('showPassword')} hideLabel={tc('hidePassword')} required />

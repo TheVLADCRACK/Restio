@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ExternalLink, TriangleAlert } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { formatMoney, isValidSlug } from '@restio/core';
 import { buttonClass } from '@restio/ui/components/button';
 import { requireAdmin } from '@/lib/auth/session';
@@ -57,12 +57,6 @@ export default async function RestaurantPage({ params }: { params: Promise<{ slu
           </>
         }
       />
-      {r.deletionRequestedAt && (
-        <p role="note" className="flex gap-2.5 rounded-md bg-status-new-bg px-3.5 py-3 text-sm font-medium text-status-new">
-          <TriangleAlert aria-hidden="true" className="mt-px size-[18px] shrink-0" strokeWidth={1.75} />
-          Suppression du compte demandée par le propriétaire le {longDate(r.deletionRequestedAt)}.
-        </p>
-      )}
       <div className="grid grid-cols-2 gap-2 lg:grid-cols-4 lg:gap-6">
         <Kpi title="Commandes 30 j" value={fmt(r.orders30)} foot="Moyenne" side={<span className="tabular">{fmt(Math.round(r.orders30 / 30))} par jour</span>} />
         <Kpi title="Ventes 30 j" value={salesValue} unit={unit} foot="Panier moyen" side={<span className="tabular">{average ? money(average) : '—'}</span>} />

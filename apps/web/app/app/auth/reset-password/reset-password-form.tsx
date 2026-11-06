@@ -3,8 +3,8 @@
 import { useTranslations } from 'next-intl';
 import { Button } from '@restio/ui/components/button';
 import { Field } from '@restio/ui/components/field';
+import { OtpInput } from '@restio/ui/components/otp-input';
 import { PasswordInput } from '@restio/ui/components/password-input';
-import { OtpInput } from '@/components/otp-input';
 import { Toast } from '@/components/toast';
 import { resetPasswordAction } from '@/lib/auth/actions';
 import { useAuthForm } from '../_components/use-auth-form';

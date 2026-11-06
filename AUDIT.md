@@ -273,7 +273,7 @@ Tous les écrans de `design/board.html` validés par le propriétaire sont déve
 
 **Écarts et limites connus :**
 - « Service ouvert » de la planche : remplacé par l'état réel du menu, faute d'horaires de service en base.
-- Suppression de compte : enregistre une demande et retire le menu ; l'exécution définitive n'est pas développée.
+- Aucune suppression de compte en libre-service : décision du propriétaire (6 novembre 2026). Un restaurateur ne peut supprimer ni son compte ni un compte.
 - Suivi en direct par rafraîchissement périodique (8 à 15 s) et non par Neon Realtime. Notifications uniquement page ouverte : le push (PWA) reste à faire. Bilan quotidien par e-mail non développé.
 - « Épuisé aujourd'hui » : la remise en vente automatique le lendemain n'est pas développée.
 - Journée de service des commandes : bascule fixée à 5 h, heure du restaurant.

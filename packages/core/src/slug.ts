@@ -10,14 +10,26 @@ export const RESERVED_SLUGS: ReadonlySet<string> = new Set([
 ]);
 
 export function slugify(name: string): string {
-  return name
+  const slug = name
     .normalize('NFD')
     .replace(/[̀-ͯ]/g, '')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .slice(0, SLUG_MAX_LENGTH)
-    .replace(/-+$/, '');
+    .slice(0, SLUG_MAX_LENGTH * 2);
+  return trimEnd(trimHyphens(slug).slice(0, SLUG_MAX_LENGTH));
+}
+
+// Parcours linéaires, sans expression régulière : pas de ralentissement possible sur une longue suite de tirets.
+function trimEnd(value: string): string {
+  let end = value.length;
+  while (end > 0 && value[end - 1] === '-') end--;
+  return value.slice(0, end);
+}
+
+function trimHyphens(value: string): string {
+  let start = 0;
+  while (start < value.length && value[start] === '-') start++;
+  return trimEnd(value.slice(start));
 }
 
 export function isValidSlug(slug: string): boolean {
@@ -30,7 +42,7 @@ export function suggestSlug(base: string, taken: ReadonlySet<string>): string {
   if (isValidSlug(root) && !taken.has(root)) return root;
   for (let n = 2; ; n++) {
     const suffix = `-${n}`;
-    const candidate = root.slice(0, SLUG_MAX_LENGTH - suffix.length).replace(/-+$/, '') + suffix;
+    const candidate = trimEnd(root.slice(0, SLUG_MAX_LENGTH - suffix.length)) + suffix;
     if (isValidSlug(candidate) && !taken.has(candidate)) return candidate;
   }
 }

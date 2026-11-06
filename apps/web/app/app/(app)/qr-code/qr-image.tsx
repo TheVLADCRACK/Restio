@@ -8,7 +8,7 @@ export function QrImage({ url, className, label }: { url: string; className?: st
     <svg role="img" aria-label={label} viewBox={`0 0 ${viewBox} ${viewBox}`} className={className}>
       <rect width={viewBox} height={viewBox} fill="#fff" />
       <path d={d} fill="#0F0F0F" />
-      <image href="/brand/restio-mark-ink.png" x={logo.x + pad} y={logo.x + pad} width={logo.size - pad * 2} height={logo.size - pad * 2} />
+      <image href="/brand/restio-mark-lime.png" x={logo.x + pad} y={logo.x + pad} width={logo.size - pad * 2} height={logo.size - pad * 2} />
     </svg>
   );
 }

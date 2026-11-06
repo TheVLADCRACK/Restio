@@ -107,3 +107,16 @@ Les noms exacts des variables Neon Auth, Realtime et Object Storage seront repri
 - Compte `vladcrack`, équipe `nerix-technology`, plan Hobby : aucun projet ni domaine existant.
 - Le domaine `restio-app.com` est à acheter.
 - L'usage commercial nécessitera probablement le plan Pro (conditions à vérifier avant le lancement).
+
+## Adresses cibles (décision du propriétaire, 6 novembre 2026)
+
+| Application | Développement | Déploiement |
+|---|---|---|
+| `apps/web` | `https://localhost:3000` et `https://app.localhost:3000` | `https://app.restio-app.com` |
+| `apps/admin` | `https://localhost:3001` et `https://admin.localhost:3001` | `https://admin.restio-app.com` |
+
+À appliquer : HTTPS local, hôte `admin.localhost`, domaines de confiance Neon Auth (une entrée par origine, sur chaque branche).
+
+## RLS sur `neon_auth`
+
+`neon_auth.account` a la RLS activée sur `production`. Le rôle `neon_auth` en reste propriétaire, donc non concerné tant que la RLS n'est pas forcée. `restio_admin_ops` passe par les politiques de `manual/0007_admin_auth_read.sql`.

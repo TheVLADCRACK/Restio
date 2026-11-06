@@ -11,9 +11,9 @@ import { requestAdminCodeAction } from '@/lib/auth/actions';
 export function RequestCodeForm() {
   const [state, action, pending] = useActionState(requestAdminCodeAction, null);
   return (
-    <form action={action} className="grid gap-4" noValidate>
+    <form action={action} className="grid gap-4 md:gap-[18px]" noValidate>
       {state?.error && !pending && <Alert tone="error">{state.error}</Alert>}
-      <Field id="email" label="Adresse e-mail">
+      <Field id="email" label="Adresse e-mail" hint="Seules les adresses de l’équipe Restio reçoivent un code.">
         <TextInput icon={Mail} name="email" type="email" autoComplete="username" autoCapitalize="none" spellCheck={false} required />
       </Field>
       <Button type="submit" variant="dark" block loading={pending} loadingText="Envoi…">

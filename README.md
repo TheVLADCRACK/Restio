@@ -14,8 +14,8 @@ Node.js 22 ou plus récent (24 recommandé), npm 11.
 npm install
 cp .env.example apps/web/.env.local     # puis renseigner les valeurs de la section apps/web
 cp .env.example apps/admin/.env.local   # puis renseigner les valeurs de la section apps/admin
-npm run dev:web                          # http://localhost:3000 et http://app.localhost:3000
-npm run dev:admin                        # http://localhost:3001
+npm run dev:web                          # https://localhost:3000 et https://app.localhost:3000 en deploiment https://app.restio-app.com
+npm run dev:admin                        # https://localhost:3001 et https://admin.localhost:3001 en deploiment https://admin.restio-app.com
 ```
 
 Les menus publics se testent sur `http://localhost:3000/@slug`.

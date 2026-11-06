@@ -11,7 +11,8 @@
     "./components/alert": "./src/components/alert.tsx",
     "./components/auth-shell": "./src/components/auth-shell.tsx",
     "./components/password-input": "./src/components/password-input.tsx",
-    "./components/switch": "./src/components/switch.tsx"
+    "./components/switch": "./src/components/switch.tsx",
+    "./components/otp-input": "./src/components/otp-input.tsx"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"

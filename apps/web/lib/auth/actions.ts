@@ -10,7 +10,7 @@ import { clearPendingEmail, getPendingEmail, setPendingEmail } from './pending-e
 import { db } from '@/lib/db';
 import { fingerprint, ipFingerprint } from '@/lib/request';
 
-export type AuthFormState = { error?: string; fieldErrors?: Record<string, string>; info?: string } | null;
+export type AuthFormState = { error?: string; hint?: string; fieldErrors?: Record<string, string>; info?: string } | null;
 
 const email = z.email().trim().toLowerCase().max(254);
 const password = z.string().min(10).max(128);
@@ -115,7 +115,7 @@ export async function signInAction(_prev: AuthFormState, form: FormData): Promis
       await setPendingEmail(parsed.data.email);
       redirect('/auth/verify-email');
     }
-    return { error: t('invalidCredentials') };
+    return { error: t('invalidCredentials'), hint: t('invalidCredentialsHint') };
   }
   redirect('/');
 }

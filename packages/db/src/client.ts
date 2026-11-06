@@ -4,6 +4,7 @@ import { drizzle, type NeonDatabase } from 'drizzle-orm/neon-serverless';
 import ws from 'ws';
 import * as appSchema from './schema/app';
 import * as adminSchema from './schema/admin';
+import { resilientFetch } from './resilient-fetch';
 
 // Module serveur uniquement : les chaînes de connexion ne doivent jamais atteindre un navigateur.
 if (typeof window !== 'undefined') {
@@ -46,6 +47,8 @@ export function createAppDb(): AppDb {
 
 /** apps/web, lectures de page : même rôle restio_app, transport HTTP (pas de transaction interactive). */
 export function createAppReadDb(): AppReadDb {
+  // Ce client ne sert qu'aux lectures : rejouer une requête après une panne réseau est sans risque.
+  neonConfig.fetchFunction = resilientFetch;
   appReadDb ??= drizzleHttp({ client: neon(requireEnv('DATABASE_URL')), schema: appSchema });
   return appReadDb;
 }

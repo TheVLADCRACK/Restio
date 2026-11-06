@@ -127,7 +127,8 @@
       "passwordLength": "At least 10 characters.",
       "invalidEmail": "Invalid email address.",
       "terms": "Accept the terms to create your account.",
-      "codeSent": "A new code has just been sent."
+      "codeSent": "A new code has just been sent.",
+      "invalidCredentialsHint": "Check your details and try again."
     }
   },
   "onboarding": {
@@ -720,15 +721,7 @@
       "email": "Email address",
       "verified": "Address verified",
       "phoneCountry": "Country of your number",
-      "phone": "Phone number",
-      "delete": "Delete the account",
-      "deleteText": "Deletes your account, your restaurant, your menu and order history. This action is permanent.",
-      "deleteButton": "Delete my account",
-      "confirmTitle": "Delete your account?",
-      "confirmText": "Your menu will be removed immediately and your request sent to the Restio team for permanent deletion.",
-      "confirm": "Delete",
-      "keep": "Keep",
-      "requested": "Deletion request saved. Your menu is no longer published."
+      "phone": "Phone number"
     },
     "password": {
       "title": "Password",

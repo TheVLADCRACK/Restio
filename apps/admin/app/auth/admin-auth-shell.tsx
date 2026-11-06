@@ -15,7 +15,7 @@ export function AdminAuthShell({ title, description, children, footer }: { title
       <main className="relative z-10 -mt-7 flex flex-1 flex-col gap-4 rounded-t-xl bg-surface px-5 pb-[18px] pt-[26px] md:mt-0 md:w-[440px] md:flex-none md:gap-[18px] md:rounded-xl md:p-8">
         <div>
           <h1 className="text-[1.75rem] font-bold tracking-[-0.02em] md:text-[1.875rem]">{title}</h1>
-          <div className="mt-1 text-text-2">{description}</div>
+          <div className="mt-1.5 text-text-2">{description}</div>
         </div>
         {children}
         {footer && <div className="text-center text-sm md:text-[0.9375rem] [&_a]:font-bold [&_a]:text-text-2 [&_a]:underline [&_a]:underline-offset-[3px]">{footer}</div>}

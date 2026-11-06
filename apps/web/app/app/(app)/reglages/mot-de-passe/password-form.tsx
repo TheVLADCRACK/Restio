@@ -18,7 +18,7 @@ export function PasswordForm() {
   const errors = state?.fieldErrors;
   const labels = { showLabel: tc('showPassword'), hideLabel: tc('hidePassword') };
   return (
-    <form {...formProps} key={saved} className={formCard}>
+    <form key={saved} {...formProps} className={formCard}>
       {state?.error && !pending && <Toast tone="error">{state.error}</Toast>}
       {saved > 0 && !pending && <Toast tone="success">{t('password.saved')}</Toast>}
       <Section title={t('password.section')}>

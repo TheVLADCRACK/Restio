@@ -4,7 +4,7 @@ import { useActionState, useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Button } from '@restio/ui/components/button';
 import { Field } from '@restio/ui/components/field';
-import { OtpInput } from '@/components/otp-input';
+import { OtpInput } from '@restio/ui/components/otp-input';
 import { Toast } from '@/components/toast';
 import { resendCodeAction, verifyEmailAction } from '@/lib/auth/actions';
 import { useAuthForm } from '../_components/use-auth-form';

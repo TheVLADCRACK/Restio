@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { and, eq, sql } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 import { getTranslations } from 'next-intl/server';
 import { z } from 'zod';
 import { countryCodeSchema, currencySchema, isValidSlug, isValidTimeZone, normalizePhone, PhoneError, RESERVED_SLUGS } from '@restio/core';
@@ -174,18 +174,4 @@ export async function changePasswordAction(_prev: SettingsFormState, form: FormD
     return { fieldErrors: { current: t('passwordWrong') } };
   }
   return { ok: true };
-}
-
-/**
- * Demande de suppression : le rôle de l'application n'a volontairement aucun droit de suppression sur les restaurants.
- * La demande apparaît dans l'administration, qui exécute la suppression définitive (DATABASE.md §8).
- */
-export async function requestAccountDeletionAction(): Promise<{ error?: string }> {
-  const t = await getTranslations('settingsPages.errors');
-  const { restaurantId, limited } = await writer();
-  if (limited) return { error: t('rateLimited') };
-  const patch = JSON.stringify({ deletionRequestedAt: new Date().toISOString() });
-  await db().update(restaurants).set({ onboarding: sql`${restaurants.onboarding} || ${patch}::jsonb`, isPublished: false, updatedAt: new Date() }).where(and(eq(restaurants.id, restaurantId)));
-  refresh();
-  return {};
 }

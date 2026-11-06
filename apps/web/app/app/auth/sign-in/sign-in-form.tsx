@@ -19,7 +19,12 @@ export function SignInForm() {
   return (
     <div className="grid gap-5">
       <form {...formProps} className="grid gap-4">
-        {state?.error && !pending && <Toast tone="error">{state.error}</Toast>}
+        {state?.error && !pending && (
+          <Toast tone="error">
+            {state.error}
+            {state.hint && <span className="block text-[0.8125rem] text-on-dark-2">{state.hint}</span>}
+          </Toast>
+        )}
         <Field id="email" label={t('fields.email')} error={state?.fieldErrors?.email}>
           <TextInput icon={Mail} name="email" type="email" autoComplete="email" inputMode="email" autoCapitalize="none" spellCheck={false} placeholder={t('fields.emailPlaceholder')} required />
         </Field>

@@ -5,9 +5,11 @@ import { cn } from '@restio/ui/cn';
 export type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
   /** Icône décorative à gauche du champ (planche : e-mail, mot de passe). */
   icon?: LucideIcon;
+  /** Classes de l'icône, ex. pour ne l'afficher qu'à partir d'une certaine largeur. */
+  iconClassName?: string;
 };
 
-export function TextInput({ className, type = 'text', icon: Icon, ...props }: TextInputProps) {
+export function TextInput({ className, type = 'text', icon: Icon, iconClassName, ...props }: TextInputProps) {
   const input = (
     <input
       type={type}
@@ -25,7 +27,7 @@ export function TextInput({ className, type = 'text', icon: Icon, ...props }: Te
   if (!Icon) return input;
   return (
     <div className="relative min-w-0">
-      <Icon aria-hidden="true" strokeWidth={1.75} className="pointer-events-none absolute left-3.5 top-1/2 size-[18px] -translate-y-1/2 text-text-3" />
+      <Icon aria-hidden="true" strokeWidth={1.75} className={cn('pointer-events-none absolute left-3.5 top-1/2 size-[18px] -translate-y-1/2 text-text-3', iconClassName)} />
       {input}
     </div>
   );

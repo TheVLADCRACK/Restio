@@ -90,7 +90,7 @@ export async function getRestaurantDetail(slug: string) {
   const { prod, admin } = dbs();
   const [result] = (
     await prod.execute(sql`
-      SELECT r.id, r.name, r.slug, r.city, r.country_code, r.currency, r.timezone, r.is_published, r.status, r.created_at, r.onboarding->>'deletionRequestedAt' AS deletion_requested_at,
+      SELECT r.id, r.name, r.slug, r.city, r.country_code, r.currency, r.timezone, r.is_published, r.status, r.created_at,
         p.first_name, p.last_name, p.phone_e164,
         u.email, u."emailVerified" AS verified,
         (SELECT string_agg(a."providerId", ',') FROM neon_auth.account a WHERE a."userId" = m.user_id) AS providers,
@@ -124,7 +124,6 @@ export async function getRestaurantDetail(slug: string) {
     isPublished: result.is_published === true,
     isSuspended: result.status === 'suspended',
     createdAt: new Date(text(result.created_at)),
-    deletionRequestedAt: result.deletion_requested_at ? new Date(text(result.deletion_requested_at)) : null,
     owner: { name: [text(result.first_name), text(result.last_name)].filter(Boolean).join(' '), phone: text(result.phone_e164), email: text(result.email), verified: result.verified === true, providers: text(result.providers), lastSeen: result.last_seen ? new Date(text(result.last_seen)) : null },
     dishes: count(result.dishes),
     orders30: count(result.orders30),

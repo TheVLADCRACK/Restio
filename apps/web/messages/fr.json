@@ -127,7 +127,8 @@
       "passwordLength": "Au moins 10 caractères.",
       "invalidEmail": "Adresse e-mail invalide.",
       "terms": "Acceptez les conditions pour créer votre compte.",
-      "codeSent": "Un nouveau code vient d’être envoyé."
+      "codeSent": "Un nouveau code vient d’être envoyé.",
+      "invalidCredentialsHint": "Vérifiez vos informations puis réessayez."
     }
   },
   "onboarding": {
@@ -720,15 +721,7 @@
       "email": "Adresse e-mail",
       "verified": "Adresse vérifiée",
       "phoneCountry": "Pays de votre numéro",
-      "phone": "Numéro de téléphone",
-      "delete": "Supprimer le compte",
-      "deleteText": "Supprime votre compte, votre restaurant, votre menu et l’historique des commandes. Cette action est définitive.",
-      "deleteButton": "Supprimer mon compte",
-      "confirmTitle": "Supprimer votre compte ?",
-      "confirmText": "Votre menu sera retiré immédiatement et votre demande transmise à l’équipe Restio pour la suppression définitive.",
-      "confirm": "Supprimer",
-      "keep": "Conserver",
-      "requested": "Demande de suppression enregistrée. Votre menu n’est plus publié."
+      "phone": "Numéro de téléphone"
     },
     "password": {
       "title": "Mot de passe",
